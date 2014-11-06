@@ -61,6 +61,7 @@ title: Tyler's Blog
 <!--CSS and JS used only in index page-->
 
 <div class="homeLeftDiv">
+  <h4>博客列表</h4>
   <ul class="postsUl">
     {% for post in site.posts %}
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="javascript:openBlog('{{ post.url }}');">{{ post.title }}</a></li>
