@@ -51,17 +51,15 @@ title: Tom Preston-Werner
       font-size: 80%;
     }
 </style>
-<div id="home">
-  <div class="homeLeftDiv">
-    <ul class="postsUl">
-      {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="javascript:openBlog('{{ post.url }}');">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="homeRightDiv">
-    <iframe id="blogPage" src="/2014/10/31/welcome.html"></iframe>
-  </div>
+<div class="homeLeftDiv">
+  <ul class="postsUl">
+    {% for post in site.posts %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="javascript:openBlog('{{ post.url }}');">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="homeRightDiv">
+  <iframe id="blogPage" src="/2014/10/31/welcome.html"></iframe>
 </div>
 <script>
   function openBlog(url) {
