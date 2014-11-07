@@ -5,5 +5,5 @@
 .postsUl li { margin: 5px 0px; line-height: 20px; background-color: #eee; cursor: default; }
 .postsUl li:hover { background: #aaa; }
 .titleSpan { color: #009966; }
-.dateDiv { padding-right: 10px; color: #ffd800; font-family: Monaco, "Courier New", monospace; font-size: 80%; text-align: right; }
+.dateDiv { padding-right: 10px; color: green; font-family: Monaco, "Courier New", monospace; font-size: 80%; text-align: right; }
 .selectedPostLi { background-color: #aaa !important; }
