@@ -6,4 +6,4 @@
 .postsUl li:hover { background: #aaa; }
 .titleSpan { color: #009966; }
 .dateDiv { color: #aaa; font-family: Monaco, "Courier New", monospace; font-size: 80%; text-align: right; }
-.selected { background-color: #aaa; }
+.selectedPostLi { background-color: #aaa !important; }

@@ -6,7 +6,7 @@ title: Tyler's Blog
   <h4>博客列表</h4>
   <ul class="postsUl">
     {% for post in site.posts %}
-    <li onclick="openBlog('{{ post.url }}');">
+    <li onclick="openBlog('{{ post.url }}', this);">
       <span class="titleSpan">{{ post.title }}</span>
       <div class="dateDiv">{{ post.date | date_to_string }}</div>
     </li>
@@ -14,6 +14,6 @@ title: Tyler's Blog
   </ul>
 </div>
 <div class="homeRightDiv">
-  <iframe id="blogPage" src="/2014/10/31/welcome.html"></iframe>
+  <iframe id="blogPage" src="welcome.html"></iframe>
 </div>
 
