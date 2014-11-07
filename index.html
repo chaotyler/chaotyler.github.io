@@ -26,11 +26,11 @@ title: Tyler's Blog
     border: solid 1px #ccc;
   }
 
-    .homeRightDiv iframe {
-      width: 100%;
-      border: none;
-      height: 100%;
-    }
+  .homeRightDiv iframe {
+    width: 100%;
+    border: none;
+    height: 100%;
+  }
 
   .postsUl {
     list-style: none;
@@ -39,19 +39,29 @@ title: Tyler's Blog
   }
 
     .postsUl li {
+      margin: 5px 0px;
       line-height: 20px;
+      background-color: #eee;
     }
 
-      .postsUl li a {
-        text-decoration: none;
-        color: #009966;
-      }
+   .postsUl li:hover {
+     background: #aaa;
+   }
 
-    .postsUl span {
+   .titleSpan {
+      color: #009966;
+    }
+
+    .dateDiv {
       color: #aaa;
       font-family: Monaco, "Courier New", monospace;
       font-size: 80%;
+      text-align: right;
     }
+
+  .selected {
+    background-color: #aaa;
+  }
 </style>
 <script>
   function openBlog(url) {
@@ -64,7 +74,10 @@ title: Tyler's Blog
   <h4>博客列表</h4>
   <ul class="postsUl">
     {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="javascript:openBlog('{{ post.url }}');">{{ post.title }}</a></li>
+    <li onclick="openBlog('{{ post.url }}');">
+      <span class="titleSpan">{{ post.title }}</span>
+      <div class="dateDiv">{{ post.date | date_to_string }}</div>
+    </li>
     {% endfor %}
   </ul>
 </div>
