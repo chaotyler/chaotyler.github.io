@@ -12,52 +12,26 @@ title: JavaScript的继承机制（加我的理解）/原型链/属性查找/has
 	一个关于继承和实例化的例子
 </p>
 <p>
-	<span style="background-color: rgb(153, 255, 153);">function Shape(){</span>
+	<span style="background-color:rgb(153,255,153)"></span>
 </p>
+<span style="background-color: rgb(153, 255, 153);">function Shape(){<br />
+&nbsp; this.x = 0;<br />
+&nbsp; this.y = 0;<br />
+}<br />
+Shape.prototype.area = function(){<br />
+&nbsp; ...<br />
+}<br />
+function Circle(){<br />
+&nbsp; this.radius = 1;<br />
+}<br />
+Circle.prototype = new Shape();<br />
+Circle.prototype.area = function(){<br />
+&nbsp; ...<br />
+}<br />
+Circle.prototype.constructor = Circle;<br />
+var cir = new Circle();</span>
 <p>
-	<span style="background-color: rgb(153, 255, 153);">&nbsp; this.x = 0;</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">&nbsp; this.y = 0;</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">}</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">Shape.prototype.area = function(){</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">&nbsp; ...</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">}</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">function Circle(){</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">&nbsp; this.radius = 1;</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">}</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">Circle.prototype = new Shape();</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">Circle.prototype.area = function(){</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">&nbsp; ...</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">}</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">Circle.prototype.constructor = Circle;</span>
-</p>
-<p>
-	<span style="background-color: rgb(153, 255, 153);">var cir = new Circle();</span>
+	<span style="background-color:rgb(153,255,153)"></span>
 </p>
 <p>
 	<strong>我的理解</strong>
@@ -113,7 +87,7 @@ title: JavaScript的继承机制（加我的理解）/原型链/属性查找/has
 	
 </p>
 <p>
-	hasOwnProperty是Object.prototype的一个方法，他能判断一个对象的某个属性是否是自有属性，<span style="color:#ff0000;">而且hasOwnProperty是JavaScript中唯一一个在处理属性时不查找原型链的函数。</span><br />
+	hasOwnProperty是Object.prototype的一个方法，他能判断一个对象的某个属性是否是自有属性，<span style="color:#ff0000">而且hasOwnProperty是JavaScript中唯一一个在处理属性时不查找原型链的函数。</span><br />
 	
 </p>
 <p>
