@@ -1,0 +1,51 @@
+---
+layout: post
+title: this指针
+---
+<p>
+	this对象是和执行上下文息息相关的一个对象，因此它也被称为执行上下文对象(context object)，即激活当前执行上下文的执行上下文(an object in which context the execution context is activated)。
+</p>
+<p>
+	任何对象都可以作为执行上下文的this值，this是执行上下文的一个属性而不是某个变量对象的属性。(a this value is a property of the execution context, but not a property of the variable object.)
+</p>
+<p>
+	<span style="color:#ff0000;">这个特性十分重要，因为跟变量对象不同，this值从来不会参与到标识符查询的过程，换句话说，this值是直接从执行上下文中得到的，而不会查询原型链，只有当进入执行上下文的时候，this值就已经一次确认了。</span>
+</p>
+<p>
+	在ECMAScript中是不能给this赋值的，还是那句话，this不是变量。
+</p>
+<p>
+	在全局上下文中，this值就是指全局对象。
+</p>
+<p>
+	在函数上下文中，this的值可能是不同的，是通过调用表达式由caller提供的。
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">// the code of the &quot;foo&quot; function<br />
+	// never changes, but the &quot;this&quot; value<br />
+	// differs in every activation<br />
+	&nbsp;<br />
+	function foo() {<br />
+	&nbsp; alert(this);<br />
+	}<br />
+	&nbsp;<br />
+	// caller activates &quot;foo&quot; (callee) and<br />
+	// provides &quot;this&quot; for the callee<br />
+	&nbsp;<br />
+	foo(); // global object<br />
+	foo.prototype.constructor(); // foo.prototype<br />
+	&nbsp;<br />
+	var bar = {<br />
+	&nbsp; baz: foo<br />
+	};<br />
+	&nbsp;<br />
+	bar.baz(); // bar<br />
+	&nbsp;<br />
+	(bar.baz)(); // also bar<br />
+	(bar.baz = bar.baz)(); // but here is global object<br />
+	(bar.baz, bar.baz)(); // also global object<br />
+	(false || bar.baz)(); // also global object<br />
+	&nbsp;<br />
+	var otherFoo = bar.baz;<br />
+	otherFoo(); // again global object</span>
+</p>
