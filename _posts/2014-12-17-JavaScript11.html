@@ -1,0 +1,75 @@
+---
+layout: post
+title: JavaScript单线程/浏览器事件驱动
+---
+<p>
+	首先看一个例子：
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">function foo() {<br />
+	&nbsp; console.log('first');<br />
+	&nbsp; setTimeout((function(){<br />
+	&nbsp; &nbsp; console.log('second');<br />
+	&nbsp; }),5);<br />
+	}<br />
+	for(var i =0;i&lt;10000;i++) {<br />
+	&nbsp; foo();<br />
+	}</span><br />
+	
+</p>
+<p>
+	结果是先输出10000个first然后立即输出10000个second。
+</p>
+<p>
+	因为JavaScript是单线程运行的，特定的时间只能有特定的代码正在执行，不会有多段代码同时执行。
+</p>
+<p>
+	setTimeout一般文档中的描述是一段时间后执行某段代码或者方法，<span style="background-color: rgb(255, 255, 255);"><span style="color:#ff0000;">但是严格说来不是的，应该是一段时间后把某段代码或者方法放入执行队列中，至于什么时候能执行它们就只能等JavaScript引擎按照队列一个一个进行。</span></span>
+</p>
+<p>
+	上面的例子，setTimeout中的方法只能等待for循环结束后才执行，因为for循环在执行队列中靠前。
+</p>
+<p>
+	<br />
+	
+</p>
+<p>
+	<span style="color:#ff0000;">但是浏览器却不是单线程的，一个浏览器可能有以下进程：javascript引擎线程、界面渲染线程、浏览器事件触发线程、Http请求线程。而且浏览器依靠事件驱动机制来确定代码的执行队列。</span>
+</p>
+<p>
+	所以就不难理解为什么AJAX是异步操作的了。
+</p>
+<p>
+	由于JavaScript是单线程的，所以尽管浏览器可以并行下载<span style="color:#ff0000;">js文件</span>，但是也必须依次顺序下载。
+</p>
+<p>
+	实现非阻塞的js文件下载有两种方法：
+</p>
+<p>
+	1. HTML5的defer和async。
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">&lt;script type=&quot;text/javascript&quot; defer src=&quot;foo.js&quot;&gt;&lt;/script&gt;<br />
+	&lt;script type=&quot;text/javascript&quot; async src=&quot;foo.js&quot;&gt;&lt;/script&gt;</span><br />
+	
+</p>
+<p>
+	2. 动态加载js文件
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">var script=document.createElement('script');<br />
+	script.setAttribute(&quot;type&quot;,&quot;text/javascript&quot;);<br />
+	script.setAttribute(&quot;src&quot;,&quot;xxx.js&quot;);<br />
+	document.documentElement.appendChild(script);<br />
+	//or: document.getElementsByTagName('head')[0].appendChild(script);<br />
+	//or: document.body.appendChild(script);</span><br />
+	
+</p>
+<p>
+	<br />
+	
+</p>
+<p>
+	<br />
+	
+</p>
