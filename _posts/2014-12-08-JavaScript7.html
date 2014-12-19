@@ -81,10 +81,10 @@ title: 执行上下文（栈）/作用域（链）/with
 	只要所有外部函数的变量对象都存在，那么从内部函数引用外部数据则没有特别之处——我们只要遍历作用域链表，查找所需变量。
 </p>
 <p>
-	<span style="color:#ff0000;">注意：通过构造函数创建的方法的作用域链中只有全局变量！</span>
+	<span style="color:#ff0000">注意：通过构造函数创建的方法的作用域链中只有全局变量！</span>
 </p>
 <p>
-	<span style="background-color: rgb(153, 255, 153);">var x = 10;&nbsp;<br />
+	<span style="background-color:rgb(153,255,153)">var x = 10;&nbsp;<br />
 	function foo() {&nbsp;<br />
 	&nbsp; var y = 20;&nbsp;<br />
 	&nbsp; function barFD() {<br />
@@ -104,7 +104,13 @@ title: 执行上下文（栈）/作用域（链）/with
 	
 </p>
 <p>
-	<br />
+	<strong>二维作用域链查找</strong><br />
+	源于ECMAScript的原型特性。如果一个属性在对象中没有直接找到，查询将在原型链中继续。即常说的二维链查找。（1）作用域链环节；（2）每个作用域链－－深入到原型链环节:<br />
+	<span style="background-color: rgb(153, 255, 153);">function foo() {<br />
+	&nbsp; alert(x);<br />
+	}&nbsp;<br />
+	Object.prototype.x = 10;&nbsp;<br />
+	foo(); // 10</span><br />
 	
 </p>
 <p>
