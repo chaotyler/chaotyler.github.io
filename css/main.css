@@ -5,3 +5,7 @@ body {
 .myJumbotron{
     overflow: hidden !important;
 }
+
+div.myJumbotron img{
+    width: 100%;
+}
