@@ -1,0 +1,32 @@
+---
+layout: post
+title: HTML的a标签href设为零操作的原因和方式
+---
+<h2>
+    原因
+</h2>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    An&nbsp;<span style="font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif"><span style="padding:1px 5px; background-color:rgb(238,238,238)">&lt;a&gt;</span></span>&nbsp;element is invalid HTML unless it has either an&nbsp;<span style="font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif"><span style="padding:1px 5px; background-color:rgb(238,238,238)">href</span></span>&nbsp;or&nbsp;<span style="font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif"><span style="padding:1px 5px; background-color:rgb(238,238,238)">name</span></span>&nbsp;attribute.
+</p>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    If you want it to render correctly as a link (ie underlined, hand pointer, etc), then it will only do so if it has a&nbsp;<span style="font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif"><span style="padding:1px 5px; background-color:rgb(238,238,238)">href</span></span>&nbsp;attribute.
+</p>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    ：一个a元素只有存在href属性或者name属性才算是有效的元素，如果你想渲染成链接的样式(如下划线和光标变化成手形)，必须添加href属性。
+</p>
+<h2>
+    方式
+</h2>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    1. href=&quot;javascript:;&quot;
+</p>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    2. href=&quot;javascript:void(0);&quot;<br />
+
+</p>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    3. href=&quot;javascript:return false;&quot;
+</p>
+<p style="margin-top:0px; margin-bottom:1em; padding-top:0px; padding-bottom:0px; border:0px; vertical-align:baseline; clear:both; word-wrap:break-word">
+    4. href=&quot;javascript:event.preventDefault();&quot;
+</p>

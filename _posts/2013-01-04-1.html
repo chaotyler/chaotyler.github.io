@@ -1,0 +1,55 @@
+---
+layout: post
+title: Web前端知识点：汇总二
+---
+<h4>
+    <span style="background-color:rgb(255,255,255)">1、鼠标点击页面中的任意标签，alert该标签的名称</span>
+</h4>
+<p>
+    <span style="background-color:rgb(255,255,255)"></span>
+</p>
+<pre name="code" class="javascript">document.onclick=function(e){
+  e=e||window.event;
+  var o=e.srcElement||e.target;
+  alert(o.tagName);
+}</pre>
+<p>
+</p>
+<p>
+    <span style="background-color:rgb(255,255,255)">兼容性问题：</span>
+</p>
+<p>
+	<span style="background-color:rgb(255,255,255)">1）e=e||window.event;做事件处理时候区分IE和其他浏览器事件对象时常用的写法<br />
+	</span>
+</p>
+<p>
+    <span style="background-color:rgb(255,255,255)">2）IE下是srcElement，FF下是target。</span>
+</p>
+<h4>
+    <span style="background-color:rgb(255,255,255)">2、异步加载js方案</span>
+</h4>
+<div>
+    <span style="background-color:rgb(255,255,255)">1）动态写入script元素</span>
+</div>
+<div>
+    <span style="background-color:rgb(255,255,255)"></span>
+    <pre name="code" class="javascript">document.write(&quot;&lt;script src='xxxx.js' type='text/javascript'&gt;&lt;/script&gt;&quot;);</pre>
+</div>
+<div>
+    <span style="background-color:rgb(255,255,255)">2）动态改变script元素的src值</span>
+</div>
+<div>
+    <span style="background-color:rgb(255,255,255)"></span>
+    <pre name="code" class="javascript">document.getElementById(&quot;script&quot;).src = &quot;xxxx.js&quot;;</pre>
+</div>
+<h4>
+    <span style="background-color:rgb(255,255,255)">3、对string对象经行扩展，使其具有删除前后空格的方法</span>
+</h4>
+<div>
+    <span style="background-color:rgb(231,231,226)"><span style="background-color:rgb(231,231,226)"></span></span>
+	<pre name="code" class="javascript">String.prototype.trim = function(){
+	return this.replace(/^\s+|\s+$/g,&quot;&quot;)
+}</pre>
+    <br />
+
+</div>
