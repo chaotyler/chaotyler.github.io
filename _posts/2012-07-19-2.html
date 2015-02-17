@@ -1,0 +1,54 @@
+---
+layout: post
+title: CSS之通过定位简单实现div绝对居中
+---
+<pre name="code" class="html">&lt;DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+		body{
+			margin:0px;
+			width:100%;
+			height:100%;
+		}
+		.box{
+			position:absolute;
+			top:50%;
+			left:50%;
+			width:500px;
+			height:200px;
+		}
+		.content{
+			position:relative;
+			top:-50%;
+			left:-50%;
+			width:100%;
+			height:100%;
+			background:red;
+		}
+	&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;box&quot;&gt;
+		&lt;div class=&quot;content&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>
+    上面是简单代码，原理很简单，即使用box来确定body的中间位置和宽高，content相对于box来定位即可实现居中。
+</p>
+<p>
+    自感觉
+</p>
+<p>
+    优点：兼容好，不像vertical-align等属性IE不支持；定位都是用百分比，不用根据div的宽高来定位；代码简单易用；用于页面中单独一个居中框比较适用。
+</p>
+<p>
+    缺点：每个居中的div需要两层div来实现；需要绝对定位和相对定位结合，页面较复杂时可能需要调整的东西较多或不适用。<br />
+
+</p>
+<p>
+    之前在网上搜索了许多关于垂直居中的解决方式(参考：<a href="http://fyting.iteye.com/blog/92437">http://fyting.iteye.com/blog/92437</a>)有vertical-align+table-cell实现的，有line-height来实现的，有margin实现的，总是感觉不是特别的兼容通用。
+</p>

@@ -1,0 +1,152 @@
+---
+layout: post
+title: EJB(Enterprise JavaBean)整理总结
+---
+<p>
+    <span style="font-size:24px">EJB(Enterprise JavaBean)：</span>
+</p>
+<p>
+    实体Bean(Entity Bean)
+</p>
+<p>
+    消息驱动Bean(MessageDriven Bean)
+</p>
+<p>
+    会话Bean(Session Bean)：Statefull Session Bean、Stateless Session Bean、Singleton&nbsp;Session Bean
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    <span style="font-size:24px">实体Bean(Entity Bean)：</span>
+</p>
+<p>
+    fetch属性：设定提取该Entity时是否立即提取该属性信息，值：eagerly，lazy
+</p>
+<p>
+    optional属性：设定关系是否可空。类似的有nullable属性是设定数据库中该列是否可空。
+</p>
+<p>
+    orphanRemoval属性：设定在删除关系时是否同时删除对应的Entity
+</p>
+<p>
+    cascade属性：对一个实体类进行操作时是否对有对应关系的实体自动进行相同的操作。值：PERSIST(持久化操作)，MERGE(持久化和修改操作)，REMOVAL，REFRESH，ALL。
+</p>
+<p>
+    mappedBy属性：建立双向映射时标注对应的EntityBean中的属性名。
+</p>
+<p>
+    主键自动生成：
+</p>
+<p>
+    @Id
+</p>
+<p>
+    @GeneratedValue(strategy = GenerationType.AUTO)
+</p>
+<p>
+    private long id;<br />
+
+</p>
+<p>
+    时间等值的映射：
+</p>
+<p>
+    @Temporal(TemporalType.TIMESTAMP)将对象映射成DATA或TIME或TIMESTAMP值，默认TIMESTAMP。
+</p>
+<p>
+    多对多映射时的映射表：
+</p>
+<p>
+    @ManyToMany
+</p>
+<p>
+    @JoinTable(
+</p>
+<p>
+    name=&quot;menu_category_relation&quot;,
+</p>
+<p>
+    joinColumns=
+</p>
+<p>
+    @JoinColumn(name=&quot;menu_id&quot;, referencedColumnName=&quot;id&quot;),
+</p>
+<p>
+    inverseJoinColumns=
+</p>
+<p>
+    @JoinColumn(name=&quot;category_id&quot;, referencedColumnName=&quot;id&quot;)
+</p>
+<p>
+    )<br />
+    &nbsp;@OrderBy(&quot;name ASC&quot;)
+</p>
+<p>
+    private List&lt;Category&gt; categories;<br />
+
+</p>
+<p>
+    <span style="font-size:24px">会话Bean(Session Bean)：</span>
+</p>
+<p>
+    @Stateless<br />
+    @Path(&quot;/orders&quot;)<br />
+    public class DishOrdersBean {<br />
+    <span style="white-space:pre"></span>@PersistenceContext<br />
+    <span style="white-space:pre"></span>EntityManager em;<br />
+    <br />
+    <br />
+    <span style="white-space:pre"></span>@Resource<br />
+    <span style="white-space:pre"></span>SessionContext sc;<br />
+    <br />
+    <br />
+    <span style="white-space:pre"></span>@PUT<br />
+    <span style="white-space:pre"></span>@Consumes(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>@Produces(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>public JSONObject addOrder(JSONObject jo) {}<br />
+
+</p>
+<p>
+    <span style="white-space:pre"></span>@POST<br />
+    <span style="white-space:pre"></span>@Consumes(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>@Produces(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>public JSONObject updateOrder() {<span style="white-space:pre"></span>}<br />
+    <br />
+    <br />
+    <span style="white-space:pre"></span>@GET<br />
+    <span style="white-space:pre"></span>@Path(&quot;/list&quot;)<br />
+    <span style="white-space:pre"></span>@Produces(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>public JSONArray getList() {}<br />
+
+</p>
+<p>
+    <span style="white-space:pre"></span>@GET<br />
+    <span style="white-space:pre"></span>@Path(&quot;/infolist&quot;)<br />
+    <span style="white-space:pre"></span>@Produces(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>public JSONArray getOrderInfoList() {}<br />
+
+</p>
+<p>
+    <span style="white-space:pre"></span>@GET<br />
+    <span style="white-space:pre"></span>@Path(&quot;/{tableNo}&quot;)<br />
+    <span style="white-space:pre"></span>@Produces(&quot;application/json&quot;)<br />
+    <span style="white-space:pre"></span>public JSONArray getListByTableNo(@PathParam(&quot;tableNo&quot;) long tableNo) {}<br />
+
+</p>
+<p>
+    <span style="white-space:pre"></span>@POST<br />
+    <span style="white-space:pre"></span>@Path(&quot;/{orderId}/{status}&quot;)<br />
+    <span style="white-space:pre"></span>public void updateStatus(@PathParam(&quot;orderId&quot;) long orderId,@PathParam(&quot;status&quot;) String status) {}<br />
+
+</p>
+<p>
+    <span style="white-space:pre"></span>@DELETE<br />
+    <span style="white-space:pre"></span>@Path(&quot;/{orderId}&quot;)<br />
+    <span style="white-space:pre"></span>public void deleteOrder(@PathParam(&quot;orderId&quot;) String orderIdStr) {}<br />
+
+</p>
+<p>
+    }
+</p>

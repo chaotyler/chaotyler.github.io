@@ -1,0 +1,38 @@
+---
+layout: post
+title: CSS Sprite技术
+---
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    <span style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px"><a href="http://www.jzxue.com/wangyesheji/css/" target="_blank" style="color:rgb(255,51,0); text-decoration:none">CSS</a>&nbsp;Sprite</span><span style="color:rgb(68,68,68); font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:22px">是一种利用CSS特性对</span><a href="http://www.jzxue.com/wangyesheji/" target="_blank" style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(51,51,51); text-decoration:none; font-size:14px; line-height:22px">网页</a><span style="color:rgb(68,68,68); font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:22px">中图片进行的特殊处理的运用方式，主要是将多张零星图片综合到一张图片中。这样做的好处是可以减少用户浏览网页时对</span><a href="http://www.jzxue.com/fuwuqi/" target="_blank" style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(51,51,51); text-decoration:none; font-size:14px; line-height:22px">服务器</a><span style="color:rgb(68,68,68); font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:22px">的请求数，减少服务器负载，达到</span><a href="http://www.jzxue.com/jianzhanzhinan/seo/" target="_blank" style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(51,51,51); text-decoration:none; font-size:14px; line-height:22px">优化</a><span style="color:rgb(68,68,68); font-family:Verdana,Arial,Helvetica,sans-serif; font-size:14px; line-height:22px">网站的目的。目前多内外著名网站都在使用这种技术。</span><br />
+
+</p>
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    <a href="http://www.jzxue.com/System/uploads/userup/1106/020925155J9.jpg" target="_blank" style="color:rgb(255,51,0); text-decoration:none"><img border="0" alt="" src="http://www.jzxue.com/System/uploads/userup/1106/020925155J9.jpg" width="374" height="383" style="padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-style:initial; border-color:initial" /></a>&nbsp;
+</p>
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    <a href="http://www.jzxue.com/System/uploads/userup/1106/020925246253.jpg" target="_blank" style="color:rgb(51,51,51); text-decoration:none"><img border="0" alt="" src="http://www.jzxue.com/System/uploads/userup/1106/020925246253.jpg" width="238" height="399" style="padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-style:initial; border-color:initial" /></a>&nbsp;
+</p>
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    <a href="http://www.jzxue.com/System/uploads/userup/1106/02092534J55.jpg" target="_blank" style="color:rgb(51,51,51); text-decoration:none"><img border="0" alt="" src="http://www.jzxue.com/System/uploads/userup/1106/02092534J55.jpg" width="284" height="186" style="padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-style:initial; border-color:initial" /></a>&nbsp;<br />
+    <br />
+    &nbsp;<strong>CSS Sprite</strong>是如何在一张图片中集合多张零星图片的呢？请看图一、图二、图三，它们分别是<a href="http://www.jzxue.com/tag/google/" target="_blank" style="color:rgb(51,51,51); text-decoration:none">google</a>、土豆网和搜狗网中用到<strong>CSS Sprite</strong>技术的背景图片。<br />
+    <br />
+    它们利用有限的图片空间将多张小图片结合于其中，然后使用CSS背景定位技术将固定宽度和高度的图片作为背景显示出来。<br />
+    <br />
+    <strong>CSS Sprite</strong>有三个简单的应用：<br />
+    <br />
+    <strong>1.减少图片限制</strong>&amp;md<a href="http://www.jzxue.com/tag/FlashAS/" target="_blank" style="color:rgb(51,51,51); text-decoration:none">as</a>h;—就是将多个相似图片综合在一张图片里，<strong>CSS Sprite</strong>的主要做用，以尽量减少图片数量为前提。<br />
+    <br />
+    <strong>2.单图滚动</strong>——即在一张图片中把多种状态合并，然后再使用CSS定位背景图技术模拟动态效果。就像图二中的上下箭头一样，在默认状态下使用背景图的下箭头部分，鼠标悬浮或点击后使用背景图中的上箭头部分。<br />
+    <br />
+    <strong>3.延长背景</strong>——如果页面中存在平铺背景图的效果，并且带有边角，可以在一张图片中结合平铺的背景和边角，再利用CSS背景定位实现，例如图二中最顶部的背景条。<br />
+    <br />
+    <strong>CSS Sprite</strong>技术必须在实战中才能总结和体会，所以只要经常勤于动手就可以很快提高自己的<strong>CSS Sprite</strong>技术。
+</p>
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    <br />
+
+</p>
+<p style="font-family:Verdana,Arial,Helvetica,sans-serif; color:rgb(68,68,68); font-size:14px; line-height:22px">
+    from:http://www.jzxue.com/wangyesheji/css/201106/02-7686.html
+</p>

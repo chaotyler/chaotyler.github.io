@@ -1,0 +1,765 @@
+---
+layout: post
+title: JavaScript世界的一等公民 - 函数
+---
+<p>
+    <span style="font-family:Arial,sans-serif"><strong><span style="color:#ff0000"></span></strong></span>
+</p>
+<div id="art_pre_template" class="sectionheading" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <h2 style="font-family:verdana,sans-serif; margin:0.83em 0px 4px; padding:0px 0px 4px; color:rgb(0,0,0); font-size:14px; border-bottom-style:none">
+        简介
+    </h2>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    在很多传统语言（C/C++/Java/C#等）中，函数都是作为一个二等公民存在，你只能用语言的关键字声明一个函数然后调用它，如果需要把函数作为参数传给另一个函数，或是赋值给一个本地变量，又或是作为返回值，就需要通过函数指针(function pointer)、代理(delegate)等特殊的方式周折一番。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    而在JavaScript世界中函数却是一等公民，它不仅拥有一切传统函数的使用方式（声明和调用），而且可以做到像简单值一样赋值、传参、返回，这样的函数也称之为<span style="font-family:arial,sans-serif; margin:0px; padding:0px">第一级函数（First-class Function）</span>。不仅如此，JavaScript中的函数还充当了类的构造函数的作用，同时又是一个Function类的实例(instance)。这样的多重身份让JavaScript的函数变得非常重要。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheading" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <h2 style="font-family:verdana,sans-serif; margin:0.83em 0px 4px; padding:0px 0px 4px; color:rgb(0,0,0); font-size:14px; border-bottom-style:none">
+        一、JavaScript函数入门级
+    </h2>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    JavaScript函数像一般语言一样也是遵循先声明后使用的原则，函数名只能包含<span style="font-family:arial,sans-serif; margin:0px; padding:0px">字母、数字、下划线或$</span>，且不能以数字开头。函数常见的声明方式有以下两种：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;直接声明函数myfunc</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;myfunc(</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">/*&nbsp;arguments&nbsp;*/</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;把匿名函数赋值给本地变量myfunc</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;myfunc&nbsp;=&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">/*&nbsp;arguments&nbsp;*/</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+    注意，上面两种函数声明方式存在细微的差别：第一种方式在声明时就是一个<span style="font-family:arial,sans-serif; margin:0px; padding:0px">命名的函数</span>，无论是声明在<span style="font-family:arial,sans-serif; margin:0px; padding:0px">调用之前</span>、<span style="font-family:arial,sans-serif; margin:0px; padding:0px">调用之后</span>，甚至是<span style="font-family:arial,sans-serif; margin:0px; padding:0px">不会执行到的位置</span>（例如return语句之后或是永远不会为真的分支里），都在整个作用域可访问；第二种方式是通过把匿名函数赋值给变量的方式，严格意义上说这不是一个函数的声明（function declaration）而是一个函数表达式（function expression），在赋值之前这个函数不能被任何代码访问到，也就是说这个<span style="font-family:arial,sans-serif; margin:0px; padding:0px">赋值必须在调用之前完成</span>，否则调用时会出现错误：&quot;TypeError: undefined is not a function&quot;。例如：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-cpp" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">myfunc1();&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;能够正常调用，因为myfunc1采用直接声明的方式</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">function&nbsp;myfunc1()&nbsp;{&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">myfunc2();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;出错&nbsp;TypeError:&nbsp;undefined&nbsp;is&nbsp;not&nbsp;a&nbsp;function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;myfunc2&nbsp;=&nbsp;function()&nbsp;{&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">};&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    函数的基本调用方式与传统语言相同用一对括号调用: myfunc()。JavaScript的函数也支持直接或间接的递归(recursive)调用，例如经典的斐波那契函数用JavaScript可以这样实现：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;fib(n)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">if</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;(n&nbsp;==&nbsp;1&nbsp;||&nbsp;n&nbsp;==&nbsp;2)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;1;&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;}&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">else</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;fib(n&nbsp;-&nbsp;2)&nbsp;+&nbsp;fib(n&nbsp;-&nbsp;1);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    在JavaScript的函数可以处理变长参数，在函数内部都拥有一个名为arguments的局部变量，它是一个类数组（array-liked）的对象，里面包含了所有调用时传入的参数，有length属性表示参数的个数。例如：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;test()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(arguments.length);&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">test(1);&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;1</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">test(1,&nbsp;<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'a'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;2</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">test(<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">true</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">,&nbsp;[],&nbsp;{});&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;3</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    利用arguments可以实现类似C语言printf的功能，也可以用来实现方法的多态。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheading" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <h2 style="font-family:verdana,sans-serif; margin:0.83em 0px 4px; padding:0px 0px 4px; color:rgb(0,0,0); font-size:14px; border-bottom-style:none">
+        二、JavaScript函数进阶
+    </h2>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">2.1 匿名函数和嵌套函数</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+	<span style="font-family:arial,sans-serif; margin:0px; padding:0px"><br style="margin:0px; padding:0px" />
+	</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    在JavaScript可以声明一个没有名称的函数，称为匿名函数（Anonymouse Function）。同时JavaScript还允许在函数内部声明函数，称为嵌套函数（Nested Function），嵌套函数的作用域为整个父函数。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    在前面函数声明的部分就看到了匿名函数和嵌套函数的一种用法，由于匿名函数没有名称，不会引入新的变量污染上下文环境，而且会带来新的变量作用域，因此匿名函数常被用来防止全局环境污染。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+	<span style="font-family:arial,sans-serif; margin:0px; padding:0px"><br style="margin:0px; padding:0px" />
+	</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">JavaScript运行时中有一个特殊的全局环境（global object），这个对象上面存放全局的函数和变量，实际开发中经常会使用若干第三方的库或多个js文件，若不小心在全局对象引入重复的变量或函数声明，则会造成代码执行混乱。例如先后引入两个js文件，分别定义了自己的函数log作为内部使用，则第二引入的函数会</span><span style="font-family:arial,sans-serif; margin:0px; padding:0px">覆盖</span><span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">第一个的定义且</span><span style="font-family:arial,sans-serif; margin:0px; padding:0px">不会抛出任何错误</span><span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">，在后续的执行中调用log函数可能会造成错误。这时候使用一个匿名函数将整个js内的逻辑包装起来，就可以避免这种错误，这种方法已经被绝大多数开源js库使用。</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">(</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">()&nbsp;{&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;匿名函数</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;log(msg)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;console.log(msg);&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;其他代码</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}());&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;立即执行</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    以上代码就是一个简单的示例，log函数的作用域被限制在这个匿名函数之内，而匿名函数则因为被外面一对小括号()包括起来，形成一个函数表达式，表达式的值是一个函数，紧接着一对小括号表示立即执行这个函数，让原有的代码正常执行一次。不过，这种方式声明的函数、通过var声明的变量等等都是内部的，不能被任何匿名函数以外的代码访问到。如果你需要对外暴露一些函数作为接口的话有如下几种方法：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-cpp" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">var&nbsp;mylib&nbsp;=&nbsp;(function(global)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">function&nbsp;log(msg)&nbsp;{&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;console.log(msg);&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">log1&nbsp;=&nbsp;log;&nbsp;&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;法一：利用没有var的变量声明的默认行为，在log1成为全局变量（不推荐）</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">global.log2&nbsp;=&nbsp;log;&nbsp;&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;法二：直接在全局对象上添加log2属性，赋值为log函数（推荐）</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;{&nbsp;&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;法三：通过匿名函数返回值得到一系列接口函数集合对象，赋值给全局变量mylib（推荐）</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;log:&nbsp;log&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">};&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}(window));&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">2.2 高阶函数（High-order Function）</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    如果函数作为参数或返回值使用时，就称为高阶函数，JavaScript中的函数都可以作为高阶函数来使用，这也是第一类函数的特征。下面我们就分别分析一下这两种使用方法。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;negative(n)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;-n;&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;取n的相反值</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;square(n)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;n*n;&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;n的平方</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;process(nums,&nbsp;callback)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;result&nbsp;=&nbsp;[];&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">for</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;i&nbsp;=&nbsp;0,&nbsp;length&nbsp;=&nbsp;nums.length;&nbsp;i&nbsp;&lt;&nbsp;length;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;result[i]&nbsp;=&nbsp;callback(nums[i]);&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;对数组nums中的所有元素传递给callback进行处理，将返回值作为结果保存</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;result;&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;nums&nbsp;=&nbsp;[-3,&nbsp;-2,&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4];&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;n_neg&nbsp;=&nbsp;process(nums,&nbsp;negative);&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;n_neg&nbsp;=&nbsp;[3,&nbsp;2,&nbsp;1,&nbsp;0,&nbsp;-1,&nbsp;-2,&nbsp;-3,&nbsp;-4];</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;n_square&nbsp;=&nbsp;process(nums,&nbsp;square);&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;n_square&nbsp;=&nbsp;[9,&nbsp;4,&nbsp;1,&nbsp;0,&nbsp;1,&nbsp;4,&nbsp;9,&nbsp;16];</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    以上代码展示了把函数作为参数传入另一个函数process调用的示例，在process函数的实现中，把callback作为一个黑盒子看待，负责把参数传给它，然后获取返回值，在调用之前并不清楚callback的具体实现。只有当执行到20行和22行时，callback才被分别代表negative或square，分别对每个元素进行取相反值或平方值的操作。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-cpp" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">function&nbsp;generator()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;var&nbsp;i&nbsp;=&nbsp;0;&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;function()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;i++;&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;};&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;gen1&nbsp;=&nbsp;generator();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;得到一个自然数生成器</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;gen2&nbsp;=&nbsp;generator();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;得到另一个自然数生成器</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;r1&nbsp;=&nbsp;gen1();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;r1&nbsp;=&nbsp;0</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;r2&nbsp;=&nbsp;gen1();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;r2&nbsp;=&nbsp;1</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;r3&nbsp;=&nbsp;gen2();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;r3&nbsp;=&nbsp;0</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;r4&nbsp;=&nbsp;gen2();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;r4&nbsp;=&nbsp;1</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    上面的代码展示了把函数作为返回值的示例，generator是一个自然数生成器函数，返回值是一个自然数生成函数。每次调用generator时都会把一个匿名函数作为结果返回，这个匿名函数在被实际调用时依次返回每个自然数。在generator里的变量i在每次调用这个匿名函数时都会自增1，这其实就是一个闭包。下面我们来介绍一下闭包.
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">2.3 闭包（Closure）</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    闭包(Closure)并不是一个新鲜的概念，很多函数式语言中都使用了闭包。在JavaScript中，当你在内嵌函数中使用外部函数作用域内的变量时，就是使用了闭包。用一个常用的类比来解释闭包和类（Class）的关系：类是带函数的数据，闭包是带数据的函数。
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">闭包中使用的变量有一个特性，就是它们不在父函数返回时释放，而是随着闭包生命周期的结束而结束。比如像上一节中generator的例子，gen1和gen2分别使用了相互独立的变量i（在gen1的i自增1的时候，gen2的i并不受影响，反之亦然），只要gen1或gen2这两个变量没有被JavaScript引擎垃圾回收，他们各自的变量i就不会被释放。</span><span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">在JavaScript编程中，不知不觉就会使用到闭包，闭包的这个特性在带来易用的同时，也容易带来类似内存泄露的问题。例如：</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;elem&nbsp;=&nbsp;document.getElementById(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'test'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">elem.addEventListener(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'click'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">,&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'You&nbsp;clicked&nbsp;'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;+&nbsp;elem.tagName);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">});&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+    这段代码的作用是点击一个结点时显示它的标签名称，它把一个匿名函数注册为一个DOM结点的click事件处理函数，函数内引用了一个DOM对象elem，就形成了闭包。这就会产生一个循环引用，即：DOM-&gt;闭包-&gt;DOM-&gt;闭包...DOM对象在闭包释放之前不会被释放；而闭包作为DOM对象的事件处理函数存在，所以在DOM对象释放前闭包不会释放，即使DOM对象在DOM tree中删除，由于这个循环引用的存在，DOM对象和闭包都不会被释放。可以用下面的方法可以避免这种内存泄露：
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;elem&nbsp;=&nbsp;document.getElementById(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'test'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">elem.addEventListener(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'click'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">,&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'You&nbsp;clicked&nbsp;'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;+&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">.tagName);&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;不再直接引用elem变量</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">});&nbsp;&nbsp;</span>
+            </li>
+        </ol>
+    </div>
+    <div class="sectionbodytext" id="art_pre_template" style="margin:0px; padding:0px">
+        上面这段代码中用this代替elem（在DOM事件处理函数中this指针指向DOM元素本身），让JS运行时不再认为这个函数中使用了父类的变量，因此不再形成闭包。
+    </div>
+    闭包还会带来很多类似的<a href="http://www.ibm.com/developerworks/web/library/wa-memleak/" style="font-family:arial,sans-serif; margin:0px; padding:0px; color:rgb(8,96,168); text-decoration:none; outline-style:none; border:0px">内存泄露问题</a>，只有在写代码的时候着重注意一下闭包，尽量避免此类的问题产生。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">2.4 类构造函数</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    JavaScript的函数同时作为类的构造函数，因此只要声明一个函数就可以使用new关键字创建类的实例。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-cpp" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">function&nbsp;Person(name)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">.name&nbsp;=&nbsp;name;&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">.toString&nbsp;=&nbsp;function()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'Hello,&nbsp;'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;+&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">.name&nbsp;+&nbsp;</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'!'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">;&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;};&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">var&nbsp;p&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Person(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'Ghostheaven'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">alert(p);&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;Hello,&nbsp;Ghostheaven!</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    在以上实例中Person函数作为类的构造函数使用，此时this指向新创建的实例对象，可以为实例增加属性和方法，关于详细的面向对象的JavaScript编程可以参考<a href="http://mckoss.com/jscript/object.htm" style="font-family:arial,sans-serif; margin:0px; padding:0px; color:rgb(8,96,168); text-decoration:none; outline-style:none; border:0px">这篇文章</a>。这里我想要说的是，JavaScript函数作为类构造函数使用时的返回值问题。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;MyClass(name)&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">.name&nbsp;=&nbsp;name;&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">return</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;name;&nbsp;&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;构造函数的返回值?</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;obj1&nbsp;=&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;MyClass(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'foo'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;obj2&nbsp;=&nbsp;MyClass(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'foo'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;obj3&nbsp;=&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;MyClass({});&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;obj4&nbsp;=&nbsp;MyClass({});&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    上面的构造函数比较特别，有返回语句，那么obj1~obj4分别指向什么对象呢？实际结果是这样的：
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <ul style="margin:0px 0px 16px 16px; padding:0px; list-style-position:outside; line-height:16px">
+        <li class="sectionbodytext" style="margin:0px; padding:0px">
+            obj1 = MyClass对象
+        </li>
+        <li class="sectionbodytext" style="margin:0px; padding:0px">
+            obj2 = 'foo'
+        </li>
+        <li class="sectionbodytext" style="margin:0px; padding:0px">
+            obj3 = {}
+        </li>
+        <li class="sectionbodytext" style="margin:0px; padding:0px">
+            obj4 = {}
+        </li>
+    </ul>
+    <div style="margin:0px; padding:0px">
+        <span style="font-family:arial,sans-serif; margin:0px; padding:0px; line-height:16px">具体原因<a href="http://stackoverflow.com/questions/1978049/what-values-can-a-constructor-return-to-avoid-returning-this" style="margin:0px; padding:0px; color:rgb(8,96,168); text-decoration:none; outline-style:none; border:0px">这篇文章</a>有解释，本文不再赘述，由于带返回值的构造函数会产生奇怪的结果，因此不要在构造函数中调用有返回值的返回语句（空return可以）。</span>
+    </div>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheading" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <h2 style="font-family:verdana,sans-serif; margin:0.83em 0px 4px; padding:0px 0px 4px; color:rgb(0,0,0); font-size:14px; border-bottom-style:none">
+        三、JavaScript函数妖怪级
+    </h2>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">欢迎来到妖怪级函数授课区，在这里会交给你如何淡定自如地面对老怪。。。</span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+	<span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px"><br style="margin:0px; padding:0px" />
+	</span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">3.1 Function类</span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">在JavaScript运行时中有一个内建的类叫做Function，用function关键字声明一个函数其实是创建Function类对象的一种简写形式，所有的函数都拥有Function类所有的方法，例如call、apply、bind等等，可以通过instanceof关键字来验证这个说法。</span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px">既然Function是一个类，那么它的构造函数就是Function（它本身也是Function类的对象），应该可以通过new关键字来生成一个函数对象。第一个妖怪来了，那就是如何用Function类构造一个函数。Function的语法如下：</span>
+</div>
+<div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; color:rgb(81,83,87); font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto; text-align:left">
+    <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+        <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+            <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+        </div>
+    </div>
+    <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+        <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+            <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Function&nbsp;([arg1[,&nbsp;arg2[,&nbsp;...&nbsp;argN]],]&nbsp;functionBody)&nbsp;&nbsp;</span></span>
+        </li>
+    </ol>
+</div>
+<div id="art_pre_template" class="sectionbodytext" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    其中arg1, arg2, ... argN是字符串，代表参数名称，functionBody也是字符串，表示函数体，前面的参数名称是可多可少的，Function的构造函数会把最后一个参数当做函数体，前面的都当做参数处理。
+</div>
+<div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; color:rgb(81,83,87); font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto; text-align:left">
+    <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+        <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+            <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+        </div>
+    </div>
+    <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+        <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+            <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;func1&nbsp;=&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Function(</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'name'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">,&nbsp;</span><span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'return&nbsp;&quot;Hello,&nbsp;&quot;&nbsp;+&nbsp;name&nbsp;+&nbsp;&quot;!&quot;;'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+        </li>
+        <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+            <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">func1(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'Ghostheaven'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;Hello,&nbsp;Ghostheaven!</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+        </li>
+    </ol>
+</div>
+<div id="art_pre_template" class="sectionbodytext" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    以上方法就通过Function构造了一个函数，这个函数跟其他用function关键字声明的函数一模一样。
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionbodytext" style="font-family:arial,sans-serif; margin:0px; padding:0px"><span style="margin:0px; padding:0px">看到这儿，很多人可能会问为什么需要这样一个妖怪呢？</span><span style="margin:0px; padding:0px">“存在的即是合理的”，Function类有它独特的用途，你可以利用它动态地生成各种函数逻辑，或者代替eval函数的功能，而且能保持当前环境不会被污染*。</span></span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+	<span style="font-family:arial,sans-serif; margin:0px; padding:0px"><span style="font-family:__; margin:0px; padding:0px"><br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+	</span></span>
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheadingtext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span class="sectionheadingtext" style="font-family:arial,sans-serif; margin:0px; padding:0px">3.2 自更新函数（Self-update Function）</span>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    在很多语言中，函数一旦声明过就不能再次声明同名函数，否则会产生语法错误，而在JavaScript中的函数不仅可以重复声明，而且还可以自己更新自己。自己吃自己的妖怪来了！
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <div class="dp-highlighter" style="font-family:'Courier New'; margin:18px 0px!important; padding:1px 0px 0px; font-size:10px; background-color:rgb(231,229,220); width:745px; overflow:auto">
+        <div class="bar" style="font-family:Arial,sans-serif; margin:0px; padding:0px 0px 0px 45px; background-color:rgb(232,232,232); border-right-color:rgb(153,153,221)">
+            <div class="tools" style="font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; margin:0px; padding:3px 8px 10px 10px; color:silver; font-size:9px; background-color:rgb(248,248,248); border-left-width:3px; border-left-style:solid; border-left-color:rgb(108,226,108)">
+                <a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">- collapse source</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">view plain</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">copy to clipboard</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">print</a><a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032#" style="font-family:arial,sans-serif; margin:0px 10px 0px 0px; padding:0px; color:rgb(160,160,160); text-decoration:none; outline-style:none; border:none; background-color:inherit">?</a>
+            </div>
+        </div>
+        <ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;selfUpdate()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;window.selfUpdate&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">()&nbsp;{&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'second&nbsp;run!'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;};&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'first&nbsp;run!'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+            </li>
+            <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">selfUpdate();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;first&nbsp;run!</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+            <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+                <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">selfUpdate();&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;second&nbsp;run!</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+            </li>
+        </ol>
+    </div>
+    这种函数可以用于只运行一次的逻辑，在第一次运行之后就整个替换成一段新的逻辑。
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <br style="font-family:arial,sans-serif; margin:0px; padding:0px" />
+
+</div>
+<div class="sectionheading" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <h2 style="font-family:verdana,sans-serif; margin:0.83em 0px 4px; padding:0px 0px 4px; color:rgb(0,0,0); font-size:14px; border-bottom-style:none">
+        小结
+    </h2>
+</div>
+<div class="sectionbodytext" id="art_pre_template" style="font-family:Arial,sans-serif; margin:0px; padding:0px; color:rgb(81,83,87); text-align:left">
+    <span style="font-family:arial,sans-serif; margin:0px; padding:0px">JavaScript的函数灰常强大，在漂亮地解决很多问题的同时，也带来很多负面问题。妖怪级别的函数使用方法通常是一些鲜为人知的用法，除非特别必要不要轻易使用，否则会造成代码阅读困难，影响团队开发效率。</span>
+</div>
+<div style="text-align:left">
+	<span style="font-family:arial,sans-serif; color:#515357"><br />
+	</span>
+</div>
+<div style="text-align:left">
+    <span style="font-family:arial,sans-serif; color:#515357">Thanks:&nbsp;<a href="http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032">http://software.intel.com/zh-cn/articles/javascript-first-class-citizen-function/?cid=sw:prccsdn229032</a></span>
+</div>

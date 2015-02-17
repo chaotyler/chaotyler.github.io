@@ -1,0 +1,48 @@
+---
+layout: post
+title:  javascript数据(对象字符串等)转换成json数据的javascript扩展包的使用
+---
+<p>
+    json官网：http://www.json.org/
+</p>
+<p>
+    javascript下json2.js可以链接到github中的资源
+</p>
+<p>
+    下载资源，该资源可压缩，(json2.js的注释中有说明)压缩其中的json2.js使用
+</p>
+<p>
+    json.stringify()方法用于将javascript的数据如对象或字符串转换成json对象使用：
+</p>
+<p>
+    var newUser = {};<br />
+    newUser.type = &quot;BUSINESS&quot;;<br />
+    newUser.username = $('#uname').val();<br />
+    newUser.password = $('#upassword').val();<br />
+    newUser.email = $('#uemail').val();<br />
+    newUser.category = &quot;RESTAURANT&quot;;<br />
+    newUser.name = $('#urealname').val();<br />
+    newUser.zip = $('#uzip').val();<br />
+    newUser.contractor = $('#ucontractor').val();<br />
+    newUser.telephone = $('#utelephone').val();<br />
+    newUser.mobile = $('#umobile').val();<br />
+    newUser.fax = $('#ufax').val();<br />
+    <br />
+
+</p>
+<p>
+    var userStr = JSON.stringify(newUser);<br />
+    <br />
+
+</p>
+<p>
+    $.ajax({<br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;type: &quot;PUT&quot;,<br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;url: &quot;resources/user&quot;,<br />
+    <span style="white-space:pre"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;contentType: &quot;application/json&quot;,<br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;data: userStr,<br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;success: function(msg){<br />
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert(&quot;regist succeed&quot; + msg);<br />
+    }});<br />
+
+</p>

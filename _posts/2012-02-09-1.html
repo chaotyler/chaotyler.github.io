@@ -1,0 +1,70 @@
+---
+layout: post
+title: html5在书写规范上的更改简化
+---
+对比一下XHTML 1.0 Transitional的规范，html5基本上没有XHTML 1.0 Transitional严格的要求，并且简化了很多东西。<br />
+<br />
+<br />
+•文档声明更简单了。<br />
+<br />
+<br />
+1 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt; &nbsp;<br />
+2 &lt;!--在HTML5中，这样写：--&gt;&nbsp;<br />
+3 &lt;!DOCTYPE html&gt;<br />
+<br />
+<br />
+•html标签上不需要声明命名空间。<br />
+<br />
+<br />
+1 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;zh-CN&quot;&gt; &nbsp;<br />
+2 &lt;!--在HTML5中，这样写：--&gt;&nbsp;<br />
+3 &lt;html &nbsp;lang=&quot;zh-CN&quot;&gt;<br />
+<br />
+<br />
+•字符集编码声明也简单了<br />
+<br />
+<br />
+1 &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt; &nbsp;<br />
+2 &lt;!--在HTML5中，这样写：--&gt;&nbsp;<br />
+3 &lt;meta charset=&quot;UTF-8&quot; /&gt;<br />
+<br />
+<br />
+•可以不用给css及javascript代码写type属性了<br />
+<br />
+<br />
+1 &lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt; &nbsp;<br />
+2 &lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt; &nbsp;<br />
+3 &lt;!--在HTML5中，可以直接写：--&gt;&nbsp;<br />
+4 &lt;script&gt;&lt;/script&gt; &nbsp;<br />
+5 &lt;style&gt;&lt;/style&gt;<br />
+<br />
+<br />
+•没有XHTML代码规范的要求<br />
+<br />
+<br />
+所有的标记都必须要有一个相应的结束标记；<br />
+<br />
+<br />
+所有标签的元素和属性的名字都必须使用小写；<br />
+<br />
+<br />
+所有的XML标记都必须合理嵌套；<br />
+<br />
+<br />
+所有的属性必须用引号”&quot;括起来；<br />
+<br />
+<br />
+1 &lt;div class=test&gt;&lt;/div&gt; &nbsp;<br />
+2 &lt;br&gt; &nbsp;<br />
+3 &lt;INPUT TYPE=&quot;TEXT&quot; /&gt; &nbsp;<br />
+
+<p>
+    4 &lt;!--这些都不做严格要求--&gt;
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    from：http://bbs.html5cn.org/thread-1996-1-1.html
+</p>

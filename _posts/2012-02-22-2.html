@@ -1,0 +1,163 @@
+---
+layout: post
+title: html5知识点整理总结
+---
+<p>
+    1.html5新元素：
+</p>
+<p>
+    新的输入类型：email；url；number；range；Date pickers (date, month, week, time, datetime, datetime-local)；search；color<br />
+    新的表单元素：datalist；keygen；output<br />
+
+</p>
+<p>
+    2.video和audio
+</p>
+<p>
+    &lt;html&gt;<br />
+    &lt;body&gt;<br />
+    &lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;<br />
+    &nbsp; &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;<br />
+    &nbsp; &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;<br />
+    Your browser does not support the video tag.<br />
+    &lt;/video&gt;<br />
+    &lt;/body&gt;<br />
+    &lt;/html&gt;<br />
+    Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件<br />
+    MPEG4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件<br />
+    WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件<br />
+    属性 <span style="white-space:pre"></span>值 <span style="white-space:pre"></span>描述<br />
+    autoplay <span style="white-space:pre"></span>autoplay <span style="white-space:pre"></span>如果出现该属性，则视频在就绪后马上播放。<br />
+    controls <span style="white-space:pre"></span>controls <span style="white-space:pre"></span>如果出现该属性，则向用户显示控件，比如播放按钮。<br />
+    height <span style="white-space:pre"></span>pixels <span style="white-space:pre"></span>设置视频播放器的高度。<br />
+    loop <span style="white-space:pre"></span>loop <span style="white-space:pre"></span>如果出现该属性，则当媒介文件完成播放后再次开始播放。<br />
+    preload <span style="white-space:pre"></span>preload <span style="white-space:pre"></span>如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。<br />
+    src <span style="white-space:pre"></span>url <span style="white-space:pre"></span>要播放的视频的 URL。<br />
+    width <span style="white-space:pre"></span>pixels <span style="white-space:pre"></span>设置视频播放器的宽度。<br />
+
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    &lt;html&gt;<br />
+    &lt;body&gt;<br />
+    &lt;audio src=&quot;/i/song.ogg&quot; controls=&quot;controls&quot;&gt;<br />
+    Your browser does not support the audio element.<br />
+    &lt;/audio&gt;<br />
+    &lt;/body&gt;<br />
+    &lt;/html&gt;<br />
+
+</p>
+<p>
+    3.客户端存储
+</p>
+<p>
+    HTML5 提供了两种在客户端存储数据的新方法：<br />
+    &nbsp; &nbsp; localStorage - 没有时间限制的数据存储<br />
+    &nbsp; &nbsp; sessionStorage - 针对一个 session 的数据存储<br />
+    之前，这些都是由 cookie 完成的。但是 cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得 cookie 速度很慢而且效率也不高。<br />
+    在 HTML5 中，数据不是由每个服务器请求传递的，而是只有在请求时使用数据。它使在不影响网站性能的情况下存储大量数据成为可能。<br />
+    对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。<br />
+    HTML5 使用 JavaScript 来存储和访问数据。<br />
+    <br />
+    localStorage 方法:<br />
+    localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。<br />
+    如何创建和访问 localStorage：实例<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    localStorage.lastname=&quot;Smith&quot;;<br />
+    document.write(localStorage.lastname);<br />
+    &lt;/script&gt;<br />
+    记录访问次数<br />
+    &lt;!DOCTYPE HTML&gt;<br />
+    &lt;html&gt;<br />
+    &lt;body&gt;<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    if (localStorage.pagecount)<br />
+    <span style="white-space:pre"></span>{<br />
+    <span style="white-space:pre"></span>localStorage.pagecount=Number(localStorage.pagecount) +1;<br />
+    <span style="white-space:pre"></span>}<br />
+    else<br />
+    <span style="white-space:pre"></span>{<br />
+    <span style="white-space:pre"></span>localStorage.pagecount=1;<br />
+    <span style="white-space:pre"></span>}<br />
+    document.write(&quot;Visits: &quot; + localStorage.pagecount + &quot; time(s).&quot;);<br />
+    &lt;/script&gt;&nbsp;<br />
+    &lt;p&gt;刷新页面会看到计数器在增长。&lt;/p&gt;<br />
+    &lt;p&gt;请关闭浏览器窗口，然后再试一次，计数器会继续计数。&lt;/p&gt;<br />
+    &lt;/body&gt;<br />
+    &lt;/html&gt;
+</p>
+<p>
+    <br />
+    sessionStorage 方法：<br />
+    sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。<br />
+    如何创建并访问一个 sessionStorage：<br />
+    实例<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    sessionStorage.lastname=&quot;Smith&quot;;<br />
+    document.write(sessionStorage.lastname);<br />
+    &lt;/script&gt;<br />
+    记录本次浏览器的访问次数<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    if (sessionStorage.pagecount)<br />
+    &nbsp; {<br />
+    &nbsp; sessionStorage.pagecount=Number(sessionStorage.pagecount) +1;<br />
+    &nbsp; }<br />
+    else<br />
+    &nbsp; {<br />
+    &nbsp; sessionStorage.pagecount=1;<br />
+    &nbsp; }<br />
+    document.write(&quot;Visits &quot;+sessionStorage.pagecount+&quot; time(s) this session.&quot;);<br />
+    &lt;/script&gt;<br />
+
+</p>
+<p>
+    4.canvas
+</p>
+<p>
+    矩形：<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    var c=document.getElementById(&quot;myCanvas&quot;);<br />
+    var cxt=c.getContext(&quot;2d&quot;);<br />
+    cxt.fillStyle=&quot;#FF0000&quot;;<br />
+    cxt.fillRect(0,0,150,75);意思是：在画布上绘制 150x75 的矩形，从左上角开始 (0,0)。<br />
+    &lt;/script&gt;<br />
+    线条：<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    var c=document.getElementById(&quot;myCanvas&quot;);<br />
+    var cxt=c.getContext(&quot;2d&quot;);<br />
+    cxt.moveTo(10,10);<br />
+    cxt.lineTo(150,50);<br />
+    cxt.lineTo(10,50);<br />
+    cxt.stroke();<br />
+    &lt;/script&gt;<br />
+    圆形：<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    var c=document.getElementById(&quot;myCanvas&quot;);<br />
+    var cxt=c.getContext(&quot;2d&quot;);<br />
+    cxt.fillStyle=&quot;#FF0000&quot;;<br />
+    cxt.beginPath();<br />
+    cxt.arc(70,18,15,0,Math.PI*2,true);<br />
+    cxt.closePath();<br />
+    cxt.fill();<br />
+    &lt;/script&gt;<br />
+    图片:<br />
+    &lt;script type=&quot;text/javascript&quot;&gt;<br />
+    var c=document.getElementById(&quot;myCanvas&quot;);<br />
+    var cxt=c.getContext(&quot;2d&quot;);<br />
+    var img=new Image()<br />
+    img.src=&quot;flower.png&quot;<br />
+    cxt.drawImage(img,0,0);<br />
+    &lt;/script&gt;<br />
+
+</p>
+<p>
+    5.HTML5 中的一些有趣的新特性：<br />
+    &nbsp; &nbsp; 用于绘画的 canvas 元素<br />
+    &nbsp; &nbsp; 用于媒介回放的 video 和 audio 元素<br />
+    &nbsp; &nbsp; 对本地离线存储的更好的支持<br />
+    &nbsp; &nbsp; 新的特殊内容元素，比如 article、footer、header、nav、section<br />
+    &nbsp; &nbsp; 新的表单控件，比如 calendar、date、time、email、url、search
+</p>

@@ -1,0 +1,60 @@
+---
+layout: post
+title: JavaScript知识点之“AJAX”
+---
+<p>
+    AJAX：
+</p>
+<p>
+    展示：CSS/HTML/XHTML/DOM
+</p>
+<p>
+    交互：XMLHttpRequest
+</p>
+<p>
+    使用：JavaScript
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    创建xmlhttp对象：
+</p>
+var xmlHttp;<br />
+function createXMLHttpRequest(){<br />
+<span style="white-space:pre"></span>if(weindow.ActiveXObject){<br />
+<span style="white-space:pre"></span>xmlHttp = new ActivieXObject(&quot;Microsoft.XMLHTTP&quot;)<br />
+<span style="white-space:pre"></span>}else if(window.XMLHttpRequest){<br />
+<span style="white-space:pre"></span>xmlHttp = new XMLHttpRequest();<br />
+<span style="white-space:pre"></span>}<br />
+}<br />
+xmlhttp.onreadystatechange=function()<br />
+{<br />
+&nbsp; if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)<br />
+&nbsp; &nbsp; {<br />
+&nbsp; &nbsp; document.getElementById(&quot;txtHint&quot;).innerHTML=xmlhttp.responseText;<br />
+&nbsp; &nbsp; }<br />
+&nbsp; }<br />
+<br />
+xmlhttp对象的一些典型的方法：<br />
+void open(string get/post,string ,string ,string url,boolean t/f),建立服务器的调用，参数是调用方法、调用资源的url、同步还是异步<br />
+void send(content) 向服务器发送请求，异步就会立即返回，否则要等待响应<br />
+voidsetRequestHeader(string header,string value)为http请求中的一个给定的首部设定值，第一个参数是设定的首部，第二个参数是在首部中设定的值<br />
+void abort()停止请求的方法<br />
+string getAllResponseHeaders()返回一个串，包含http请求的所有响应首部，首部包括Content-length、Date、URL<br />
+
+<p>
+    string getResponseHeader(string header)得到指定的首部的值，并作为值返回
+</p>
+<p>
+    <br />
+
+</p>
+xmlhttp对象的一些典型的属性：<br />
+onreadystatechange 每个状态改变都会触发这个事件处理器，通常会调用一个javascript函数<br />
+readyState 请求状态5个值 0未初始化 1正在加载 2已加载 3交互中 4完成<br />
+responseText 服务器的响应，表示为一个串<br />
+responseXML服务器响应，表示为XML，可解析为一个DOM对象<br />
+status 服务器的http状态码 200对应OK，404对应Not Found<br />
+statusText http状态码的相应文本，OK或者Not Found

@@ -1,0 +1,88 @@
+---
+layout: post
+title: JavaScript知识点之“函数closure ”
+---
+<ol start="1" class="dp-c" style="line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; color:rgb(43,145,175); font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; text-align:left">
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black"><span class="comment" style="color:#0820">//觉得好像差不多可以成功的一个例子，出来的效果是点击，弹出的都是5.</span>&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black"><span class="keyword" style="color:#7f055; font-weight:bold">function</span>&nbsp;addLinks&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">for</span>&nbsp;(<span class="keyword" style="color:#7f055; font-weight:bold">var</span>&nbsp;i=0,&nbsp;link;&nbsp;i&lt;5;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;document.createElement(<span class="string" style="color:blue">&quot;a&quot;</span>);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.innerHTML&nbsp;=&nbsp;<span class="string" style="color:blue">&quot;Link&nbsp;&quot;</span>&nbsp;+&nbsp;i;&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.onclick&nbsp;=&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">function</span>&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(i);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.appendChild(link);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">}&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">window.onload&nbsp;=&nbsp;addLinks;&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black"><span class="comment" style="color:#0820">//-下面这个是正确的实现</span>&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black"><span class="keyword" style="color:#7f055; font-weight:bold">function</span>&nbsp;addLinks&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">for</span>&nbsp;(<span class="keyword" style="color:#7f055; font-weight:bold">var</span>&nbsp;i=0,&nbsp;link;&nbsp;i&lt;5;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link&nbsp;=&nbsp;document.createElement(<span class="string" style="color:blue">&quot;a&quot;</span>);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.innerHTML&nbsp;=&nbsp;<span class="string" style="color:blue">&quot;Link&nbsp;&quot;</span>&nbsp;+&nbsp;i;&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;link.onclick&nbsp;=&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">function</span>&nbsp;(num)&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">return</span>&nbsp;<span class="keyword" style="color:#7f055; font-weight:bold">function</span>&nbsp;()&nbsp;{&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(num);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}(i);<span class="comment" style="color:#0820">//!!!!!!!!!!!!!注意这里</span>&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.appendChild(link);&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">}&nbsp;&nbsp;</span>
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+        <span style="color:black">window.onload&nbsp;=&nbsp;addLinks; &nbsp;</span>
+    </li>
+</ol>
+<div style="text-align:left">
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px">以上的例子，告诉我们1个事实：&nbsp;</span><br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left" />
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">对于绑定了事件响应的那些function，在绑定的时候，并没有执行到里面去。所以必须在绑定的时候，就把参数传进去，用到的是self-invoking的funciton，即在定义的时候已经填好参数准备调用了。如上面的注释那块。</span>
+</div>

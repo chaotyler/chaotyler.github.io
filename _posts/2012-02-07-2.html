@@ -1,0 +1,92 @@
+---
+layout: post
+title: Java 知识点之“汇总一”
+---
+<p>
+    <span style="font-size:18px">Enum：</span>一般用来表示一组相同类型的常量。如性别、日期、月份、颜色等。对这些属性用常量的好处是显而易见的，不仅可以保证单例，且比较时候可以用”==”来替换equals。是一种好的习惯。例如：public enum Sex {male, female;}
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    <span style="font-size:18px">Timer：java自带的定时器，另外还有quartz</span>
+</p>
+<p>
+    <span style="white-space:pre"></span>Timer backupSchedule = new Timer();<br />
+    <span style="white-space:pre"></span>backupSchedule.schedule(new TimerTask() {<br />
+    <span style="white-space:pre"></span>@Override<br />
+    <span style="white-space:pre"></span>public void run() {<br />
+    <span style="white-space:pre"></span>Calendar cal = Calendar.getInstance();<br />
+    <span style="white-space:pre"></span>try {<br />
+    <span style="white-space:pre"></span>Backuper.backupMain(0, cal);<br />
+    <span style="white-space:pre"></span>if (cal.get(Calendar.DAY_OF_WEEK) == 1) {<br />
+    <span style="white-space:pre"></span>Backuper.backupMain(1, cal);<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>if (cal.get(Calendar.DAY_OF_MONTH) == 1) {<br />
+    <span style="white-space:pre"></span>Backuper.backupMain(2, cal);<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>} catch (IOException e) {<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>}, ca.getTime(), 24 * 60 * 60 * 1000);<span style="font-size:18px"></span>
+</p>
+<p>
+    <span style="font-size:18px">java XML Parser dom4j：<a href="http://baike.baidu.com/view/1460716.htm">http://baike.baidu.com/view/1460716.htm</a></span>
+</p>
+<p>
+    <span style="font-size:18px">Map遍历：</span>
+</p>
+<p>
+    <span style="white-space:pre"></span>Map vm = tv.getValueMap();<br />
+    <span style="white-space:pre"></span>Iterator iter = vm.entrySet().iterator();<br />
+    <span style="white-space:pre"></span>while (iter.hasNext()) {<br />
+    <span style="white-space:pre"></span>Map.Entry entry = (Map.Entry) iter.next();<br />
+    <span style="white-space:pre"></span>Object key = entry.getKey();<br />
+    <span style="white-space:pre"></span>Object val = entry.getValue();<br />
+    <span style="white-space:pre"></span>}<br />
+
+</p>
+<p>
+    <span style="font-size:18px">java本地文件夹内容遍历：</span>
+</p>
+<p>
+    <span style="white-space:pre"></span>public static void listFiles(File f) {<br />
+    <span style="white-space:pre"></span>System.out.println(f.getName());<br />
+    <span style="white-space:pre"></span>if (f.isDirectory()) {<br />
+    <span style="white-space:pre"></span>File[] files = f.listFiles();<br />
+    <span style="white-space:pre"></span>for (int i = 0; i &lt; files.length; i++) {<br />
+    <span style="white-space:pre"></span>listFiles(files[i]);<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>}<br />
+
+</p>
+<p>
+    <span style="font-size:18px">FileReader和FileInputStream区别：</span>
+</p>
+<p>
+    FileReader读字符流(char数组或者String)，FileInputStream读字节流(byte数组)。
+</p>
+<p>
+    InputStreamReader是将字节流转换成字符流的桥梁。可以在构造器中指定编码方式，不指定按平台默认编码。
+</p>
+<p>
+    FileReader在不同平台上因编码不同可能会出现乱码。
+</p>
+<p>
+    BufferedReader有缓存，可以一行一行的读取。
+</p>
+<p>
+    总之：FileReader适合读纯文本文本，小心不同平台的乱码。BufferedReader是FileReader的扩展。FileINputStream读字节，不太适合纯文本，不会有乱码问题。InputStreamReader是FileReader和FIleInputStream之间的桥梁。
+</p>
+<p>
+    类似的：FileWriter，BufferedWriter，FileOutputStream，OutputStreamWriter。PrintWriter是FileWriter的扩展，提供更多的类型输出。PrintStream是FileOutputStream的扩展。
+</p>
+<p>
+    <span style="font-size:18px">ThreadPoolExecutor:线程池</span>
+</p>
+<p>
+    <br />
+
+</p>
