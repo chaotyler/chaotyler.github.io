@@ -1,0 +1,119 @@
+---
+layout: post
+title: 函数表达式和函数声明/()是一个分组操作符/Module模式/匿名闭包/克隆/function的执行
+---
+<p>
+	<strong>函数表达式和函数声明</strong>：
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">function foo(){} // 声明，因为它是程序的一部分</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">var bar = function foo(){}; // 表达式，因为它是赋值表达式的一部分</span>
+</p>
+<p>
+	函数声明会在代码块中被提到最前面，而表达式不会。
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">alert(fn());</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">function fn() {</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">return 'Hello world!';</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">}</span>
+</p>
+<p>
+	<strong>()是一个分组操作符</strong>，它的内部只能包含表达式，在使用eval对JSON进行执行的时候，JSON字符串通常被包含在一个圆括号里：eval('(' + json + ')')，这样做的原因就是因为分组操作符，也就是这对括号，会让解析器强制将JSON的花括号解析成表达式而不是代码块。
+</p>
+<p>
+	<br />
+	
+</p>
+<p>
+	<strong>Module模式</strong>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">var Calculator = function (eq) {<br />
+	&nbsp; &nbsp; //这里可以声明私有成员<br />
+	&nbsp; &nbsp; var eqCtl = document.getElementById(eq);<br />
+	&nbsp; &nbsp; return {<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; // 暴露公开的成员<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; add: function (x, y) {<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var val = x + y;<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; eqCtl.innerHTML = val;<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+	&nbsp; &nbsp; };<br />
+	};<br />
+	</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">var calculator = new Calculator('eq');<br />
+	</span>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">calculator.add(2, 2);</span>
+</p>
+<p>
+	每次用的时候都要new一下，也就是说每个实例在内存里都是一份copy。<br />
+	
+</p>
+<p>
+	<strong><span style="color:#ff0000;">匿名闭包</span></strong>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">(function () {<br />
+	&nbsp; &nbsp; // ... 所有的变量和function都在这里声明，并且作用域也只能在这个匿名闭包里<br />
+	&nbsp; &nbsp; // ...但是这里的代码依然可以访问外部全局的对象<br />
+	}());</span>
+</p>
+<p>
+	对module进行扩展，添加新的属性：
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">var module = (function(mod){<br />
+	&nbsp; mod.moreFunc = function(){};<br />
+	&nbsp; ...<br />
+	&nbsp; return mod<br />
+	})(module || (module = {}))</span><br />
+	
+</p>
+<p>
+	若module已经存在，那么添加新的功能，若不存在，初始化为空对象再添加功能。
+</p>
+<p>
+	<strong>克隆</strong>
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">for (key in old) {<br />
+	&nbsp; if (old.hasOwnProperty(key)) {<br />
+	&nbsp; &nbsp; my[key] = old[key];<br />
+	&nbsp; }<br />
+	}</span>
+</p>
+<p>
+	<strong>function的执行</strong>
+</p>
+<p>
+	在function后面加个()就能执行一个方法，但是有一个需要注意的地方：
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">function(){}()</span>
+</p>
+<p>
+	该句会报错，原因是方法是声明式，所以不会生成一个有名字的对象来供()调用，但是用()包围起来当作表达式就可以了：
+</p>
+<p>
+	<span style="background-color: rgb(153, 255, 153);">(function(){})()</span>
+</p>
+<p>
+	<br />
+	
+</p>
+<p>
+	<br />
+	
+</p>

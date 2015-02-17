@@ -1,0 +1,124 @@
+---
+layout: post
+title: 执行上下文（栈）/作用域（链）/with
+---
+<p>
+	<strong>执行上下文（栈）context(context stack)</strong>
+</p>
+<p>
+	每一次代码执行和函数调用都会产生一个执行环境，称为<span style="color:#ff0000">执行上下文。</span>
+</p>
+<p>
+	一个执行上下文（caller）又可以激活（调用）另一个执行上下文（callee），这时caller会暂停自身的执行把控制权交给callee进入callee的执行上下文，callee执行完毕后将控制权交回caller，callee可以用return或者抛出Exception来结束自己的执行。
+</p>
+<p>
+	多个执行上下文会形成<span style="color:#ff0000">执行上下文栈</span>，最顶层是当前执行上下文，底层是全局执行上下文。
+</p>
+<p>
+	<img class="aligncenter figure" src="http://dmitrysoshnikov.com/wp-content/uploads/ec-stack.png" alt="Figure 4. An execution context stack." title="Figure 4. An execution context stack." />
+</p>
+<p>
+	<strong>作用域（链）scope(scope chain)</strong>
+</p>
+<p>
+	<span style="color:#ff0000">作用域</span>是每一个执行上下文自身持有的活动对象的集合，如在本执行上下文中声明的变量和函数以及方法参数传入的对象。
+</p>
+<p>
+	每一个执行上下文可以访问的对象包括自身的作用域和父执行上下文的作用域和父父执行上下文作用域直到全局作用域，这就产生了<span style="color:#ff0000">作用域链</span>。
+</p>
+<p>
+	作用域链的工作原理跟原型链十分相似：如果本身的作用域中查找不到标识符，那么就查找父作用域，直到顶层。
+</p>
+<p>
+	目前假设作用域的联动是用的<span style="color:#ff0000">__parent__</span>对象，它指向作用域链的下一个对象。（在ES5中，确实有一个<span style="color:#ff0000">outer</span>链接）
+</p>
+<p>
+	<img class="aligncenter figure" src="http://dmitrysoshnikov.com/wp-content/uploads/scope-chain.png" alt="Figure 9. A scope chain." title="Figure 9. A scope chain." />
+</p>
+<p>
+	<span style="color:#ff0000">全局上下文的作用域包含Object.prototype中的对象，with和catch会改变作用域链：</span>
+</p>
+<p>
+	<span style="background-color:rgb(51,255,51)">Object.prototype.x = 10;&nbsp;<br />
+	var w = 20;<br />
+	var y = 30;&nbsp;<br />
+	// in SpiderMonkey global object<br />
+	// i.e. variable object of the global<br />
+	// context inherits from &quot;Object.prototype&quot;,<br />
+	// so we may refer &quot;not defined global<br />
+	// variable x&quot;, which is found in<br />
+	// the prototype chain&nbsp;<br />
+	console.log(x); // 10&nbsp;<br />
+	(function foo() {&nbsp;<br />
+	&nbsp; // &quot;foo&quot; local variables<br />
+	&nbsp; var w = 40;<br />
+	&nbsp; var x = 100;&nbsp;<br />
+	&nbsp; // &quot;x&quot; is found in the<br />
+	&nbsp; // &quot;Object.prototype&quot;, because<br />
+	&nbsp; // {z: 50} inherits from it&nbsp;<br />
+	&nbsp; with ({z: 50}) {<br />
+	&nbsp; &nbsp; console.log(w, x, y , z); // 40, 10, 30, 50<br />
+	&nbsp; }&nbsp;<br />
+	&nbsp; // after &quot;with&quot; object is removed<br />
+	&nbsp; // from the scope chain, &quot;x&quot; is<br />
+	&nbsp; // again found in the AO of &quot;foo&quot; context;<br />
+	&nbsp; // variable &quot;w&quot; is also local<br />
+	&nbsp; console.log(x, w); // 100, 40&nbsp;<br />
+	&nbsp; // and that's how we may refer<br />
+	&nbsp; // shadowed global &quot;w&quot; variable in<br />
+	&nbsp; // the browser host environment<br />
+	&nbsp; console.log(window.w); // 20&nbsp;<br />
+	})();</span><br />
+	
+</p>
+<p>
+	<span style="color:#ff0000">在with中，查询__parent__之前会先去查询__proto__，会使作用域链增大。</span>
+</p>
+<p>
+	<img class="aligncenter figure" src="http://dmitrysoshnikov.com/wp-content/uploads/scope-chain-with.png" alt="Figure 10. A &quot;with-augmented&quot; scope chain." title="Figure 10. A &quot;with-augmented&quot; scope chain." />
+</p>
+<p>
+	只要所有外部函数的变量对象都存在，那么从内部函数引用外部数据则没有特别之处——我们只要遍历作用域链表，查找所需变量。
+</p>
+<p>
+	<span style="color:#ff0000">注意：通过构造函数创建的方法的作用域链中只有全局变量！</span>
+</p>
+<p>
+	<span style="background-color:rgb(153,255,153)">var x = 10;&nbsp;<br />
+	function foo() {&nbsp;<br />
+	&nbsp; var y = 20;&nbsp;<br />
+	&nbsp; function barFD() {<br />
+	&nbsp; &nbsp; alert(x);<br />
+	&nbsp; &nbsp; alert(y);<br />
+	&nbsp; }&nbsp;<br />
+	&nbsp; var barFE = function () {<br />
+	&nbsp; &nbsp; alert(x);<br />
+	&nbsp; &nbsp; alert(y);<br />
+	&nbsp; };&nbsp;<br />
+	&nbsp; var barFn = Function('alert(x); alert(y);');&nbsp;<br />
+	&nbsp; barFD(); // 10, 20<br />
+	&nbsp; barFE(); // 10, 20<br />
+	&nbsp; barFn(); // 10, &quot;y&quot; is not defined&nbsp;<br />
+	}&nbsp;<br />
+	foo();</span><br />
+	
+</p>
+<p>
+	<strong>二维作用域链查找</strong><br />
+	源于ECMAScript的原型特性。如果一个属性在对象中没有直接找到，查询将在原型链中继续。即常说的二维链查找。（1）作用域链环节；（2）每个作用域链－－深入到原型链环节:<br />
+	<span style="background-color: rgb(153, 255, 153);">function foo() {<br />
+	&nbsp; alert(x);<br />
+	}&nbsp;<br />
+	Object.prototype.x = 10;&nbsp;<br />
+	foo(); // 10</span><br />
+	
+</p>
+<p>
+	然而，如上文所提及，当一个上下文终止之后，其状态与自身将会被 销毁(destroyed) ，同时内部函数将会从外部函数中返回。
+</p>
+<p>
+	此外，这个返回的函数之后可能会在其他的上下文中被激活，那么如果一个之前被终止的含有一些自由变量的上下文又被激活将会怎样?通常来说，解决这个问题的概念在ECMAScript中与作用域链直接相关，<span style="color:#ff0000">被称为 (词法)闭包((lexical) closure)。</span>
+</p>
+<p>
+	引出的闭包将在下章讨论。
+</p>
