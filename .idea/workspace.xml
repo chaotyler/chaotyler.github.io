@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f19a036d-c7c6-4b14-a2dc-00fd7fbdffaa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_layouts/blog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-05-JavaScript1.html" afterPath="$PROJECT_DIR$/_posts/2014-11-05-JavaScript1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-06-JavaScript2.html" afterPath="$PROJECT_DIR$/_posts/2014-11-06-JavaScript2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-07-JavaScript3.html" afterPath="$PROJECT_DIR$/_posts/2014-11-07-JavaScript3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-08-JavaScript4.html" afterPath="$PROJECT_DIR$/_posts/2014-11-08-JavaScript4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-19-JavaScript5.html" afterPath="$PROJECT_DIR$/_posts/2014-11-19-JavaScript5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-11-20-JavaScript6.html" afterPath="$PROJECT_DIR$/_posts/2014-11-20-JavaScript6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-12-08-JavaScript7.html" afterPath="$PROJECT_DIR$/_posts/2014-12-08-JavaScript7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-12-10-JavaScript8.html" afterPath="$PROJECT_DIR$/_posts/2014-12-10-JavaScript8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-12-12-JavaScript9.html" afterPath="$PROJECT_DIR$/_posts/2014-12-12-JavaScript9.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-12-17-JavaScript10.html" afterPath="$PROJECT_DIR$/_posts/2014-12-17-JavaScript10.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2014-12-17-JavaScript11.html" afterPath="$PROJECT_DIR$/_posts/2014-12-17-JavaScript11.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="E:\Git\tyler-liu.github.io\_layouts\blog.html" afterPath="E:\Git\tyler-liu.github.io\_layouts\blog.html" />
     </list>
     <ignored path="tyler-liu.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,30 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="2014-11-07-JavaScript3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2014-11-07-JavaScript3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2024">
-              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014-11-08-JavaScript4.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/2014-11-08-JavaScript4.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2200">
-              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2014-11-19-JavaScript5.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2014-11-19-JavaScript5.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2014-11-19-JavaScript5.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.037351444" vertical-offset="0" max-vertical-offset="2618">
+            <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2618">
               <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
               <folding />
             </state>
@@ -127,11 +95,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/blog.html">
+      <file leaf-file-name="post.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_layouts/post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.129032" vertical-offset="1677" max-vertical-offset="2332">
-              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.37351444" vertical-offset="0" max-vertical-offset="2354">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2014-11-07-JavaScript3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/2014-11-07-JavaScript3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2024">
+              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2014-11-08-JavaScript4.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/2014-11-08-JavaScript4.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2200">
+              <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -153,6 +141,7 @@
         <option value="$PROJECT_DIR$/_layouts/empty.html" />
         <option value="$PROJECT_DIR$/blog.html" />
         <option value="$PROJECT_DIR$/_layouts/blog.html" />
+        <option value="$PROJECT_DIR$/_layouts/post.html" />
         <option value="$PROJECT_DIR$/_posts/2014-11-05-JavaScript1.html" />
         <option value="$PROJECT_DIR$/_posts/2014-11-06-JavaScript2.html" />
         <option value="$PROJECT_DIR$/_posts/2014-11-07-JavaScript3.html" />
@@ -539,7 +528,7 @@
     <entry file="file://$PROJECT_DIR$/_posts/2014-11-05-JavaScript1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="3520">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="12" />
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -563,6 +552,14 @@
     <entry file="file://$PROJECT_DIR$/_posts/2014-11-08-JavaScript4.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2200">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/2014-11-19-JavaScript5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="2618">
           <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
           <folding />
         </state>
@@ -616,18 +613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/blog.html">
+    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.129032" vertical-offset="1677" max-vertical-offset="2332">
-          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2014-11-19-JavaScript5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.037351444" vertical-offset="0" max-vertical-offset="2618">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.37351444" vertical-offset="0" max-vertical-offset="2354">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
