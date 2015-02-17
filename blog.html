@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+---
+layout: empty
+title: Chaotyler
+---
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -78,6 +81,7 @@
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h2>博客列表</h2>
+        <br/>
         {% for post in site.posts %}
             <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
