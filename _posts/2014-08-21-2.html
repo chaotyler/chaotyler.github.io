@@ -1,0 +1,185 @@
+---
+layout: post
+title: JavaScript权威指南笔记 - 3
+---
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    1. var a1 = [,,]; 0 in a1;// -&gt;true(错误，应该是false!!!!!!!!!!!!!!!!!!!!!)
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp; var a2 = new Array(2); 0 in a1;// -&gt;false<br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    2. 每个Array对象都有length属性，<wbr>正是这个属性使Array对象与众不同。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    3. 一个数组的元素的index永远不会大于或等于数组的lengt<wbr>h，如a = [1, 2, 3];</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    a). a[100] = 100; 执行后a.length -&gt; 101，只不过从3 - 100都是null。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    b). a.length = 1; 执行后a -&gt;[1], 后面的都被remove了。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    4. Array.isArray(x); 用于判断给出的参数x是否是Array。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    5.&nbsp;<span style="color:#ff0000">this</span>：作为method调用(o.f())时，是调用对象。<wbr>作为function调用时，是golbal object，但在strict mode中，在function调用中是undefined。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    6. 在function中用arguments来得到传到方法里的所<wbr>有参数，改变arguments中的值也会改变原方法的值。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    7. function的length属性是指其声明时期待的参数的个<wbr>数。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    8. 使用<span style="color:#ff0000">Function构造器</span>同样可以创建方法：var f = new function(&quot;x&quot;, &quot;y&quot;, &quot;return x*y;&quot;);
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    a). 允许JS在运行时动态的创建和编译。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    b). 最重要的区别是Function创建的方法不会有语义化的作用域<wbr>，它们被视为最高层的方法来运行。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    c). 尽量少用！
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    9. 所有的方法都是可以被调用的，<wbr>但不是所有可以被调用的对象都是方法，如：window.<wbr>alert()，document.<wbr>getElementById(..)，RegExp()。</wbr></wbr></wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    10. F.prototype.constructor == F//-&gt;true
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    11. 用类创建实例后，若类的prototype值发生变化，<wbr>那么所有的引用也会发生变化，<wbr>所有的实例都是继承同一个prototype。</wbr></wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    12. 给对象做加量：String.prototype.trim = function(){}。甚至可以给Object做加量，<wbr>但是不推荐，因为这些加量会在for...in...<wbr>循环中被遍历。</wbr></wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    13. 不用typeof来判断类型：
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    switch(x.constructor){
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp;case Number:
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp;case String:<br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp;case Date:<br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    }
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    14. x.constructor若是多重继承，<wbr>且非顶层类没有自己的constructor，<wbr>那么返回再上面的constructor，直到找到。</wbr></wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    15. //来创建正则表达式，类似&quot;&quot;创建string。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    16. 正则表达式中特殊意义的字符：~$.*+?=!:|/\()[]<wbr>{}，不确定是否应该转义时，转义就没错。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    17. /a*/能匹配&quot;bbb&quot;，因为有0个a。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    18. 标签：//i //g &nbsp;//m
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    19. new RegExp(&quot;\\d{5}&quot;) 等价于 /\d{5}/，在前者中\需要转义。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    20. const x = 123;//x -&gt; 123
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    const x = 456;//x -&gt; 123
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    x = 456;//x -&gt; 123
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    var x = 456;//x -&gt; 123
+</div>
