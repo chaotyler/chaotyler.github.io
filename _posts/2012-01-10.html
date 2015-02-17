@@ -1,0 +1,108 @@
+---
+layout: post
+title:html5 javascript FileReader 读取文件并传回后台保存
+---
+<p>
+    html文件内容（需要部署在服务器上才可使用）：
+</p>
+<p>
+    &lt;!DOCTYPE html&gt;
+</p>
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;<br />
+&lt;title&gt;拖拽本地图片到页面指定元素内&lt;/title&gt;<br />
+&lt;script type=&quot;text/javascript&quot;&gt;<br />
+<span style="white-space:pre"></span>window.onload = function() {<br />
+<span style="white-space:pre"></span>var oDropBox = document.getElementById('dropBox');<br />
+<span style="white-space:pre"></span>oDropBox.addEventListener('dragover', function(e) {<br />
+<span style="white-space:pre"></span>e.stopPropagation();<br />
+<span style="white-space:pre"></span>e.preventDefault();<br />
+<span style="white-space:pre"></span>}, false);<br />
+<br />
+<br />
+<span style="white-space:pre"></span>oDropBox.addEventListener('drop', handleDrop, false);<br />
+<br />
+<br />
+<span style="white-space:pre"></span>function handleDrop(e) {<br />
+<span style="white-space:pre"></span>e.stopPropagation();<br />
+<span style="white-space:pre"></span>e.preventDefault();<br />
+<span style="white-space:pre"></span>var fileList = e.dataTransfer.files;<br />
+<span style="white-space:pre"></span>var fileType = fileList[0].type;<br />
+<span style="white-space:pre"></span>var oImg = document.createElement('img');<br />
+<span style="white-space:pre"></span>oImg.setAttribute(&quot;style&quot;, &quot;width:150px;height:150px;&quot;);<br />
+<br />
+<br />
+<span style="white-space:pre"></span>var reader = new FileReader();<br />
+<span style="white-space:pre"></span>var reader2 = new FileReader();<br />
+<span style="white-space:pre"></span>if (fileType.indexOf('image') == -1) {<br />
+<span style="white-space:pre"></span>alert('image only!');<br />
+<span style="white-space:pre"></span>return;<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>reader.readAsDataURL(fileList[0]);<br />
+<span style="white-space:pre"></span>reader.onload = function(e) {<br />
+<span style="white-space:pre"></span>oImg.src = this.result;<br />
+<span style="white-space:pre"></span>oDropBox.innerHTML = '';<br />
+<span style="white-space:pre"></span>oDropBox.appendChild(oImg);<br />
+<span style="white-space:pre"></span>};<br />
+<br />
+<br />
+<span style="white-space:pre"></span>reader2.readAsBinaryString(fileList[0]);<br />
+<span style="white-space:pre"></span>reader2.onload = function(e) {<br />
+<span style="white-space:pre"></span>imgBinaryString = this.result;<br />
+<span style="white-space:pre"></span>};<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>;<br />
+<span style="white-space:pre"></span>};<br />
+&lt;/script&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+<span style="white-space:pre"></span>&lt;div id=&quot;dropBox&quot;<br />
+<span style="white-space:pre"></span>style=&quot;float: left; width: 400px; height: 300px; margin: 10px 0 0 0; border: 1px solid #015EAC; color: #666; overflow: hidden; clear: left; font-size: 12px;&quot;&gt;<br />
+<span style="white-space:pre"></span>拖拽图片到这里！&lt;/div&gt;<br />
+&lt;/body&gt;<br />
+
+<p>
+    &lt;/html&gt;
+</p>
+<p>
+    ；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；；
+</p>
+<p>
+    用两个FileReader变量来分别获取文件的DataURL和BinaryString类型的数据，得到数据后放到json中通过ajax传入后台。后面按传BinaryString数据处理：
+</p>
+<p>
+    后台以String类型得到imageData并做处理：
+</p>
+<p>
+    File imgFile = new File(imgURL);<br />
+
+</p>
+<p>
+    saveImage(new ByteArrayInputStream(imageData.getBytes(&quot;ISO-8859-1&quot;)), imgFile);<br />
+
+</p>
+<p>
+    public static void saveImage(InputStream ins, File file) throws IOException {<br />
+    <span style="white-space:pre"></span>OutputStream os = new FileOutputStream(file);<br />
+    <span style="white-space:pre"></span>int bytesRead = 0;<br />
+    <span style="white-space:pre"></span>byte[] buffer = new byte[8192];<br />
+    <span style="white-space:pre"></span>while ((bytesRead = ins.read(buffer, 0, 8192)) != -1) {<br />
+    <span style="white-space:pre"></span>os.write(buffer, 0, bytesRead);<br />
+    <span style="white-space:pre"></span>}<br />
+    <span style="white-space:pre"></span>os.close();<br />
+    <span style="white-space:pre"></span>ins.close();<br />
+    }<br />
+
+</p>
+<p>
+    Html5 FileReader的使用参考：
+</p>
+<p>
+    http://blog.bingo929.com/google-enjoy-html5-drag-drop-filereaderenren.html<br />
+
+</p>
+<p>
+    http://www.jsmix.com/html5/file-reader.html<br />
+
+</p>

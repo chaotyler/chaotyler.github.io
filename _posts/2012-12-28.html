@@ -1,0 +1,268 @@
+---
+layout:post
+title:JavaScript知识点之“跨域”
+---
+<h3>
+    一、什么是跨域？
+</h3>
+<p>
+</p>
+<p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; border:0px; list-style:none; word-wrap:normal; word-break:normal">
+    <span style="background-color:rgb(255,255,255)">跨域请求，简单说就是从一个域访问另一个域下的数据或资源。受同源策略限制，JavaScript不能跨域!　这里提到了同源策略，那么什么是同源策略呢？</span>
+</p>
+<p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; border:0px; list-style:none; word-wrap:normal; word-break:normal">
+    <span style="background-color:rgb(255,255,255)">同源策略(Same Origin Policy)，它是由Netscape提出的一个著名的安全策略。 现在所有支持JavaScript 的浏览器都会使用这个策略。同源策略阻止从一个域上加载的脚本去获取或操作另一个域上的文档属性。也就是说，受到请求的 URL 的域必须与当前 Web 页面的域相同。这说明浏览器隔离来自不同源的内容，以防止它们之间的操作。</span>
+</p>
+<p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; border:0px; list-style:none; word-wrap:normal; word-break:normal">
+	<span style="background-color:rgb(255,255,255)">为何要使用同源策略？<br />
+	答案：安全！ 一个简单的例子：比如一个黑客，他利用Iframe把真正的银行登录页面嵌到他的页面上，当你使用真实的用户名，密码登录时，他的页面就可以通过Javascript读取到你的表单中input中的内容，这样用户名，密码就轻松到手了。后果会非常严重！</span>
+</p>
+<p style="margin-top:0px; margin-bottom:5px; padding-top:0px; padding-bottom:0px; border:0px; list-style:none; word-wrap:normal; word-break:normal">
+	<span style="background-color:rgb(255,255,255)">那么什么才是同源？<br />
+	所谓同源是指<span style="word-wrap:normal; word-break:normal">域名，协议，端口</span>均相同。下面罗列几种常见的情况：</span>
+</p>
+<table class="border         " style="margin:10px 0px 10px 10px; padding:0px; border-collapse:collapse; border-spacing:0px; border:1px solid rgb(192,192,192)">
+    <tbody style="margin:0px; padding:0px">
+    <tr style="margin:0px; padding:0px">
+        <th style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); background-color:rgb(222,231,236); border-collapse:collapse">
+            URL
+        </th>
+        <th style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); background-color:rgb(222,231,236); border-collapse:collapse">
+            说明
+        </th>
+        <th style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); background-color:rgb(222,231,236); border-collapse:collapse">
+            是否允许通信
+        </th>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/a.js<br style="margin:0px; padding:0px" />
+            http://www.a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            同一域名下
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/lab/a.js<br style="margin:0px; padding:0px" />
+            http://www.a.com/script/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            同一域名下不同文件夹
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com:8000/a.js<br style="margin:0px; padding:0px" />
+            http://www.a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            同一域名，不同端口
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/a.js<br style="margin:0px; padding:0px" />
+            https://www.a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            同一域名，不同协议
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/a.js<br style="margin:0px; padding:0px" />
+            http://70.32.92.74/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            域名和域名对应ip
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/a.js<br style="margin:0px; padding:0px" />
+            http://script.a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            主域相同，子域不同
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.a.com/a.js<br style="margin:0px; padding:0px" />
+            http://a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            同一域名，不同二级域名（同上）
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许（cookie这种情况下也不允许访问）
+        </td>
+    </tr>
+    <tr style="margin:0px; padding:0px">
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            http://www.cnblogs.com/a.js<br style="margin:0px; padding:0px" />
+            http://www.a.com/b.js
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不同域名
+        </td>
+        <td style="margin:0px; padding:3px; border:1px solid rgb(192,192,192); border-collapse:collapse; word-break:normal!important">
+            不允许
+        </td>
+    </tr>
+    </tbody>
+</table>
+如果是协议和端口造成的跨域问题“前台”是无能为力的。
+<h3>
+    二、为什么要跨域？
+</h3>
+<div>
+</div>
+<p>
+    <span style="background-color:rgb(255,255,255)">我们实际上做项目的时候，不可避免地会根据项目需求进行跨站访问，子域和主域之间数据共享等，受到同源策略的影响，要满足这些需求，就要用跨域技术来实现。</span>
+</p>
+<h3>
+    <span style="background-color:rgb(255,255,255)">三、如何实现跨域（前端）？</span>
+</h3>
+<h4>
+    <span style="background-color:rgb(255,255,255)">（一）</span>document.domain
+</h4>
+<div>
+    <span class="highlight" style="margin:0px; padding:0px">对于主域相同而子域不同的例子，可以通过设置document.domain的办法来解决</span>。<br />
+
+</div>
+<div>
+    具体做法是在主html页面（www.a.com/home.html）和iframe中被引用的html页面（auth.a.com/login.html）两个文件中分别加上document.domain = &quot;a.com&quot;；这样在主Html下就可以访问和控制被引用的html页面中的元素了。<br />
+
+</div>
+<h4>
+    （二）动态创建引入JavaScript
+</h4>
+<div>
+    <span class="highlight" style="margin:0px; padding:0px">虽然浏览器默认禁止了跨域访问，但并不禁止在页面中引用其他域的JS文件，并可以自由执行引入的JS文件中的function（包括操作cookie、Dom等等）</span>。根据这一点，可以方便地通过创建script节点的方法来实现完全跨域的通信。<br />
+
+</div>
+<h4>
+    （三）使用location.hash来传值
+</h4>
+<div>
+    1、主html页面（a.com/home.html）向被引用的html页面（b.com/login.html）中传值时：在路径的后面使用#hash：b.com/login.html#tyler）
+</div>
+<div>
+    2、被引用的html页面（b.com/login.html）向主html页面（a.com/home.html）传值时：
+</div>
+<div>
+    1）若是非IE、Chrome，可以直接修改parent的hash：parent.location.hash=&quot;yes&quot;；
+</div>
+<div>
+    2）若是IE、Chrome，无法修改parent的hash，要在被引用的html页面中新建iframe引入一个html页面（a.com/hash.html），通过hash传入：a.com/hash.html#yes，然后在该页面中修改主html页面的hash（由于home.html和hash.html源相同，故可以传递数据）：parent.parent.hash=&quot;yes&quot;；
+</div>
+<h4>
+    （四）window.name
+</h4>
+<div>
+    <p style="margin:10px auto; padding-top:0px; padding-bottom:0px">
+        有三个页面：
+    </p>
+    <ul style="margin:0px 0px 0px 45px; padding:0px">
+        <li style="margin:0px; padding:0px; list-style:inherit; list-style:inherit">
+            a.com/app.html：应用页面。
+        </li>
+        <li style="margin:0px; padding:0px; list-style:inherit; list-style:inherit">
+            a.com/proxy.html：代理文件，一般是一个没有任何内容的html文件，需要和应用页面在同一域下。
+        </li>
+        <li style="margin:0px; padding:0px; list-style:inherit; list-style:inherit">
+            b.com/data.html：应用页面需要获取数据的页面，可称为数据页面。
+        </li>
+    </ul>
+    <p style="margin:10px auto; padding-top:0px; padding-bottom:0px">
+        实现起来基本步骤如下：
+    </p>
+    <p style="margin:10px auto; padding-top:0px; padding-bottom:0px">
+        1. 在应用页面（a.com/app.html）中创建一个iframe，把其src指向数据页面（b.com/data.html）。
+    </p>
+</div>
+<div>
+    数据页面会把数据附加到这个iframe的window.name上，data.html代码如下：
+</div>
+<div>
+	<pre name="code" class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+window.name = 'I was there!';
+// 这里是要传输的数据，大小一般为2M，IE和firefox下可以大至32M左右
+// 数据格式可以自定义，如json、字符串
+&lt;/script&gt;</pre>
+</div>
+<div>
+    2. 在应用页面（a.com/app.html）中监听iframe的onload事件，在此事件中设置这个iframe的src指向本地域的代理文件（代理文件和应用页面在同一域下，所以可以相互通信）。app.html部分代码如下：
+</div>
+<div>
+	<pre name="code" class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    var state = 0,
+    iframe = document.createElement('iframe'),
+    loadfn = function() {
+        if (state === 1) {
+            var data = iframe.contentWindow.name;    // 读取数据
+            alert(data);    //弹出'I was there!'
+        } else if (state === 0) {
+            state = 1;
+            iframe.contentWindow.location = &quot;http://a.com/proxy.html&quot;;    // 设置的代理文件
+        }
+    };
+    iframe.src = 'http://b.com/data.html';
+    if (iframe.attachEvent) {
+        iframe.attachEvent('onload', loadfn);
+    } else {
+        iframe.onload  = loadfn;
+    }
+    document.body.appendChild(iframe);
+&lt;/script&gt;</pre>
+    3.获取数据以后销毁这个iframe，释放内存；这也保证了安全（不被其他域frame js访问）。
+</div>
+<div>
+	<pre name="code" class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    iframe.contentWindow.document.write('');
+    iframe.contentWindow.close();
+    document.body.removeChild(iframe);
+&lt;/script&gt;</pre>
+</div>
+<div>
+    总结起来即：iframe的src属性由外域转向本地域，跨域数据即由iframe的window.name从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。
+</div>
+<h4>
+    （五）HTML5 postMessage
+</h4>
+<h4>
+    （六）Flash
+</h4>
+<div>
+    Thanks：
+</div>
+<div>
+    http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html
+</div>
+<div>
+    http://www.cnblogs.com/rainman/archive/2011/02/21/1960044.html<br />
+
+</div>
+<div>
+</div>

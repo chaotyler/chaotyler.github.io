@@ -1,0 +1,309 @@
+---
+layout:post
+title:JavaScript知识点之“面向对象小结”
+---
+<p>
+    <span style="font-size:18px">首先看面向对象的继承实现代码示例：</span>
+</p>
+<p>
+</p>
+<ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; border:none; list-style-position:initial; color:rgb(92,92,92); font-family:'Courier New','Andale Mono',monospace; font-size:14px">
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;define&nbsp;the&nbsp;Person&nbsp;Class</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Person()&nbsp;{}&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Person.prototype.walk&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(){&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert&nbsp;(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'I&nbsp;am&nbsp;walking!'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">};&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Person.prototype.sayHello&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(){&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert&nbsp;(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'hello'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">};&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;define&nbsp;the&nbsp;Student&nbsp;class</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Student()&nbsp;{&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;<span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;Call&nbsp;the&nbsp;parent&nbsp;constructor</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;Person.call(<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">this</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;inherit&nbsp;Person</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Student.prototype&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Person();&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;correct&nbsp;the&nbsp;constructor&nbsp;pointer&nbsp;because&nbsp;it&nbsp;points&nbsp;to&nbsp;Person</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Student.prototype.constructor&nbsp;=&nbsp;Student;&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;replace&nbsp;the&nbsp;sayHello&nbsp;method</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Student.prototype.sayHello&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(){&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'hi,&nbsp;I&nbsp;am&nbsp;a&nbsp;student'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;add&nbsp;sayGoodBye&nbsp;method</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">Student.prototype.sayGoodBye&nbsp;=&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">(){&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;alert(<span class="string" style="margin:0px; padding:0px; border:none; color:blue; background-color:inherit">'goodBye'</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">);&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">}&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">var</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;student1&nbsp;=&nbsp;</span><span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">new</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Student();&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">student1.sayHello();&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">student1.walk();&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">student1.sayGoodBye();&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit"><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;check&nbsp;inheritance</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; color:inherit; line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">alert(student1&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">instanceof</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Person);&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;true&nbsp;</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="margin:0px; padding:0px; border:none; color:black; background-color:inherit">alert(student1&nbsp;<span class="keyword" style="margin:0px; padding:0px; border:none; color:rgb(0,102,153); background-color:inherit; font-weight:bold">instanceof</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;Student);&nbsp;</span><span class="comment" style="margin:0px; padding:0px; border:none; color:rgb(0,130,0); background-color:inherit">//&nbsp;true</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+</ol>
+<p>
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">在 JavaScript 中，对象分为两种。一种可以称为“<span style="color:#ff0000">普通对象</span>”，就是我们所普遍理解的那些：数字、日期、用户自定义的对象（如：{}）等等。</span><br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)" />
+    <br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)" />
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">还有一种，称为“<span style="color:#ff0000">方法对象</span>”，就是我们通常定义的 function。你可能觉得奇怪：方法就是方法，怎么成了对象了？但是在 JavaScript 中，方法的确是被当成对象来处理的。下面是一个简单的例子：</span><br />
+
+</p>
+<p>
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)"></span>
+</p>
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>&nbsp;func()&nbsp;{alert(<span class="string" style="color:blue">'Hello!'</span>);}&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">alert(func.toString());&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">在这个例子中，func 虽然是作为一个方法定义的，但它自身却包含一个 toString 方法，说明 func 在这里是被当成一个对象来处理的。更准确的说，func 是一个“方法对象”。下面是例子的继续：</span><br />
+
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">func.name&nbsp;=&nbsp;“I&nbsp;am&nbsp;func.”;&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">alert(func.name);&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">我们可以任意的为 func 设置属性，这更加证明了 func 就是一个对象。那么方法对象和普通对象的区别在哪里呢？首先方法对象当然是可以执行的，在它后面加上一对括号，就是执行这个方法对象了。</span><br />
+
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">func();&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">所以，方法对象具有二重性。一方面它可以被执行，另一方面它完全可以被当成一个普通对象来使用。这意味着什么呢？这意味着方法对象是可以完全独立于其他对象存在的。这一点我们可以同 Java 比较一下。在 Java 中，方法必须在某一个类中定义，而不能单独存在。而 JavaScript 中就不需要。</span><br />
+
+<p>
+</p>
+<p>
+    <span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)"><span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)"><span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">话说每一个方法对象被创建时，都会自动的拥有一个叫<span style="color:#ff0000">prototype</span>的属性。这个属性并无什么特别之处，它和其他的属性一样可以访问，可以赋值。不过当我们用 new 关键字来创建一个对象的时候，prototype 就起作用了：它的值（也是一个对象）所包含的所有属性，都会被复制到新创建的那个对象上去。下面是一个例子：</span></span></span>
+</p>
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">func.prototype.name=”prototype&nbsp;of&nbsp;func”;&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">var</span>&nbsp;f&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;func();&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">alert(f.name);&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">执行的过程中会弹出两个对话框，后一个对话框表示 f 这个新建的对象从 func.prototype 那里拷贝了 name 属性。而前一个对话框则表示 func 被作为方法执行了一遍。你可能会问了，为什么这个时候要还把 func 执行一遍呢？其实这个时候执行 func，就是起“构造函数”的作用。为了形象的说明，我们重新来一遍：</span><br />
+
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>&nbsp;func()&nbsp;{&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">this</span>.name=”name&nbsp;has&nbsp;been&nbsp;changed.”&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">}&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">func.prototype.name=”prototype&nbsp;of&nbsp;func”;&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">var</span>&nbsp;f&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;func();&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">alert(f.name);&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">你就会发现 f 的 name 属性不再是&quot;prototype of func&quot;，而是被替换成了&quot;name has been changed&quot;。这就是 func 这个对象方法所起到的“构造函数”的作用。所以，在 JavaScript 中，用 new 关键字创建对象是执行了下面<span style="color:#ff0000">三个步骤</span>的：</span><br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)" />
+
+<ol style="font-size:14px; line-height:1.4em; margin:0px 0px 1.5em; padding:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; text-align:left; background-color:rgb(239,239,239)">
+    <li style="font-size:1em; margin:0px 0px 0.25em 30px; padding:0px">
+        创建一个新的普通对象；
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0.25em 30px; padding:0px">
+        将方法对象的 prototype 属性的所有属性复制到新的普通对象中去。
+    </li>
+    <li style="font-size:1em; margin:0px 0px 0.25em 30px; padding:0px">
+        以新的普通对象作为上下文来执行方法对象。
+    </li>
+</ol>
+<p>
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">
+    对于“new func()”这样的语句，可以描述为“从 func 创建一个新对象”。总之，prototype 这个属性的唯一特殊之处，就是在创建新对象的时候了。
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">
+    那么我们就可以利用这一点。比如有两个方法对象 A 和 B，既然从 A 创建的新对象包含了所有 A.prototype 的属性，那么我将它赋给 B.prototype，那么从 B 创建的新对象不也有同样的属性了？写成代码就是这样：
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">
+    &nbsp;
+</p>
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">A.prototype.hello&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>(){alert(<span class="string" style="color:blue">'Hello!'</span>);}&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">B.prototype&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;A();&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;B().hello();&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)"><span style="color:#ff0000">这就是 JavaScript 的所谓“继承”了，其实质就是属性的拷贝，这里利用了 prototype 来实现。</span>如果不用 prototype，那就用循环了，效果是一样的。所谓“多重继承”，自然就是到处拷贝了。</span><br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)" />
+<span style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)">JavaScript 中面向对象的原理，就是上面这些了。自始至终我都没提到“类”的概念，因为 JavaScript 本来就没有“类”这个东西。面向对象可以没有类吗？当然可以。先有类，然后再有对象，这本来就不合理，因为类本来是从对象中归纳出来的，先有对象再有类，这才合理。像下面这样的：</span><br style="font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left; background-color:rgb(239,239,239)" />
+<br />
+
+<div class="dp-highlighter" id="" style="font-family:Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono',Consolas,'Courier New',monospace; background-color:rgb(239,239,239); width:766px; overflow:auto; margin-left:9px; padding:1px; word-break:break-all; word-wrap:break-word; line-height:25px; text-align:left">
+    <ol start="1" class="dp-c" style="font-size:1em; line-height:1.4em; margin:0px 0px 1px; padding:2px 0px; border:1px solid rgb(209,215,220); list-style-position:initial; background-color:rgb(255,255,255); color:rgb(43,145,175)">
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">var</span>&nbsp;o&nbsp;=&nbsp;{};&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我发现了一个东西。</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">o.eat&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>(){<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">return</span>&nbsp;<span class="string" style="color:blue">&quot;I&nbsp;am&nbsp;eating.&quot;</span>}&nbsp;&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我发现它会吃；</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">o.sleep&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>(){<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">return</span>&nbsp;<span class="string" style="color:blue">&quot;ZZZzzz...&quot;</span>}&nbsp;&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我发现它会睡；</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">o.talk&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>(){<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">return</span>&nbsp;<span class="string" style="color:blue">&quot;Hi!&quot;</span>}&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我发现它会说话；</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">o.think&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">function</span>(){<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">return</span>&nbsp;<span class="string" style="color:blue">&quot;Hmmm...&quot;</span>}&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我发现它还会思考。</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">var</span>&nbsp;Human&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;Function();&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我决定给它起名叫“人”。</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">Human.prototype&nbsp;=&nbsp;o;&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;这个东西就代表了所有“人”的概念。</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black"><span class="keyword" style="color:rgb(127,0,85); font-weight:bold">var</span>&nbsp;h&nbsp;=&nbsp;<span class="keyword" style="color:rgb(127,0,85); font-weight:bold">new</span>&nbsp;Human();&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;当我发现其他同它一样的东西，</span>&nbsp;&nbsp;</span>
+        </li>
+        <li style="font-size:1em; margin:0px 0px 0px 38px; padding:0px 0px 0px 10px; border-left-width:1px; border-left-style:solid; border-left-color:rgb(209,215,220); background-color:rgb(250,250,250); line-height:18px">
+            <span style="color:black">alert(h.talk())&nbsp;<span class="comment" style="color:rgb(0,130,0)">//&nbsp;我就知道它也是“人”了！</span>&nbsp;&nbsp;</span>
+        </li>
+    </ol>
+</div>
+<p>
+    Thanks:&nbsp;
+</p>
+<p>
+    <a href="https://developer.mozilla.org/en/Introduction_to_Object-Oriented_JavaScript">https://developer.mozilla.org/en/Introduction_to_Object-Oriented_JavaScript</a><br />
+
+</p>
+<p>
+    <a href="http://www.iteye.com/topic/155109">http://www.iteye.com/topic/155109</a>
+</p>

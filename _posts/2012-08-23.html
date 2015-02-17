@@ -1,0 +1,58 @@
+---
+layout:post
+title:javascript知识点之灵活限定各个文件的变量空间
+---
+<p>
+</p>
+<ol start="1" class="dp-c" style="margin:0px 0px 1px 45px!important; padding:0px; color:rgb(92,92,92); list-style-position:initial; line-height:16px; border:none; font-size:11px; background-color:rgb(255,255,255)">
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit"><span style="margin:0px; padding:0px; border:none; background-color:inherit">(</span><span class="keyword" style="color:#06699; margin:0px; padding:0px; border:none; background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">()&nbsp;{&nbsp;</span><span class="comment" style="color:#0820; margin:0px; padding:0px; border:none; background-color:inherit">//&nbsp;匿名函数</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit"><span class="keyword" style="color:#06699; margin:0px; padding:0px; border:none; background-color:inherit; font-weight:bold">function</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;log(msg)&nbsp;{&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;&nbsp;&nbsp;console.log(msg);&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">}&nbsp;&nbsp;</span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit"><span class="comment" style="color:#0820; margin:0px; padding:0px; border:none; background-color:inherit">//&nbsp;其他代码</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span></span>
+    </li>
+    <li style="margin:0px!important; padding:0px 3px 0px 10px!important; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; background-color:rgb(248,248,248); line-height:14px">
+        <span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;&nbsp;</span>
+    </li>
+    <li class="alt" style="margin:0px!important; padding:0px 3px 0px 10px!important; color:inherit; border-style:none none none solid; border-left-width:3px; border-left-color:rgb(108,226,108); list-style:decimal-leading-zero outside; line-height:14px; width:740px">
+		<span style="color:black; margin:0px; padding:0px; border:none; background-color:inherit">}());&nbsp;<span class="comment" style="color:#0820; margin:0px; padding:0px; border:none; background-color:inherit">//&nbsp;立即执行</span><span style="margin:0px; padding:0px; border:none; background-color:inherit">&nbsp;<br />
+		</span></span>
+    </li>
+</ol>
+<br />
+
+<p>
+</p>
+<p>
+    该方式用于限定该文件内的所有变量仅局部访问，详情参靠“一等公民函数”博客；
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    如需在其他文件中调用该包内的元素，可将该元素直接声明为全局变量；
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    注意：html元素直接调用的action也必须声明为全局变量才可访问，否则会提示方法未定义。<br />
+
+</p>

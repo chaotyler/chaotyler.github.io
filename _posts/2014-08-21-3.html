@@ -1,0 +1,160 @@
+---
+layout:post
+title:JavaScript权威指南笔记 - 2
+---
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    1. var a = b = 123; 等价于var a = 123; b = 123;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    注意在这行代码中产生了全局变量b（之前未声明b的情况下）
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    2. for(var i = 0; i &lt; jsArray.length; i ++){}
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    在这个循环中，<wbr>每次循环都会访问jsArray对象的length属性，<wbr>所以降低了代码的效率，<wbr>尤其是在jsArray还是dom对象的时候，<wbr>提前把length保存到一个变量中。</wbr></wbr></wbr></wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    3. for...in...循环中，遍历的顺序不能保证！<wbr>而且只能遍历可序列话的变量。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    4. hasOwnProperty(p)<wbr>用来判断p是不是一个对象的私有属性，而不是原型中的属性。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    5. parseInt(x, y)：y是按按进制来转换数字。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    6. function x(){}//<a target="_blank" href="http://x.name/" style="color:rgb(17,85,204)">x.name</a>&nbsp;-&gt; &quot;x&quot;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp; var x = function(){}//<a target="_blank" href="http://x.name/" style="color:rgb(17,85,204)">x.name</a>&nbsp;-&gt; &quot;&quot;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp; var x = function y(){}//<a target="_blank" href="http://x.name/" style="color:rgb(17,85,204)">x.name</a>&nbsp;-&gt; &quot;y&quot;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    7. lvalue：在JS中能出现在赋值号左侧的值。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    8. delete操作只能作用在lvalue上，如delete 1; 返回true但没有任何操作发生。只删除自由属性，<wbr>不会删除继承来的属性。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    9. for(var x in &quot;abc&quot;){console.log(x)}//<wbr>该循环输出1, 2, 3。</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    10. for(a[i++] in object)//把object的属性复制到a数组。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    11. break后面加statement label，用于跳出不是最近的循环或switch。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    12. catch(e){}，e的作用域只是在catch中。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    13. try中有break，continue，return时，<wbr>在跳出前会执行finally块！</wbr>
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    14. debugger可以在代码中出发断点。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    15. 对象的键值可以是空：x[&quot;&quot;] = 123;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    16. {}构建对象时，末尾的,会忽略，IE除外，会报错。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    17. ES3中若对象的属性名是保留字，只能用[]来取不能用.。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    18. [, ,]末尾的,是忽略的，所以该数组长度是2。
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    19. a[-123] = 123;等价于a[&quot;-123&quot;] = 123;
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp; &nbsp; a[&quot;100&quot;] = 123;等价于a[100] = 123;<br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    &nbsp; &nbsp; &nbsp; a[1.00] = 123;等价于a[1] = 123;<br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    <br />
+
+</div>
+<div class="gmail_default" style="color:rgb(34,34,34); font-family:arial,sans-serif; font-size:18px">
+    20. JS数组没有超出界限的错误。
+</div>

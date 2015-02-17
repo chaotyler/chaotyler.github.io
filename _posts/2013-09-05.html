@@ -1,0 +1,47 @@
+---
+layout:post
+title:JavaScript进制之间的转换
+---
+<p>
+    十进制转换成其他进制：
+</p>
+<p>
+</p>
+<pre name="code" class="javascript">var x = 123;
+x.toString(2);//转换成二进制
+x.toString(8);//转换成八进制
+x.toString(16);//转换成十六进制</pre>
+<p>
+    <br />
+
+</p>
+<p>
+    <span style="color:#ff0000">注意：</span>
+</p>
+<p>
+    <span style="color:#ff0000">x一定是数字，字符串转换不成功如：&quot;123&quot;.toString(2)还是&quot;123&quot;；</span>
+</p>
+<p>
+    <span style="color:#ff0000">数字必须赋值给一个参数进行转换，直接转换因为是原型没有toString()方法会报错，赋值后可以自动转换成封装类调用toString()；</span><br />
+
+</p>
+<p>
+    <br />
+
+</p>
+其他进制转换成十进制：
+<p>
+</p>
+<p>
+</p>
+<pre name="code" class="javascript">var y = “1001111”;//或者var y = 1001111
+parseInt(y, 2);//二进制转换成十进制
+parseInt(y, 8);//八进制转换成十进制
+parseInt(y, 16);//十六进制转换成十进制</pre>
+<p>
+    <br />
+
+</p>
+<p>
+    <span style="color:#ff0000">注意：这里的y可以是数字也可是字符串</span>
+</p>

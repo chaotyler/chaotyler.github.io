@@ -1,0 +1,62 @@
+---
+layout:post
+title:JavaScript权威指南笔记 - 1
+---
+<p>
+    1. JS对象类型
+</p>
+<p>
+    基本类型： number、String、Boolean、null、undefined
+</p>
+<p>
+    对象类型：普通对象、数组、时间、方法等
+</p>
+<p>
+    2. JavaScript中的运算
+</p>
+<p>
+    JS中无穷大、无穷小、除零操作都不会报错
+</p>
+<p>
+    正无穷大是正无限、负无穷大是负无限、无穷小有正零和负零（一般不区分）
+</p>
+<p>
+    除零操作会返回无穷小（正零或负零）
+</p>
+<p>
+    零除以零、无限除无限、负平方根等无法转换成数字的运算返回：NaN
+</p>
+<p>
+    3. 非Boolean数据转换成Boolean时：
+</p>
+<p>
+    undefined、null、NaN、&quot;&quot;、0、-0：转换成false
+</p>
+<p>
+    其余的类型转换成：true
+</p>
+<p>
+    4. typeof null -&gt; &quot;object&quot;
+</p>
+<p>
+    5. 基本数据类型都是传值，比较时只比较值，可用==、===来比较；对象类型都是存指针，传值时也是传指针，向方法中传值也是传指针，所以方法内改变属性的值，原属性值也会发生改变。
+</p>
+<p>
+    6. 深度克隆：var objectB = JSON.parse(JSON.stringify(objectA));
+</p>
+<p>
+    7. ==操作机制：
+</p>
+<p>
+    Boolean（0/1）和String在比较前都会先转换成数字来进行比较。null和undefined是相对独立的类型，两者比较是true，但是与其他类型进行比较时都是false。
+</p>
+<p>
+    8. JavaScript模拟类：私有属性和方法直接声明，公有的属性和方法放在return的{}中；
+</p>
+<p>
+    9. JavaScript是function scope：每个方法定义一个作用域；而类似C语言的语言使用的是block scope：每对花括号包裹的块定义一个作用域。
+</p>
+<p>
+    <br />
+
+</p>

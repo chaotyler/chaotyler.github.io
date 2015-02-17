@@ -1,0 +1,87 @@
+---
+layout:post
+title:JavaScript知识点之“addEventListener和attachEvent”
+---
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    对于IE的attachEvent方法可能大家都比较熟，现在说说FireFox的addEventListener的用法。
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    addEventListener的参数一共有三个，语法为：
+</p>
+<p class="code_js" style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    element.addEventListener(type,listener,useCapture)
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    下面是详解
+</p>
+<ul style="margin-top:0px; margin-right:0px; margin-bottom:1.5em; margin-left:0px; padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    <li style="margin-top:0px; margin-right:0px; margin-bottom:0.25em; margin-left:30px; padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px">
+        其中element是要绑定函数的对象。
+    </li>
+    <li style="margin-top:0px; margin-right:0px; margin-bottom:0.25em; margin-left:30px; padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px">
+        type是事件名称，要注意的是&quot;onclick&quot;要改为&quot;click&quot;,&quot;onblur&quot;要改为&quot;blur&quot;,也就是说事件名不要带&quot;on&quot;。
+    </li>
+    <li style="margin-top:0px; margin-right:0px; margin-bottom:0.25em; margin-left:30px; padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px">
+        listener当然就是绑定的函数了，记住不要跟括号
+    </li>
+    <li style="margin-top:0px; margin-right:0px; margin-bottom:0.25em; margin-left:30px; padding-top:0px; padding-right:0px; padding-bottom:0px; padding-left:0px">
+        最后一个参数是个布尔值，表示该事件的响应顺序,下面重点介绍一下addEventListener的第3个参数(useCapture)。
+    </li>
+</ul>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    userCapture若为true,则浏览器采用Capture,若为false则采用bubbing方式。建议用false,看个例子吧。
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    html代码
+</p>
+<p class="code_html" style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    &lt;div id=&quot;div_test&quot;&gt; &lt;input type=&quot;button&quot; id=&quot;btn_test&quot; value=&quot;se4.cn技术基地&quot; /&gt; &lt;/div&gt;
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    js代码
+</p>
+<p class="code_js" style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    window.onload=function(){ document.getElementById(&quot;div_test&quot;).addEventListener(&quot;click&quot;,test1,false); document.getElementById(&quot;btn_test&quot;).addEventListener(&quot;click&quot;,test2,false); } function test1(){ alert(&quot;外层div触发&quot;) } function test2(){ alert(&quot;内层input触发&quot;) }
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    自己体验一下，如果userCapture是true则test1先触发，如果userCapture是false则test2先触发。&nbsp;
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    &nbsp;
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    在近来的工作中，用到了attachEvent方法，该方法可以为某一事件附加其它的处理事件，有时候可能比较有用，这里将其基本用法总结一下。
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    其语法可以查看《DHTML手册》，里面有详细的说明，这里贴一个例子，该例子来自互联网：
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    document.getElementById(&quot;btn&quot;).onclick = method1;&nbsp;<br />
+    document.getElementById(&quot;btn&quot;).onclick = method2;&nbsp;<br />
+    document.getElementById(&quot;btn&quot;).onclick = method3;<br />
+    如果这样写,那么将会只有medhot3被执行<br />
+    <br />
+    写成这样：<br />
+    var btn1Obj = document.getElementById(&quot;btn1&quot;);&nbsp;<br />
+	<span style="color:#0800">//object.attachEvent(event,function);&nbsp;<br />
+	</span>btn1Obj.attachEvent(&quot;onclick&quot;,method1);&nbsp;<br />
+    btn1Obj.attachEvent(&quot;onclick&quot;,method2);&nbsp;<br />
+    btn1Obj.attachEvent(&quot;onclick&quot;,method3);<br />
+    执行顺序为method3-&gt;method2-&gt;method1
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    如果是Mozilla系列，并不支持该方法，需要用到addEventListener<br />
+    var btn1Obj = document.getElementById(&quot;btn1&quot;);&nbsp;<br />
+    //element.addEventListener(type,listener,useCapture);&nbsp;<br />
+    btn1Obj.addEventListener(&quot;click&quot;,method1,false);&nbsp;<br />
+    btn1Obj.addEventListener(&quot;click&quot;,method2,false);&nbsp;<br />
+    btn1Obj.addEventListener(&quot;click&quot;,method3,false);<br />
+    执行顺序为method1-&gt;method2-&gt;method3
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    <br />
+
+</p>
+<p style="margin-top:0px; margin-bottom:0px; padding-top:0px; padding-bottom:0px; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:14px; line-height:25px; text-align:left">
+    FROM：<a href="http://parkmy.iteye.com/blog/431306">http://parkmy.iteye.com/blog/431306</a>
+</p>

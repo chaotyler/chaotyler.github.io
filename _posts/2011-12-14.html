@@ -1,0 +1,82 @@
+---
+layout: post
+title:Java知识点之“写文件操作以及复制文件操作”
+---
+<p>
+    import java.io.BufferedWriter;<br />
+    import java.io.FileInputStream;<br />
+    import java.io.FileWriter;<br />
+    import java.io.IOException;
+</p>
+<p>
+    <span style="white-space:pre">import java.io.File;</span>
+</p>
+<p>
+    <span style="white-space:pre">import java.io.FileOutputStream; </span>
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    <br />
+
+</p>
+<p>
+    //写入文件操作 参数p是目标文件路径 dataStr是写入的string数据
+</p>
+<p>
+    public static void writer(String p, String dataStr) {
+</p>
+<span style="white-space:pre"></span>String path = p;<br />
+<span style="white-space:pre"></span>try {<br />
+<span style="white-space:pre"></span>FileWriter fw = new FileWriter(path, true);<br />
+<span style="white-space:pre"></span>BufferedWriter bw = new BufferedWriter(fw);<br />
+<span style="white-space:pre"></span>bw.write(dataStr);<br />
+<span style="white-space:pre"></span>bw.newLine();<br />
+<span style="white-space:pre"></span>bw.close();<br />
+<span style="white-space:pre"></span>fw.close();<br />
+<span style="white-space:pre"></span>} catch (IOException e) {<br />
+<span style="white-space:pre"></span>e.printStackTrace();<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>}<br />
+<br />
+
+<p>
+    <br />
+
+</p>
+<p>
+    //复制文件的方法，参数src是源文件路径，dest是目标文件路径
+</p>
+public static void doCopyFile(String src, String dest) throws IOException {<br />
+<span style="white-space:pre"></span>File srcFile = new File(src);<br />
+<span style="white-space:pre"></span>File destFile = new File(dest);<br />
+<span style="white-space:pre"></span>FileInputStream input = new FileInputStream(srcFile);<br />
+<span style="white-space:pre"></span>try {<br />
+<span style="white-space:pre"></span>FileOutputStream output = new FileOutputStream(destFile);<br />
+<span style="white-space:pre"></span>try {<br />
+<span style="white-space:pre"></span>byte[] buffer = new byte[4096];<br />
+<span style="white-space:pre"></span>int n = 0;<br />
+<span style="white-space:pre"></span>while (-1 != (n = input.read(buffer))) {<br />
+<span style="white-space:pre"></span>output.write(buffer, 0, n);<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>} finally {<br />
+<span style="white-space:pre"></span>try {<br />
+<span style="white-space:pre"></span>if (output != null) {<br />
+<span style="white-space:pre"></span>output.close();<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>} catch (IOException ioe) {<br />
+<span style="white-space:pre"></span>// ignore<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>} finally {<br />
+<span style="white-space:pre"></span>try {<br />
+<span style="white-space:pre"></span>if (input != null) {<br />
+<span style="white-space:pre"></span>input.close();<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>} catch (IOException ioe) {<br />
+<span style="white-space:pre"></span>// ignore<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>}<br />
+<span style="white-space:pre"></span>}

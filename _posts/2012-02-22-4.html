@@ -1,0 +1,82 @@
+---
+layout:post
+title:Web前端知识点：汇总一
+---
+<h4>
+    <span style="background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">1、javascript的类型转换</span></span>
+</h4>
+<p>
+	<span style="background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">（比如&quot;2&quot;*1, &quot;a&quot;*1）</span><br />
+	</span>
+</p>
+<p>
+	<span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-indent:28px">javascript会调用valueOf来转换为一个基本数据类型，在这种情况下，如果javascript不能通过valueOf转成一个number，会尝试调用toString，然后再转。实在无法转就只能NaN了。</span><br />
+	</span>
+</p>
+<h4>
+    <span style="text-align:center; text-indent:28px"><span style="text-indent:28px"><span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">2、类的创建、继承和闭包</span></span></span>
+</h4>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">JavaScript中严格说来没有类的概念，但是可以用Function来模拟类，Function可以通过new关键字来创建对象；</span>
+</p>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">JavaScript中的继承是通过prototype来实现的，prototype在继承中用来传递数据或方法，具体实现：1.子类构造器中调用父类的构造器；2.子类的prototype指向父类；3.子类的构造器指回自身。</span>
+</p>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">闭包简单说来就是含有数据的方法，由于该方法内部的某些属性一直为外部的环境所使用，所以不会被垃圾回收机制销毁。</span>
+</p>
+<h4>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">3、GET和POST请求的区别</span>
+</h4>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+    <p>
+        <span style="background-color:rgb(255,255,255)"><span style="text-indent:21pt; text-align:center">1）GET是</span><span style="">从服务器上</span><span style="text-indent:21pt; text-align:center">获取</span><span style="text-indent:21pt; text-align:center">数据，POST是</span><span style="text-indent:21pt; text-align:center">向服务器传送</span><span style="text-indent:21pt; text-align:center">数据。</span></span>
+    </p>
+    <p>
+        <span style="background-color:rgb(255,255,255)"><span style="">2）</span><span style="text-indent:-30pt; text-align:center">在客户端，</span><span style="text-indent:-30pt; text-align:center">GET</span><span style="text-indent:-30pt; text-align:center">方式在通过</span><span style="text-indent:-30pt; text-align:center">URL</span><span style="text-indent:-30pt; text-align:center">提交数据，数据</span><span style="text-indent:-30pt; text-align:center">在</span><span style="text-indent:-30pt; text-align:center">URL<span style="">中</span></span><span style="text-indent:-30pt; text-align:center">可以看到；</span><span style="text-indent:-30pt; text-align:center">POST</span><span style="text-indent:-30pt; text-align:center">方式，数据放置在</span><span style="text-indent:-30pt; text-align:center">HTML HEADER<span style="">内</span></span><span style="text-indent:-30pt; text-align:center">提交。因此POST相对安全性较高。</span></span>
+    </p>
+    <p>
+        <span style="background-color:rgb(255,255,255)"><span style="text-indent:-30pt; text-align:center">3）对于GET方式，服务器端用</span><span style="">Request.QueryString</span><span style="text-indent:-30pt; text-align:center">获取变量的值，对于POST方式，服务器端用</span><span style="text-indent:-30pt; text-align:center">Request.Form</span><span style="text-indent:-30pt; text-align:center">获取提交的数据。</span></span>
+    </p>
+    <p>
+        <span style="background-color:rgb(255,255,255)"><span style="">4）</span><span style="text-indent:-30pt; text-align:center">GET</span><span style="text-indent:-30pt; text-align:center">方式提交的数据最多<span style=""><span style="">只能有1K</span></span></span><span style="text-indent:-30pt; text-align:center">，而</span><span style="text-indent:-30pt; text-align:center">POST</span><span style="text-indent:-30pt; text-align:center">则<span style="">没有此限制</span>。</span></span>
+    </p>
+</blockquote>
+<h4>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">4、<span style="text-align:center; text-indent:28px">事件绑定</span></span>
+</h4>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">addEventListener或attachEvent(IE)</span>
+</p>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)">两者都可以添加/附加多个方法，但是多个方法的执行顺序是不同的：<span style="text-align:center; text-indent:28px">addEventListener先添加的先执行，attachEvent先附加的后执行（口诀：add到后面attach到前面）；</span></span>
+</p>
+<h4>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">5、HTML元素的id和name的区别</span></span>
+</h4>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">id是HTML元素的唯一标识，是与HTML元素本身相关；</span></span>
+</p>
+<p>
+    <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">name更多的是与HTML元素的内容相关，用途相对更多一些：</span></span>
+</p>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+    <p>
+        <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">1）作为可与服务器交互数据的HTML元素的服务器端的标示，比如input、select、textarea、和button等。我们可以在服务器端通过name取值。</span></span>
+    </p>
+    <p>
+        <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">2）HTML元素Input在type='radio'时确定分组关系，使之只能有一个能够选定。</span></span>
+    </p>
+    <p>
+        <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">3）&nbsp;建立页面中的锚点，我们知道&lt;a href=&quot;URL&quot;&gt;link&lt;/a&gt;是获得一个页面超级链接，如果不用href属性，而改用name，如：&lt;a name=&quot;PageBottom&quot;&gt;&lt;/a&gt;，我们就获得了一个页面锚点。</span></span>
+    </p>
+    <p>
+        <span style="text-align:center; text-indent:28px; background-color:rgb(255,255,255)"><span style="text-align:center; text-indent:28px">4）在IMG元素和MAP元素之间关联的时候，如果要定义IMG的热点区域，需要使用其属性usemap，使usemap=&quot;#name&quot;(被关联的MAP元素的name)。</span></span>
+    </p>
+</blockquote>
+<h4>
+    6、锚点相关
+</h4>
+<p>
+    <span style="white-space:pre"></span>&lt;a name=&quot;somewhere&quot;&gt;&lt;/a&gt;就创建了一个锚点，&lt;a href=&quot;#somewhere&quot;&gt;go to somewhere&lt;/a&gt;即可跳到上面的锚点。有href的link中添加的name也可以。
+</p>
