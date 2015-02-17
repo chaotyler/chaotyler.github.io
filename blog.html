@@ -44,8 +44,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">首页</a></li>
-                <li><a href="blog.html">博客</a></li>
+                <li><a href="index.html">首页</a></li>
+                <li class="active"><a href="">博客</a></li>
                 <li><a href="about.html">关于</a></li>
                 <!--
                 <li class="dropdown">
@@ -77,12 +77,15 @@
 
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
+        <h1>博客列表</h1>
+        {% for post in site.posts %}
+            <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        <!--<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>-->
+        <!--<p>To see the difference between static and fixed top navbars, just scroll.</p>-->
+        <!--<p>-->
+            <!--<a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>-->
+        <!--</p>-->
     </div>
 
 </div> <!-- /container -->
