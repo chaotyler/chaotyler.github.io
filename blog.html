@@ -49,6 +49,7 @@ title: Chaotyler
             <ul class="nav navbar-nav">
                 <li><a href="http://www.chaotyler.com">首页</a></li>
                 <li class="active"><a href="">博客</a></li>
+                <li><a href="save.html">收藏</a></li>
                 <li><a href="about.html">关于</a></li>
                 <!--
                 <li class="dropdown">
@@ -82,9 +83,11 @@ title: Chaotyler
     <div class="jumbotron  myJumbotron">
         <h2>博客列表</h2>
         <br/>
-        {% for post in site.posts %}
-            <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
+        <ul>
+            {% for post in site.posts %}
+                <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
         <!--<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>-->
         <!--<p>To see the difference between static and fixed top navbars, just scroll.</p>-->
         <!--<p>-->
