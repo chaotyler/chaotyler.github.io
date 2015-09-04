@@ -1,0 +1,33 @@
+body,
+html {
+  padding: 0px;
+  margin: 0px;
+}
+.container {
+  height: 948px;
+  background: url("bg.png");
+  background-size: 100% 100%;
+}
+.container .content {
+  margin: 0px auto;
+  width: 970px;
+  height: 948px;
+  background: url("content.png") center no-repeat;
+}
+.container .content .titles {
+  height: 80px;
+  margin-left: 400px;
+}
+.container .content .titles .title {
+  display: inline-block;
+  width: 125px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+}
+.container .content .titles .title:hover {
+  background: url("titlebg.png") center no-repeat;
+}
