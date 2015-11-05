@@ -75,17 +75,33 @@
 }
 .collections .list1 {
   position: absolute;
+  padding: 40px;
   left: 128px;
   top: 177px;
-  width: 425px;
-  height: 240px;
+  width: 345px;
+  height: 160px;
+}
+.collections .list1 .item-1 {
+  display: block;
+  margin: 10px auto;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
 }
 .collections .list2 {
   position: absolute;
+  padding: 20px;
   left: 424px;
   top: 501px;
-  width: 336px;
-  height: 207px;
+  width: 296px;
+  height: 167px;
+}
+.collections .list2 .item-2 {
+  display: block;
+  margin: 7px auto;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 12px;
 }
 .collections .list3 {
   position: absolute;
@@ -93,12 +109,17 @@
   top: 156px;
   width: 376px;
   height: 500px;
+  background: url('iconsbg.png') center no-repeat;
 }
 .contact {
-  position: relative;
   margin: 0px auto;
   width: 1400px;
   height: 770px;
   background: url('contact.png');
   overflow: hidden;
+}
+.contact .detail {
+  margin-left: 255px;
+  margin-top: 222px;
+  height: 300px;
 }
