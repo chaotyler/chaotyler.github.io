@@ -1,33 +1,107 @@
-body, html {
+* {
   padding: 0px;
   margin: 0px;
 }
 
-.container {
-  height: 948px;
-  background: url("bg.png");
-  background-size: 100% 100%;
-  .content {
-    margin: 0px auto;
-    width: 970px;
-    height:948px;
-    background: url("content.png") center no-repeat;
-    .titles {
-      height: 80px;
-      margin-left: 400px; 
-      .title {
-        display: inline-block;
-        width: 125px;
-        height: 80px;
-        line-height: 80px;
-        font-size: 18px;
-        text-align: center;
-        color: #ffffff;
-        cursor: pointer;
-        &:hover {
-          background: url("titlebg.png") center no-repeat;
-        }
-      }
-    }
+.banner {
+  margin: 0px auto;
+  width: 1400px;
+  height: 768px;
+  background: url('banner.png');
+  .links {
+    display: block;
+    float: right;
+    margin: 40px 70px 0px 0px;
+    text-decoration: none;
+    color: #676767;
   }
 }
+.about {
+  margin: 0px auto;
+  width: 1400px;
+  height: 750px;
+  background: url('about.png');
+  overflow: hidden;
+  .text {
+    margin: 340px 0px 0px 576px;
+    color: #e3e3e3;
+  }
+}
+.works {
+  margin: 0px auto;
+  padding-top: 190px;
+  width: 1400px;
+  height: 665px;
+  background: url('works.png');
+  overflow: hidden;
+  text-align: center;
+  .demo {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 5px;
+    width: 280px;
+    height: 250px;
+    text-align: center;
+    text-decoration: none;
+    .img {
+      width: 280px;
+      height: 175px;
+    }
+    .title {
+      margin-top: 10px;
+      color: #ffffff;
+      font-size: 15px;
+    }
+    .class {
+      margin-top: 5px;
+      color: #b5b5b5;
+      font-size: 12px;
+    }
+  }
+  .more {
+    display: block;
+    margin: 40px auto;
+    width: 180px;
+    height: 31px;
+    background: url("moreworks.png");
+  }
+}
+.collections {
+  position: relative;
+  margin: 0px auto;
+  width: 1400px;
+  height: 750px;
+  background: url('collections.png');
+  overflow: hidden;
+  .list1 {
+    position: absolute;
+    left: 128px;
+    top: 177px;
+    width: 425px;
+    height: 240px;
+  }
+  .list2 {
+    position: absolute;
+    left: 424px;
+    top: 501px;
+    width: 336px;
+    height: 207px;
+  }
+  .list3 {
+    position: absolute;
+    left: 868px;
+    top: 156px;
+    width: 376px;
+    height: 500px;
+  }
+}
+
+.contact {
+  position: relative;
+  margin: 0px auto;
+  width: 1400px;
+  height: 770px;
+  background: url('contact.png');
+  overflow: hidden;
+}
+
