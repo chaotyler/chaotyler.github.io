@@ -2,40 +2,46 @@
   padding: 0px;
   margin: 0px;
 }
-.banner {
+body {
+  background: #474747;
+}
+.main {
+  transition: transform 0.5s ease-out;
+}
+.main .banner {
   margin: 0px auto;
   width: 1400px;
   height: 768px;
-  background: url('banner.png');
+  background: url("banner.png");
 }
-.banner .links {
+.main .banner .links {
   display: block;
   float: right;
   margin: 40px 70px 0px 0px;
   text-decoration: none;
   color: #676767;
 }
-.about {
+.main .about {
   margin: 0px auto;
   width: 1400px;
   height: 750px;
-  background: url('about.png');
+  background: url("about.png");
   overflow: hidden;
 }
-.about .text {
+.main .about .text {
   margin: 340px 0px 0px 576px;
   color: #e3e3e3;
 }
-.works {
+.main .works {
   margin: 0px auto;
   padding-top: 190px;
   width: 1400px;
   height: 665px;
-  background: url('works.png');
+  background: url("works.png");
   overflow: hidden;
   text-align: center;
 }
-.works .demo {
+.main .works .demo {
   display: inline-block;
   vertical-align: top;
   margin: 0px 5px;
@@ -44,36 +50,36 @@
   text-align: center;
   text-decoration: none;
 }
-.works .demo .img {
+.main .works .demo .img {
   width: 280px;
   height: 175px;
 }
-.works .demo .title {
+.main .works .demo .title {
   margin-top: 10px;
   color: #ffffff;
   font-size: 15px;
 }
-.works .demo .class {
+.main .works .demo .class {
   margin-top: 5px;
   color: #b5b5b5;
   font-size: 12px;
 }
-.works .more {
+.main .works .more {
   display: block;
   margin: 40px auto;
   width: 180px;
   height: 31px;
   background: url("moreworks.png");
 }
-.collections {
+.main .collections {
   position: relative;
   margin: 0px auto;
   width: 1400px;
   height: 750px;
-  background: url('collections.png');
+  background: url("collections.png");
   overflow: hidden;
 }
-.collections .list1 {
+.main .collections .list1 {
   position: absolute;
   padding: 40px;
   left: 128px;
@@ -81,14 +87,14 @@
   width: 345px;
   height: 160px;
 }
-.collections .list1 .item-1 {
+.main .collections .list1 .item-1 {
   display: block;
   margin: 10px auto;
   text-decoration: none;
   color: #ffffff;
   font-size: 15px;
 }
-.collections .list2 {
+.main .collections .list2 {
   position: absolute;
   padding: 20px;
   left: 424px;
@@ -96,30 +102,34 @@
   width: 296px;
   height: 167px;
 }
-.collections .list2 .item-2 {
+.main .collections .list2 .item-2 {
   display: block;
   margin: 7px auto;
   text-decoration: none;
   color: #ffffff;
   font-size: 12px;
 }
-.collections .list3 {
+.main .collections .list3 {
   position: absolute;
   left: 868px;
   top: 156px;
   width: 376px;
   height: 500px;
-  background: url('iconsbg.png') center no-repeat;
+  background: url("iconsbg.png") center no-repeat;
 }
-.contact {
+.main .contact {
   margin: 0px auto;
   width: 1400px;
   height: 770px;
-  background: url('contact.png');
+  background: url("contact.png");
   overflow: hidden;
 }
-.contact .detail {
+.main .contact .detail {
   margin-left: 255px;
   margin-top: 222px;
   height: 300px;
+}
+.main .contact .icons {
+  width: 183px;
+  height: 32px;
 }
