@@ -28,6 +28,9 @@ body {
   text-decoration: none;
   color: #676767;
 }
+.header .links:hover {
+  color: #69dc36;
+}
 .content {
   position: relative;
   top: 0%;
