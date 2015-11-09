@@ -36,8 +36,10 @@
         }
         if (self.position === self.slideCount - 1) {
           document.querySelector('.down-arrow').style.display = 'none';
+          document.querySelector('.footer').classList.add('show');
         } else {
           document.querySelector('.down-arrow').style.display = 'block';
+          document.querySelector('.footer').classList.remove('show');
         }
         // self.beforeSlideAnimationDonw();
         // self['slideAnimation' + self.position]();

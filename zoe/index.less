@@ -20,7 +20,7 @@ html, body {
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 45px;
+  height: 60px;
   background: url("header.png") center no-repeat;
   z-index: 999;
   .links-con {
@@ -28,10 +28,10 @@ html, body {
     overflow: hidden;
     .links {
       float: left;
-      height: 45px;
+      height: 60px;
       margin-right: 70px;
-      line-height: 45px;
-      font-size: 12px;
+      line-height: 60px;
+      font-size: 16px;
       text-decoration: none;
       color: #676767;
       cursor: pointer;
@@ -285,26 +285,63 @@ html, body {
   }
 }
 .footer {
-
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  margin-left: -700px;
+  width: 1400px;
+  height: 50px;
+  background: url("footer.png") center no-repeat;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  &.show {
+    margin-top: -50px;
+  }
 }
 
 @keyframes arrow {
-  0%   {bottom: 20px; opacity: 1}
-  50%  {bottom: 10px; opacity: 0.3}
-  100% {bottom: 20px; opacity: 1}
+  0%   {bottom: 10px; opacity: 1}
+  50%  {bottom: 0; opacity: 0.3}
+  100% {bottom: 10px; opacity: 1}
+}
+@-webkit-keyframes arrow {
+  0%   {bottom: 10px; opacity: 1}
+  50%  {bottom: 0; opacity: 0.3}
+  100% {bottom: 10px; opacity: 1}
+}
+@-moz-keyframes arrow {
+  0%   {bottom: 10px; opacity: 1}
+  50%  {bottom: 0; opacity: 0.3}
+  100% {bottom: 10px; opacity: 1}
+}
+@-o-keyframes arrow {
+  0%   {bottom: 10px; opacity: 1}
+  50%  {bottom: 0; opacity: 0.3}
+  100% {bottom: 10px; opacity: 1}
 }
 .down-arrow {
   position: fixed;
   bottom: 20px;
   left: 50%;
-  margin-left: -15px;
-  width: 30px;
-  height: 15px;
+  margin-left: -25px;
+  width: 40px;
+  height: 25px;
   background: url("arrow.png") center no-repeat;
   background-size: 100% 100%;
   animation-name: arrow;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  -webkit-animation-name: arrow;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: arrow;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-name: arrow;
+  -o-animation-duration: 2s;
+  -o-animation-iteration-count: infinite;
 }
 
 .right-nav {
@@ -312,20 +349,24 @@ html, body {
   right: 0;
   top: 50%;
   .nav {
-    width: 5px;
-    height: 5px;
-    margin: 15px;
+    width: 4px;
+    height: 4px;
+    margin: 10px;
     cursor: pointer;
+    background: #aaaaaa;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -o-border-radius: 50%;
     -moz-border-radius: 50%;
-    box-shadow: 0 0 0 5px #cccccc;
-    -webkit-box-shadow: 0 0 0 5px #cccccc;
-    -o-box-shadow: 0 0 0 5px #cccccc;
-    -moz-box-shadow: 0 0 0 5px #cccccc;
     &.selected {
-      background: #69dc36;
+      width: 8px;
+      height: 8px;
+      margin: 10px 8px;
+      background: transparent;
+      box-shadow: 0 0 0 2px #69dc36;
+      -webkit-box-shadow: 0 0 0 2px #69dc36;
+      -o-box-shadow: 0 0 0 2px #69dc36;
+      -moz-box-shadow: 0 0 0 2px #69dc36;
     }
   }
 }
