@@ -177,14 +177,27 @@ body {
   visibility: visible;
 }
 .content .works .more-works-btn {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  margin-left: -85px;
   display: block;
-  background: url("moreworks.png") center no-repeat;
-  width: 170px;
-  height: 50px;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -75px;
+  width: 150px;
+  height: 40px;
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background: #333333;
+  color: #69dc36;
+}
+.content .works .more-works-btn:hover {
+  background: #69dc36;
+  color: #333333;
 }
 .content .collections {
   position: relative;
@@ -310,44 +323,92 @@ body {
   font-family: "Dumb", "Microsoft YaHei";
 }
 .content .contact .contact-inner .contact-icons {
-  height: 30px;
+  height: 32px;
   margin-top: 10px;
+}
+.content .contact .contact-inner .contact-icons .icon-tplt {
+  display: inline-block;
+  vertical-align: top;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  background: url("contacticons.png") no-repeat;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.content .contact .contact-inner .contact-icons .icon-tplt:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .content .contact .contact-inner .contact-icons .contact-twitter {
   display: inline-block;
   vertical-align: top;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   margin-right: 10px;
-  background: url("contacticons.png");
-  background-position: 0 0;
+  background: url("contacticons.png") no-repeat;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: 5px 5px;
+}
+.content .contact .contact-inner .contact-icons .contact-twitter:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .content .contact .contact-inner .contact-icons .contact-instagram {
   display: inline-block;
   vertical-align: top;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   margin-right: 10px;
-  background: url("contacticons.png");
-  background-position: -51px 0;
+  background: url("contacticons.png") no-repeat;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: -45px 5px;
+}
+.content .contact .contact-inner .contact-icons .contact-instagram:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .content .contact .contact-inner .contact-icons .contact-weibo {
   display: inline-block;
   vertical-align: top;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   margin-right: 10px;
-  background: url("contacticons.png");
-  background-position: -101px 0;
+  background: url("contacticons.png") no-repeat;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: -95px 5px;
+}
+.content .contact .contact-inner .contact-icons .contact-weibo:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .content .contact .contact-inner .contact-icons .contact-zhanku {
   display: inline-block;
   vertical-align: top;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   margin-right: 10px;
-  background: url("contacticons.png");
-  background-position: -152px 0;
+  background: url("contacticons.png") no-repeat;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: -145px 5px;
+}
+.content .contact .contact-inner .contact-icons .contact-zhanku:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .footer {
   position: fixed;
