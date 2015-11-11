@@ -5,7 +5,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-family: Arial, "Microsoft YaHei";
+  font-family: "Arial", "Microsoft YaHei";
 }
 html,
 body {
@@ -307,7 +307,7 @@ body {
   top: 300px;
 }
 .content .contact .contact-inner .contact-text {
-  font-family: "Dumb";
+  font-family: "Dumb", "Microsoft YaHei";
 }
 .content .contact .contact-inner .contact-icons {
   height: 30px;
