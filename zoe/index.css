@@ -5,7 +5,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-family: "arial";
+  font-family: Arial, "Microsoft YaHei";
 }
 html,
 body {
@@ -112,9 +112,9 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -200px 0 0 -590px;
+  margin: -180px 0 0 -590px;
   width: 1180px;
-  height: 480px;
+  height: 370px;
   text-align: center;
 }
 .content .works .works-inner .works-demo {
@@ -142,6 +142,10 @@ body {
   top: 0px;
   width: 100%;
   height: 100%;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
 }
 .content .works .works-inner .works-demo .works-title {
   position: relative;
