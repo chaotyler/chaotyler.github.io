@@ -454,6 +454,10 @@ body {
   -webkit-border-radius: 50%;
   -o-border-radius: 50%;
   -moz-border-radius: 50%;
+  transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
 }
 .right-nav .nav.selected {
   width: 8px;
