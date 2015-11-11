@@ -5,7 +5,12 @@
       this.canSlide = true;
       this.slideCount = 5;
       this.slideDuration = 1000;
+      this.hashes = ['#HOME', '#ABOUT', '#WORKS', '#COLLECTIONS', '#CONTACT'];
       this.bind();
+      this.doHash();
+      setTimeout(function() {
+        document.querySelector('.content').classList.add('transition');
+      }, this.slideDuration);
     },
     bind: function() {
       var self = this;
@@ -52,12 +57,22 @@
         self.slide();
       });
     },
-    slide: function() {
+    doHash: function() {
+      var hash = location.hash;
+      var index = this.hashes.indexOf(hash);
+      if (index === -1) {
+        return;
+      }
+      this.position = index;
+      this.slide(true);
+    },
+    slide: function(firstTime) {
       var self = this;
       document.querySelector('.links-con .links.selected').classList.remove('selected');
       document.querySelectorAll('.links-con .links')[this.position].classList.add('selected');
       document.querySelector('.right-nav .nav.selected').classList.remove('selected');
       document.querySelectorAll('.right-nav .nav')[this.position].classList.add('selected');
+      location.hash = self.hashes[self.position];
       if (self.position === self.slideCount - 1) {
         document.querySelector('.down-arrow').style.display = 'none';
         document.querySelector('.footer').classList.add('show');
@@ -66,6 +81,9 @@
         document.querySelector('.footer').classList.remove('show');
       }
       document.querySelector('.content').style.top = - self.position * 100 + '%';
+      if (firstTime) {
+        return;
+      }
       setTimeout(function() {
         self.canSlide = true;
       }, self.slideDuration + 500);

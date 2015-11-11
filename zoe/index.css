@@ -46,6 +46,8 @@ body {
   top: 0%;
   width: 100%;
   height: 500%;
+}
+.content.transition {
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -113,41 +115,62 @@ body {
   margin: -200px 0 0 -590px;
   width: 1180px;
   height: 480px;
+  text-align: center;
 }
 .content .works .works-inner .works-demo {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  margin: 0px 5px;
-  width: 280px;
-  height: 250px;
+  margin: 15px 10px;
+  width: 250px;
+  height: 155px;
   text-align: center;
   text-decoration: none;
+  overflow: hidden;
+}
+.content .works .works-inner .works-demo .works-img {
+  width: 100%;
+  height: 100%;
   transition: transform 0.5s ease;
   -moz-transition: -moz-transform 0.5s ease;
   -webkit-transition: -webkit-transform 0.5s ease;
   -o-transition: -o-transform 0.5s ease;
 }
-.content .works .works-inner .works-demo .works-img {
-  width: 280px;
-  height: 175px;
+.content .works .works-inner .works-demo .works-bg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
 }
 .content .works .works-inner .works-demo .works-title {
-  margin-top: 10px;
+  position: relative;
+  visibility: hidden;
+  margin-top: -80px;
   color: #ffffff;
   font-size: 15px;
 }
 .content .works .works-inner .works-demo .works-class {
+  position: relative;
+  visibility: hidden;
   margin-top: 5px;
-  color: #b5b5b5;
+  color: #ffffff;
   font-size: 12px;
 }
-.content .works .works-inner .works-demo:hover {
-  z-index: 99;
+.content .works .works-inner .works-demo:hover .works-img {
   transform: scale3d(1.3, 1.3, 1.3);
   -moz-transform: scale3d(1.3, 1.3, 1.3);
   -webkit-transform: scale3d(1.3, 1.3, 1.3);
   -o-transform: scale3d(1.3, 1.3, 1.3);
+}
+.content .works .works-inner .works-demo:hover .works-bg {
+  background: rgba(0, 0, 0, 0.8);
+}
+.content .works .works-inner .works-demo:hover .works-title {
+  visibility: visible;
+}
+.content .works .works-inner .works-demo:hover .works-class {
+  visibility: visible;
 }
 .content .works .more-works-btn {
   position: absolute;

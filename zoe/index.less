@@ -49,10 +49,12 @@ html, body {
   top: 0%;
   width: 100%;
   height: 500%;
-  transition: all 1s ease;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
+  &.transition {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+  }
   .section(@imgurl, @bgcolor) {
     position: relative;
     width: 100%;
@@ -95,39 +97,62 @@ html, body {
       margin: -200px 0 0 -590px;
       width: 1180px;
       height: 480px;
+      text-align: center;
       .works-demo {
         display: inline-block;
         vertical-align: top;
         position: relative;
-        margin: 0px 5px;
-        width: 280px;
-        height: 250px;
+        margin: 15px 10px;
+        width: 250px;
+        height: 155px;
         text-align: center;
         text-decoration: none;
-        transition: transform 0.5s ease;
-        -moz-transition: -moz-transform 0.5s ease;
-        -webkit-transition: -webkit-transform 0.5s ease;
-        -o-transition: -o-transform 0.5s ease;
+        overflow: hidden;
         .works-img {
-          width: 280px;
-          height: 175px;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.5s ease;
+          -moz-transition: -moz-transform 0.5s ease;
+          -webkit-transition: -webkit-transform 0.5s ease;
+          -o-transition: -o-transform 0.5s ease;
+        }
+        .works-bg {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
         }
         .works-title {
-          margin-top: 10px;
+          position: relative;
+          visibility: hidden;
+          margin-top: -80px;
           color: #ffffff;
           font-size: 15px;
         }
         .works-class {
+          position: relative;
+          visibility: hidden;
           margin-top: 5px;
-          color: #b5b5b5;
+          color: #ffffff;
           font-size: 12px;
         }
         &:hover {
-          z-index: 99;
-          transform: scale3d(1.3, 1.3, 1.3);
-          -moz-transform: scale3d(1.3, 1.3, 1.3);
-          -webkit-transform: scale3d(1.3, 1.3, 1.3);
-          -o-transform: scale3d(1.3, 1.3, 1.3);
+          .works-img {
+            transform: scale3d(1.3, 1.3, 1.3);
+            -moz-transform: scale3d(1.3, 1.3, 1.3);
+            -webkit-transform: scale3d(1.3, 1.3, 1.3);
+            -o-transform: scale3d(1.3, 1.3, 1.3);
+          }
+          .works-bg {
+            background: rgba(0, 0, 0, 0.8);
+          }
+          .works-title {
+            visibility: visible;
+          }
+          .works-class {
+            visibility: visible;
+          }
         }
       }
     }
