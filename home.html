@@ -1,0 +1,7 @@
+---
+layout: page
+title: Chaotyler
+---
+{% for post in site.posts %}
+    <li class="blog-item"><span class="time">{{ post.date | date: "%Y-%m-%d" }}</span> <a class="title" href="/2015/12/24/1.html">{{ post.title }}</a></li>
+{% endfor %}
