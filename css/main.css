@@ -3,6 +3,10 @@ body {
     padding-top: 70px;
 }
 
+p > img {
+  width: 100%;
+}
+
 @media (max-width: 450px){
     .myJumbotron{
         overflow: hidden !important;
