@@ -19,8 +19,7 @@
 }
 @media (max-width: 767px) {
   .main-con {
-    margin: 0;
-    width: 100%;
+    width: 90%;
     min-width: 0;
     overflow: hidden;
   }
@@ -49,6 +48,11 @@
 }
 .blog-item > .title:hover {
   color: #CC0000;
+}
+@media (max-width: 767px) {
+  .blog-item > .time {
+    display: none;
+  }
 }
 .right-info {
   float: left;
