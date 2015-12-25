@@ -24,13 +24,13 @@
     overflow: hidden;
   }
 }
-.blog-list {
+.left-content {
   float: left;
   padding: 0;
   width: 60%;
 }
 @media (max-width: 767px) {
-  .blog-list {
+  .left-content {
     float: none;
     width: 100%;
   }

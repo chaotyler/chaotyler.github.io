@@ -10,194 +10,21 @@
 <body>
   <div class="main-title">CHAOTYLER</div>
   <div class="main-con">
-    <ul class="blog-list">
-      {{ content }}
-        <!--         
-        <li class="blog-item"><span class="time">2015-12-24</span> <a class="title" href="/2015/12/24/1.html">一张图片搞定开源协议的选择</a></li>
-    
-        <li class="blog-item"><span class="time">2015-07-15</span> <a class="title" href="/2015/07/15/1.html">［翻译］深入理解ES6之：Generator</a></li>
-    
-        <li class="blog-item"><span class="time">2015-03-31</span> <a class="title" href="/2015/03/31/1.html">前端面试题答案整理</a></li>
-    
-        <li class="blog-item"><span class="time">2015-03-25</span> <a class="title" href="/2015/03/25/2.html">2015跳槽零星知识点整理2</a></li>
-    
-        <li class="blog-item"><span class="time">2015-03-25</span> <a class="title" href="/2015/03/25/1.html">2015跳槽零星知识点整理</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-25</span> <a class="title" href="/2015/02/25/1.html">推荐一个VPN</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-18</span> <a class="title" href="/2015/02/18/1.html">新主页诞生了</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-15</span> <a class="title" href="/2015/02/15/1.html">DOM优化</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-06</span> <a class="title" href="/2015/02/06/4.html">JavaScript标签中的defer和async</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-06</span> <a class="title" href="/2015/02/06/3.html">js中几种实用的跨域方法原理详解</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-06</span> <a class="title" href="/2015/02/06/2.html">一次完整的Http请求过程</a></li>
-    
-        <li class="blog-item"><span class="time">2015-02-06</span> <a class="title" href="/2015/02/06/1.html">对象及原型中的几个需要注意的地方</a></li>
-    
-        <li class="blog-item"><span class="time">2014-12-17</span> <a class="title" href="/2014/12/17/2.html">JavaScript单线程/浏览器事件驱动</a></li>
-    
-        <li class="blog-item"><span class="time">2014-12-17</span> <a class="title" href="/2014/12/17/1.html">bind,call,apply/setTimeout, setInterval传递参数和取消</a></li>
-    
-        <li class="blog-item"><span class="time">2014-12-12</span> <a class="title" href="/2014/12/12/1.html">this指针</a></li>
-    
-        <li class="blog-item"><span class="time">2014-12-10</span> <a class="title" href="/2014/12/10/1.html">闭包/静态作用域/闭包数据共享</a></li>
-    
-        <li class="blog-item"><span class="time">2014-12-08</span> <a class="title" href="/2014/12/08/1.html">执行上下文（栈）/作用域（链）/with</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-20</span> <a class="title" href="/2014/11/20/1.html">关于__proto__和prototype</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-19</span> <a class="title" href="/2014/11/19/1.html">JSON字符串/原型链/构造函数</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-08</span> <a class="title" href="/2014/11/08/1.html">JavaScript的继承机制（加我的理解）/原型链/属性查找/hasOwnProperty</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-07</span> <a class="title" href="/2014/11/07/1.html">使用闭包和立即执行的方法来保存状态</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-06</span> <a class="title" href="/2014/11/06/1.html">函数表达式和函数声明/()是一个分组操作符/Module模式/匿名闭包/克隆/function的执行</a></li>
-    
-        <li class="blog-item"><span class="time">2014-11-05</span> <a class="title" href="/2014/11/05/1.html">全局变量预解析/For循环的优化/eval()/parseInt()和Number/左花括号的位置</a></li>
-    
-        <li class="blog-item"><span class="time">2014-09-30</span> <a class="title" href="/2014/09/30/1.html">Object.defineProperty()/Object.keys()</a></li>
-    
-        <li class="blog-item"><span class="time">2014-09-12</span> <a class="title" href="/2014/09/12/1.html">Array.prototype.filter()</a></li>
-    
-        <li class="blog-item"><span class="time">2014-09-01</span> <a class="title" href="/2014/09/01/1.html">JavaScript核心：对象 原型链 构造函数 执行上下文栈 执行上下文 变量对象 活动对象 作用域链 闭包 This 总结</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/6.html">Understanding REST</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/5.html">几个JavaScript的题目</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/4.html">深入理解JavaScript系列（3）：全面解析Module模式(注释)</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/3.html">JavaScript权威指南笔记 - 2</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/2.html">JavaScript权威指南笔记 - 3</a></li>
-    
-        <li class="blog-item"><span class="time">2014-08-21</span> <a class="title" href="/2014/08/21/1.html">JSON介绍</a></li>
-    
-        <li class="blog-item"><span class="time">2013-09-05</span> <a class="title" href="/2013/09/05/1.html">JavaScript进制之间的转换</a></li>
-    
-        <li class="blog-item"><span class="time">2013-06-17</span> <a class="title" href="/2013/06/17/1.html">JavaScript知识点之：delete操作符</a></li>
-    
-        <li class="blog-item"><span class="time">2013-06-14</span> <a class="title" href="/2013/06/14/2.html">智力题 - 士兵编队与传讯员</a></li>
-    
-        <li class="blog-item"><span class="time">2013-06-14</span> <a class="title" href="/2013/06/14/1.html">JavaScript权威指南笔记 - 1</a></li>
-    
-        <li class="blog-item"><span class="time">2013-05-16</span> <a class="title" href="/2013/05/16/1.html">HTML的a标签href设为零操作的原因和方式</a></li>
-    
-        <li class="blog-item"><span class="time">2013-05-13</span> <a class="title" href="/2013/05/13/1.html">浅谈CSS选择器中的空格</a></li>
-    
-        <li class="blog-item"><span class="time">2013-02-25</span> <a class="title" href="/2013/02/25/1.html">JavaScript知识点之“事件机制”</a></li>
-    
-        <li class="blog-item"><span class="time">2013-01-16</span> <a class="title" href="/2013/01/16/1.html">JavaScript之onkeypress,onkeydown,onkeyup区别</a></li>
-    
-        <li class="blog-item"><span class="time">2013-01-04</span> <a class="title" href="/2013/01/04/3.html">web前端知识点之：CSS的块级元素和行内元素</a></li>
-    
-        <li class="blog-item"><span class="time">2013-01-04</span> <a class="title" href="/2013/01/04/2.html">你真的了解HTML吗？–雅虎面试题</a></li>
-    
-        <li class="blog-item"><span class="time">2013-01-04</span> <a class="title" href="/2013/01/04/1.html">Web前端知识点：汇总二</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-28</span> <a class="title" href="/2012/12/28/1.html">JavaScript知识点之“跨域”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-27</span> <a class="title" href="/2012/12/27/1.html">JavaScript事件冒泡简介及应用</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-26</span> <a class="title" href="/2012/12/26/2.html">jQuery的优缺点</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-26</span> <a class="title" href="/2012/12/26/1.html">Ajax优缺点</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-14</span> <a class="title" href="/2012/12/14/2.html">CSS选择器的优先级设定</a></li>
-    
-        <li class="blog-item"><span class="time">2012-12-14</span> <a class="title" href="/2012/12/14/1.html">JavaScript常见的编码陷阱</a></li>
-    
-        <li class="blog-item"><span class="time">2012-10-08</span> <a class="title" href="/2012/10/08/1.html">10 个超赞的 JavaScript 图形图表绘制插件</a></li>
-    
-        <li class="blog-item"><span class="time">2012-09-14</span> <a class="title" href="/2012/09/14/2.html">给力的 Google HTML5 训练营(HTML5 Drag&amp;Drop 拖拽、FileReader实例教程)</a></li>
-    
-        <li class="blog-item"><span class="time">2012-09-14</span> <a class="title" href="/2012/09/14/1.html">FileReader详解与实例---读取并显示图像文件</a></li>
-    
-        <li class="blog-item"><span class="time">2012-08-23</span> <a class="title" href="/2012/08/23/1.html">javascript知识点之灵活限定各个文件的变量空间</a></li>
-    
-        <li class="blog-item"><span class="time">2012-08-08</span> <a class="title" href="/2012/08/08/1.html">JavaScript世界的一等公民 - 函数</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-19</span> <a class="title" href="/2012/07/19/3.html">CSS3之盒子模型中的box-sizing属性</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-19</span> <a class="title" href="/2012/07/19/2.html">CSS之通过定位简单实现div绝对居中</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-19</span> <a class="title" href="/2012/07/19/1.html">23 POPULAR LOGOS BUILT PURELY WITH CSS3</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-18</span> <a class="title" href="/2012/07/18/1.html">javascript知识点之特殊类型</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-17</span> <a class="title" href="/2012/07/17/1.html">CSS知识点之W3schools学习笔记</a></li>
-    
-        <li class="blog-item"><span class="time">2012-07-10</span> <a class="title" href="/2012/07/10/1.html">javascript知识点之onload和jquery方法ready()的区别</a></li>
-    
-        <li class="blog-item"><span class="time">2012-06-20</span> <a class="title" href="/2012/06/20/1.html">深入理解JavaScript作用域和作用域链</a></li>
-    
-        <li class="blog-item"><span class="time">2012-06-05</span> <a class="title" href="/2012/06/05/4.html">JavaScript知识点之“面向对象小结”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-06-05</span> <a class="title" href="/2012/06/05/3.html">JavaScript知识点之“private&amp;public”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-06-05</span> <a class="title" href="/2012/06/05/2.html">JavaScript知识点之“函数closure ”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-06-05</span> <a class="title" href="/2012/06/05/1.html">JavaScript中String和JSON之间的转换</a></li>
-    
-        <li class="blog-item"><span class="time">2012-04-20</span> <a class="title" href="/2012/04/20/1.html">web前端开发者的10个优秀习惯</a></li>
-    
-        <li class="blog-item"><span class="time">2012-04-05</span> <a class="title" href="/2012/04/05/1.html">javascript知识点之“闭包”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-03-14</span> <a class="title" href="/2012/03/14/1.html">Java知识点之“Java多线程”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-27</span> <a class="title" href="/2012/02/27/1.html">JavaScript知识点之“addEventListener和attachEvent”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-22</span> <a class="title" href="/2012/02/22/4.html">Web前端知识点：汇总一</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-22</span> <a class="title" href="/2012/02/22/3.html">Android Application Fundamentals 学习笔记</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-22</span> <a class="title" href="/2012/02/22/2.html">html5知识点整理总结</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-22</span> <a class="title" href="/2012/02/22/1.html">JavaScript知识点之“AJAX”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-21</span> <a class="title" href="/2012/02/21/1.html">jQuery从入门到精通(学习笔记)</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-10</span> <a class="title" href="/2012/02/10/1.html">英文书面文件书写注意事项</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-09</span> <a class="title" href="/2012/02/09/3.html">WEB前端开发规范文档</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-09</span> <a class="title" href="/2012/02/09/2.html">CSS Sprite技术</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-09</span> <a class="title" href="/2012/02/09/1.html">html5在书写规范上的更改简化</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-07</span> <a class="title" href="/2012/02/07/2.html">Java 知识点之“汇总一”</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-07</span> <a class="title" href="/2012/02/07/1.html">EJB(Enterprise JavaBean)整理总结</a></li>
-    
-        <li class="blog-item"><span class="time">2012-02-01</span> <a class="title" href="/2012/02/01/1.html">jquery中$的意义以及$(function(){})等几种初始化</a></li>
-    
-        <li class="blog-item"><span class="time">2012-01-10</span> <a class="title" href="/2012/01/10/1.html">html5 javascript FileReader 读取文件并传回后台保存</a></li>
-    
-        <li class="blog-item"><span class="time">2011-12-14</span> <a class="title" href="/2011/12/14/2.html">ajax实现文件上传以及后台servlet中的处理总结</a></li>
-    
-        <li class="blog-item"><span class="time">2011-12-14</span> <a class="title" href="/2011/12/14/1.html">Java知识点之“写文件操作以及复制文件操作”</a></li>
-    
-        <li class="blog-item"><span class="time">2011-12-09</span> <a class="title" href="/2011/12/09/1.html">Java知识点之“读取本地图片并生成新的图片(裁剪或缩放)”</a></li>
-    
-        <li class="blog-item"><span class="time">2011-12-05</span> <a class="title" href="/2011/12/05/1.html">javascript数据(对象字符串等)转换成json数据的javascript扩展包的使用</a></li>
-        -->
-    </ul>
+    <div class="left-content">
+      {{ page.content }}
+    </div>
     <div class="right-info">
       <p>
-          Email：<a href="mailto:chaotyler@gmail.com">chaotyler@gmail.com</a>
+        Email：<a href="mailto:chaotyler@gmail.com">chaotyler@gmail.com</a>
       </p>
       <p>
-          GitHub：<a href="https://github.com/chaotyler" target="_blank">chaotyler</a>
+        GitHub：<a href="https://github.com/chaotyler" target="_blank">chaotyler</a>
       </p>
       <p>
-          Twitter：<a href="https://twitter.com/chaotyler_" target="_blank">@chaotyler_</a>
+        Twitter：<a href="https://twitter.com/chaotyler_" target="_blank">@chaotyler_</a>
       </p>
-      <p>CSDN博客：
-          <a href="http://blog.csdn.net/ymjring" target="_blank">超超玄著</a>
+      <p>
+        CSDN博客：<a href="http://blog.csdn.net/ymjring" target="_blank">超超玄著</a>
       </p>
       <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2261745701&verifier=f8f35954&dpc=1"></iframe>
     </div>
