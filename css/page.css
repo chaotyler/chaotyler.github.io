@@ -52,11 +52,40 @@
   margin-left: 5%;
   width: 30%;
 }
+.right-info > .desktop-info {
+  display: block;
+}
+.right-info > .mobile-info {
+  display: none;
+}
 @media (max-width: 767px) {
   .right-info {
     float: none;
     margin-left: 0;
     width: 100%;
+  }
+  .right-info > .desktop-info {
+    display: none;
+  }
+  .right-info > .mobile-info {
+    display: block;
+  }
+}
+.main-footer {
+  margin: 20px auto 0 auto;
+  width: 80%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  border-top: solid 1px #aaaaaa;
+}
+@media (max-width: 767px) {
+  .main-footer {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
   }
 }
 p > img {

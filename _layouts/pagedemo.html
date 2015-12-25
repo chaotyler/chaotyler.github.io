@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:wb="http://open.weibo.com/wb">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta property="wb:webmaster" content="b7c3fd067f5a4491" />
+  <link rel="icon" href="/img/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../css/page.css">
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  <title>{{ page.title }}</title>
 </head>
 <body>
   <div class="main-title">CHAOTYLER</div>
@@ -186,21 +192,43 @@
       </ul>
     </div>
     <div class="right-info">
-      <p>
+      <div class="both-info">
+        <p>
           Email：<a href="mailto:chaotyler@gmail.com">chaotyler@gmail.com</a>
-      </p>
-      <p>
-          GitHub：<a href="https://github.com/chaotyler" target="_blank">chaotyler</a>
-      </p>
-      <p>
-          Twitter：<a href="https://twitter.com/chaotyler_" target="_blank">@chaotyler_</a>
-      </p>
-      <p>CSDN博客：
-          <a href="http://blog.csdn.net/ymjring" target="_blank">超超玄著</a>
-      </p>
-      <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2261745701&verifier=f8f35954&dpc=1"></iframe>
+        </p>
+        <p>
+          CSDN：<a href="http://blog.csdn.net/ymjring" target="_blank">超超玄著</a>
+        </p>
+        <p>
+          <a class="github-button" href="https://github.com/chaotyler" data-count-href="/chaotyler/followers" data-count-api="/users/chaotyler#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @chaotyler on GitHub">Follow @chaotyler</a>
+          <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+        </p>
+      </div>
+      <div class="desktop-info">
+        <p>
+          <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2261745701&verifier=f8f35954&dpc=1"></iframe>
+        </p>
+        <p>
+          <a class="twitter-timeline" href="https://twitter.com/chaotyler_" data-widget-id="680224533945516033">Tweets by @chaotyler_</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </p>
+      </div>
+      <div class="mobile-info">
+        <p>
+          <a href="https://twitter.com/chaotyler_" class="twitter-follow-button" data-show-count="false">Follow @chaotyler_</a>
+        </p>
+        <p>
+          <wb:follow-button uid="2261745701" type="red_1" width="67" height="24" ></wb:follow-button>
+        </p>
+        <p>
+          <a href="http://weibo.com/u/2261745701?s=6uyXnP" target="_blank"><img border="0" style="width: 100%;" src="http://service.t.sina.com.cn/widget/qmd/2261745701/f8f35954/10.png"/></a>
+        </p>
+      </div>
     </div>
     <div class="bottom-btns"></div>
+  </div>
+  <div class="main-footer">
+    © 2015 CHAOTYLER
   </div>
 </body>
 </html>

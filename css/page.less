@@ -57,10 +57,38 @@
   float: left;
   margin-left: 5%;
   width: 30%;
+  >.desktop-info {
+    display: block;
+  }
+  >.mobile-info {
+    display: none;
+  }
   @media (max-width: 767px) {
     float: none;
     margin-left: 0;
     width: 100%;
+    >.desktop-info {
+      display: none;
+    }
+    >.mobile-info {
+      display: block;
+    }
+  }
+}
+
+.main-footer {
+  margin: 20px auto 0 auto;
+  width: 80%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  border-top: solid 1px #aaaaaa;
+  @media (max-width: 767px) {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
   }
 }
 
