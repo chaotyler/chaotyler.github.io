@@ -57,23 +57,45 @@
   float: left;
   margin-left: 5%;
   width: 30%;
-  >.desktop-info {
+  >.about-me-desktop {
     display: block;
-  }
-  >.mobile-info {
-    display: none;
   }
   @media (max-width: 767px) {
     float: none;
     margin-left: 0;
     width: 100%;
-    >.desktop-info {
+    >.about-me-desktop {
       display: none;
     }
-    >.mobile-info {
-      display: block;
+  }
+}
+
+.weibo-card {
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+  }
+}
+
+.twitter-follow {
+  display: none;
+}
+
+.twitter-follow-gfw {
+  display: none;
+  >.link {
+    display: block;
+    width: 140px;
+    height: 22px;
+    background: url("/img/twitterbtn.png") center no-repeat;
+    &:hover {
+      background: url("/img/twitterbtnhover.png") center no-repeat;
     }
   }
+}
+
+.twitter-timeline {
+  display: none;
 }
 
 .main-footer {
