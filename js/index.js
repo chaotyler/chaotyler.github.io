@@ -5,7 +5,7 @@
   
   // 超过5秒没成功即不能访问twitter，则使用抠下来的twitter follow button，不加载timeline
   var twitterTimeout = setTimeout(function() {
-    twitterImg = null;
+    twitterImg.src = '/img/favicon.ico';
     document.getElementById('twitter-follow-gfw').style.display = 'block';
   }, 5000);
 
