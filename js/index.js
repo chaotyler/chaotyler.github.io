@@ -6,7 +6,7 @@
   // 超过5秒没成功即不能访问twitter，则使用抠下来的twitter follow button，不加载timeline
   var twitterTimeout = setTimeout(function() {
     twitterImg.onload = null;
-    twitterImg.src = '/img/favicon.ico';
+    twitterImg.src = '';
     document.getElementById('twitter-follow-gfw').style.display = 'block';
   }, 5000);
 
@@ -18,11 +18,10 @@
     document.getElementById('twitter-timeline').style.display = 'block';
   };
 
-  twitterImg.onerror = function() {
-    console.log('loaderror');
-    clearTimeout(twitterTimeout);
-    document.getElementById('twitter-follow-gfw').style.display = 'block';
-  }
+  // safari在twitterImg设置src为空时仍然会继续加载很长一段时间，故设置最长加载20s，超时直接停掉
+  setTimeout(function() {
+    window.stop && window.stop();
+  }, 200000);
 
   // 用于加载twitter组件的方法，抠自twitter。
   function loadTwitterWidget(d,s,id){
