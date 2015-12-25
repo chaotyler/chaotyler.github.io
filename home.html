@@ -4,6 +4,6 @@ title: Chaotyler
 ---
 <ul class="blog-list">
 {% for post in site.posts %}
-  <li class="blog-item"><span class="time">{{ post.date | date: "%Y-%m-%d" }}</span> <a class="title" href="/2015/12/24/1.html">{{ post.title }}</a></li>
+  <li class="blog-item"><span class="time">{{ post.date | date: "%Y-%m-%d" }}</span> <a class="title" href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 <ul class="blog-list">
