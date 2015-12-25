@@ -17,11 +17,12 @@
     document.getElementById('twitter-follow').style.display = 'block';
     document.getElementById('twitter-timeline').style.display = 'block';
   };
-  // twitterImg.onerror = function() {
-  //   console.log('error');
-  //   clearTimeout(twitterTimeout);
-  //   document.getElementById('twitter-follow-gfw').style.display = 'block';
-  // }
+
+  twitterImg.onerror = function() {
+    console.log('loaderror');
+    clearTimeout(twitterTimeout);
+    document.getElementById('twitter-follow-gfw').style.display = 'block';
+  }
 
   // 用于加载twitter组件的方法，抠自twitter。
   function loadTwitterWidget(d,s,id){
