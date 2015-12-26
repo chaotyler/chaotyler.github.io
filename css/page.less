@@ -39,11 +39,17 @@
 }
 
 .blog-item {
+  position: relative;
+  box-sizing: border-box;
   margin: 10px 0;
+  padding: 5px 0;
   width: 100%;
   &:before {
     content: "";
-    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: block;
     margin-right: 5px;
     width: 1em;
     height: 1em;
@@ -52,10 +58,17 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+  &:nth-child(odd) {
+    background-color: #eeeeee;
+  }
   >.time {
-
+    position: absolute;
+    right: 5px;
+    top: 5px;
   }
   >.title {
+    display: block;
+    padding: 0 90px 0 25px;
     color: #1a0dab;
     text-decoration: none;
   }
