@@ -59,6 +59,7 @@
     // 判断是否显示加载更多和全部的按钮
     renderButton: function(mobile) {
       var type = mobile ? 'touchend' : 'click';
+      var timeout = mobile ? 10 : 0;
       var blogList = document.getElementById('load-btns');
       if (!blogList) {
         return;
@@ -77,7 +78,9 @@
           currentIndex = blogs.length - 1;
           document.getElementById('load-btns').innerHTML = '已经全部加载';
         }
-        loadToIndex(currentIndex);
+        setTimeout(function() {
+          loadToIndex(currentIndex);
+        }, timeout);
       });
 
       function loadToIndex(index) {
