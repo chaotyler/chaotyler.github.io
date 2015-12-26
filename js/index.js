@@ -58,7 +58,7 @@
     },
     // 判断是否显示加载更多和全部的按钮
     renderButton: function(mobile) {
-      var type = mobile ? 'tap' : 'click';
+      var type = mobile ? 'touchend' : 'click';
       var blogList = document.getElementById('load-btns');
       if (!blogList) {
         return;
