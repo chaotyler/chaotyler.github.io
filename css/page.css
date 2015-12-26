@@ -1,7 +1,20 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/flaticon.eot");
+  src: url("../fonts/flaticon.eot#iefix") format("embedded-opentype"), url("../fonts/flaticon.woff") format("woff"), url("../fonts/flaticon.ttf") format("truetype"), url("../fonts/flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 .main-title {
   text-align: center;
-  height: 200px;
-  line-height: 200px;
+  height: 150px;
+  line-height: 150px;
   font-size: 60px;
 }
 @media (max-width: 767px) {
@@ -16,6 +29,12 @@
   width: 80%;
   min-width: 768px;
   overflow: hidden;
+}
+.main-con.-fold {
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -moz-transition: all 1s ease;
 }
 @media (max-width: 767px) {
   .main-con {
@@ -42,27 +61,24 @@
 }
 .blog-item {
   position: relative;
-  box-sizing: border-box;
   margin: 10px 0;
   padding: 5px 0;
   width: 100%;
 }
 .blog-item:before {
-  content: "";
+  content: "\e019";
+  font-family: Flaticon;
   position: absolute;
   left: 5px;
   top: 5px;
   display: block;
   margin-right: 5px;
-  width: 1em;
-  height: 1em;
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZmlsbD0iIzQ0NDQ0NCIgZD0iTTExIDFsLTUgNWgtM2wtMyA0YzAgMCAzLjE3OC0wLjg4NSA1LjAzMi0wLjQ3bC01LjAzMiA2LjQ3IDYuNTkyLTUuMTI3YzAuOTE5IDIuMTA0LTAuNTkyIDUuMTI3LTAuNTkyIDUuMTI3bDQtM3YtM2w1LTUgMS01LTUgMXoiPjwvcGF0aD48L3N2Zz4=");
-  background-size: 70% 70%;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .blog-item:nth-child(odd) {
   background-color: #eeeeee;
+}
+.blog-item:nth-child(n+42) {
+  display: none;
 }
 .blog-item > .time {
   position: absolute;
@@ -98,6 +114,33 @@
     display: none;
   }
 }
+.bottom-btns-con {
+  clear: both;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+.load-button {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 5px;
+  height: 40px;
+  line-height: 30px;
+  border-radius: 5px;
+  background-color: #cccccc;
+  cursor: pointer;
+}
+.load-button:hover {
+  background-color: #aaaaaa;
+}
+.load-button.-more:before {
+  content: "\e00c";
+  font-family: Flaticon;
+}
+.load-button.-all:before {
+  content: "\e003";
+  font-family: Flaticon;
+}
 .weibo-card {
   display: none;
 }
@@ -124,7 +167,6 @@
   cursor: pointer;
   background-color: #1b95e0;
   border-radius: 3px;
-  box-sizing: border-box;
   text-decoration: none;
   outline: 0;
 }
