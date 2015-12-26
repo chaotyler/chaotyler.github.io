@@ -118,10 +118,14 @@
   }
 }
 .bottom-btns-con {
+  display: none;
   clear: both;
   text-align: center;
   height: 50px;
   line-height: 50px;
+}
+.blog-list + .bottom-btns-con {
+  display: block;
 }
 .load-button {
   display: inline-block;
