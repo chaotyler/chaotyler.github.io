@@ -9,11 +9,17 @@
   font-style: normal;
 }
 
-* {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.left-content {
+  * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  // 避免正文的图片过大
+  p > img {
+    width: 100%;
+  }
 }
 
 .main-title {
@@ -223,9 +229,4 @@
     line-height: 30px;
     font-size: 12px;
   }
-}
-
-// 避免正文的图片过大
-p > img {
-  width: 100%;
 }

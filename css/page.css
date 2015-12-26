@@ -5,11 +5,14 @@
   font-weight: normal;
   font-style: normal;
 }
-* {
+.left-content * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -o-box-sizing: border-box;
   -moz-box-sizing: border-box;
+}
+.left-content p > img {
+  width: 100%;
 }
 .main-title {
   text-align: center;
@@ -215,7 +218,4 @@
     line-height: 30px;
     font-size: 12px;
   }
-}
-p > img {
-  width: 100%;
 }
