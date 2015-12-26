@@ -19,7 +19,7 @@
 }
 @media (max-width: 767px) {
   .main-con {
-    width: 90%;
+    width: 100%;
     min-width: 0;
     overflow: hidden;
   }
