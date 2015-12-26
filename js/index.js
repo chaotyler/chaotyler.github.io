@@ -2,10 +2,9 @@
   
   var Page = {
     init: function() {
-      this.renderButton();
       var ua = navigator.userAgent;
       var isMobile = ua.search(/Android|iPhone/i) != -1;
-      
+      this.renderButton(isMobile);
       // 如果是移动端，不需要监测是否能访问twitter，直接用抠下来的follow按钮
       if (isMobile) {
         document.getElementById('twitter-follow-gfw').style.display = 'block';
@@ -58,7 +57,8 @@
       }
     },
     // 判断是否显示加载更多和全部的按钮
-    renderButton: function() {
+    renderButton: function(mobile) {
+      var type = mobile ? 'tap' : 'click';
       var blogList = document.getElementById('load-btns');
       if (!blogList) {
         return;
@@ -66,7 +66,7 @@
       var blogs = document.getElementsByClassName('blog-item');
       var blogCon = document.getElementById('blog-con');
       var currentIndex = 40;
-      document.getElementById('load-btns').addEventListener('click', function(e) {
+      document.getElementById('load-btns').addEventListener(type, function(e) {
         if (e.target.id === 'load-more') {
           currentIndex += 20;
           if (currentIndex >= blogs.length) {
