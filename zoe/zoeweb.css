@@ -82,7 +82,7 @@ transition:all 0.2s ease;-webkit-transition:all 0.2s ease; -o-transition:all 0.2
 .title03{height:150px; background:url(images/title03.png) no-repeat 50% center;}
 .centerBox{width:1084px; margin:0 auto;}
 .name,.email,.tel{width:400px; height:50px; margin:0 auto;}
-.message{width:400px; height:154px; margin:0 auto;}
+.message{width:400px; height:20px; line-height: 20px; margin:0 auto; font-size: 16px; color: #008212; text-align: center;}
 .name span,.email span, .tel span{font-size:16px; font-family:arial; color:#333333; 
 	margin-left:20px; display:block; padding-top:26px;}
 .message span{font-size:16px; font-family:arial; color:#333333; margin-left:20px;
@@ -91,7 +91,7 @@ transition:all 0.2s ease;-webkit-transition:all 0.2s ease; -o-transition:all 0.2
 margin-bottom:0;}
 .line02,.line03,.line04{width:400px; border:none; height:2px; background:#333; 
 margin-top:0; margin-bottom:0;}
-.submit{display: block;width:400px; height:44px; background:#008212; margin-top:20px; 
+.submit{display: block;width:400px; height:44px; background:#008212; margin-top:20px; cursor: pointer;
 	margin-left:auto; margin-right:auto; line-height:44px; text-align:center;font-size:20px; font-family:arial; color:white;}
 
 .footer{height:60px; background:#f2f2f2; margin-top:81px;}
@@ -102,12 +102,7 @@ margin-top:0; margin-bottom:0;}
 .bigwork img{display: block;min-width: 50%;max-width: 80%;margin: 50px auto;};
 
 .contactForm{width: 1084px;margin: 0 auto;display: block;}
-.formItem{
-  width: 400px;
-  margin: 0 auto;
-  padding: 10px 30px;
-  border-bottom: solid 2px #333333;
-}
+.formItem{width: 400px;margin: 0 auto;padding: 10px 30px;border-bottom: solid 2px #333333;}
 .formItem span {display: inline-block; width: 70px;}
 .formItem input {display: inline-block; width: 270px;height: 30px;border: solid 1px #cccccc;}
 .formItem textarea {display: inline-block; width: 270px;height: 90px;resize: none;border: solid 1px #cccccc;}

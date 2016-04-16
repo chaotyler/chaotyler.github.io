@@ -47,6 +47,30 @@
       $('.input').on('blur', function(e) {
         $(this).parent().removeClass('focus');
       });
+      $('#sendButton').on('click', function(e) {
+        if ($('#nameInput').val() == '' ||
+          $('#emailInput').val() == '' ||
+          $('#telInput').val() == '' ||
+          $('#msgInput').val() == '') {
+          $('#message').text('请输入所有必需信息，谢谢！');
+          return;
+        }
+        emailjs.send('default_service', 'template_7aCgCnfX', {
+          to_email: 'zoeeying@gmail.com',
+          contact_name: $('#nameInput').val(),
+          contact_email: $('#emailInput').val(),
+          contact_tel: $('#telInput').val(),
+          contact_message: $('#msgInput').val()
+        }).then(function(response) {
+          $('#message').text('发送成功，谢谢！');
+          $('#nameInput').val('');
+          $('#emailInput').val('');
+          $('#telInput').val('');
+          $('#msgInput').val('');
+        }, function(err) {
+           $('#message').text('发送失败，请重新尝试，谢谢！');
+        });
+      });
     }
   };
   window.Page = Page;
