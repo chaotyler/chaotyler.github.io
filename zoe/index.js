@@ -1,6 +1,7 @@
 (function(){
   var Page = {
     init: function() {
+      emailjs.init("user_k02nWWXRv4BcJdENGhpiu");
       this.bind();
     },
     bind: function() {
@@ -39,6 +40,12 @@
       $('.bigwork').on('click', function() {
         $(document.body).css('overflow', 'auto');
         $(this).removeClass('show');
+      });
+      $('.input').on('focus', function(e) {
+        $(this).parent().addClass('focus');
+      });
+      $('.input').on('blur', function(e) {
+        $(this).parent().removeClass('focus');
       });
     }
   };

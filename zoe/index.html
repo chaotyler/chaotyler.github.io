@@ -101,7 +101,7 @@
 <!--contact页面-->
 <div id="contact" class="contact">
 	<div class="title03"></div>
-	<div class="centerBox">
+	<!-- <div class="centerBox">
 		<div class="name"><span>Name</span></div>
 		<hr class="line01">
 		<div class="email"><span>Email</span></div>
@@ -111,12 +111,30 @@
 		<div class="message"><span>Message</span></div>
 		<hr class="line04">
 		<div class="submit"><span>Submit</span></div>
-	</div>
-</div>
-<div class="footer">
-	<div class="footerCenter">
-		<span>design and HTML&CSS by ZOE, JavaScript by TYLER</span>
-	</div>
+	</div> -->
+	<form class="contactForm" onsubmit="emailjs.sendForm('default_service', 'template_7aCgCnfX', this); return false;" method="post">
+		<input hidden type="text" name="to_email" value="zoeeying@gmail.com"/>
+		<div class="formItem">
+			<span>Name</span>
+			<input class="input" type="text" name="contact_name" /><br/>
+		</div>
+		<div class="formItem">
+			<span>Email</span>
+			<input class="input" type="text" name="contact_email" /><br/>
+		</div>
+		<div class="formItem">
+			<span>Tel</span>
+			<input class="input" type="text" name="contact_tel" /><br/>
+		</div>
+		<div class="formItem">
+			<span class="vtop">Message</span>
+			<textarea class="input" type="text" name="contact_message"></textarea>
+		</div>
+		<br/>
+		<button class="submit">
+			Send
+		</button>
+	</form>
 </div>
 <div class="bigwork" id="bigwork01">
 	<img src="./images/work01.png">
@@ -191,6 +209,7 @@
 	<img src="./images/work24.png">
 </div>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
