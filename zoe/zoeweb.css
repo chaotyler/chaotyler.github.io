@@ -1,0 +1,104 @@
+body{margin:0}
+a{text-decoration:none; color:#666;}
+/*修饰header*/
+.header{overflow:hidden;}
+.headerCenter{height:100px; width:1084px; margin:0 auto;
+	position:relative;}
+.logo{float:left; margin-top:23px; }
+.contactPic{margin-top:20px; float:right;}
+.nav{position:absolute; right:0; bottom:10px; font-size:14px; font-family:arial;
+color:#666666;}
+.nav a{margin-right:40px;}
+.nav .nav04{margin-right:0;}
+.nav a:hover{color:#008212;border-bottom: solid 2px #008212;}
+.contact01,.contact02,.contact03,.contact04{width:30px; height:30px;
+float:right; margin-right:20px;border-radius: 50%;background-color: #999999;cursor: pointer;}
+.contact01:hover,.contact02:hover,.contact03:hover,.contact04:hover{background-color: #008212;}
+.contact04{margin-right:0;}
+.contact01 img{margin-top:8px; margin-left:6px;}
+.contact02 img{margin-top:6px; margin-left:6px;}
+.contact03 img{margin-top:7px; margin-left:5px;}
+.contact04 img{margin-top:5px; margin-left:5px;}
+.line{height:1px; background-color:#cccccc;}
+/*修饰banner*/
+.banner{position:relative;height:600px; overflow:hidden;min-width: 1084px;}
+.banner img{position:absolute; left:50%; margin-left:-700px;}
+/*修饰I'VEDONE页面*/
+.ihavedone{margin: 0 auto;width: 1084px;overflow:hidden;}
+.title01{height:150px; width:1084px; margin:0 auto; 
+	background:url(images/title01.png) no-repeat 50% center;}
+.allworks{width: 3552px;overflow: hidden; transition:all 0.7s ease; -webkit-transition:all 0.7s ease; -o-transition:all 0.7s ease; -moz-transition:all 0.7s ease;}
+.works{float:left;width:1084px; margin:0 auto;overflow: hidden;margin-right: 100px;}
+.works div{width:250px; height:188px; float:left;margin-right:28px;overflow: hidden;cursor: pointer;}
+.works div img {transition:all 0.7s ease; -webkit-transition:all 0.7s ease; -o-transition:all 0.7s ease; -moz-transition:all 0.7s ease;}
+.works div:hover img {transform: scale(1.2);-webkit-transform: scale(1.2);-o-transform: scale(1.2);-moz-transform: scale(1.2);}
+.works .work04,.works .work08{margin-right:0;}
+.work05,.work06,.work07,.work08{margin-top:28px;}
+.circle{height:80px; clear:both; width:60px; margin:0 auto;} 
+.little{cursor:pointer;width:8px; height:8px; float:left; border-radius:50%;
+	background:#4d4d4d; margin-top:35px; margin-left:10px;box-sizing: border-box;
+transition:all 0.2s ease;-webkit-transition:all 0.2s ease; -o-transition:all 0.2s ease; -moz-transition:all 0.2s ease;}
+.little:hover{background: #008212;}
+.little.selected{border:1px solid #008212;transform: scale(2);-webkit-transform: scale(2);-o-transform: scale(2);-moz-transform: scale(2);}
+/*修饰experienced页面*/
+.experienced{height:640px; width:100%; min-width: 1084px;background:url(images/experienced.png) 
+	50% center no-repeat; overflow:hidden;}
+.experiencedCenter{position:relative; width:1084px; margin:0 auto;}
+.title02{height:150px; background:url(images/title02.png) no-repeat 50% center;}
+.experiencedContainer{width: 1084px;position: relative;margin: 0 auto;height: 490px;}
+.circle0{width:30px; height:30px; border-radius:50%; background:transparent; position:absolute;cursor: pointer;}
+.circle0.selected{background: #007b05;}
+.circle0.circle1{top:74px;left: 448px;}
+.circle0.circle2{top:74px;left: 644px;}
+.circle0.circle3{top:74px;left: 840px;}
+.circle0.circle4{top:217px;left: 959px;}
+.circle0.circle5{top:354px;left: 864px;}
+.circle0.circle6{top:354px;left: 692px;}
+.circle0.circle7{top:354px;left: 519px;}
+.circle0.circle8{top:354px;left: 347px;}
+.photo0{width:139px; height:139px; position:absolute;border-radius: 50%;cursor: pointer;}
+.photo0.selected{transform: scale(1.5);-webkit-transform: scale(1.5);-o-transform: scale(1.5);-moz-transform: scale(1.5); transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; -moz-transition: all 0.5s ease; z-index: 9;}
+.photo0.photo1{top:52px;left: 43px; background: url(images/birthbig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo2{top:52px;left: 185px; background: url(images/blackboardbig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo3{top:124px;left: -28px; background: url(images/highschoolbig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo4{top:124px;left: 114px; background: url(images/universitybig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo5{top:124px;left: 256px; background: url(images/paintingbig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo6{top:196px;left: 43px; background: url(images/hohaibig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo7{top:196px;left: 185px; background: url(images/sizebig.png) center no-repeat; background-size: 100% 100%;}
+.photo0.photo8{top:268px;left: 114px; background: url(images/ucanbig.png) center no-repeat; background-size: 100% 100%;}
+.description{display:none;position:absolute;;width: 530px;height: 220px; left: 420px; top: 120px;background-size: 100% 100%;}
+.description.selected{display:block;}
+.description0{background-image: url(images/1991.png);}
+.description1{background-image: url(images/2003.png);}
+.description2{background-image: url(images/2007.png);}
+.description3{background-image: url(images/2010university.png);}
+.description4{background-image: url(images/2015hohai.png);}
+.description5{background-image: url(images/2015painting.png);}
+.description6{background-image: url(images/2015size.png);}
+.description7{background-image: url(images/2016ucan.png);}
+
+
+/*修饰contact页面*/
+.title03{height:150px; background:url(images/title03.png) no-repeat 50% center;}
+.centerBox{width:1084px; margin:0 auto;}
+.name,.email,.tel{width:400px; height:50px; margin:0 auto;}
+.message{width:400px; height:154px; margin:0 auto;}
+.name span,.email span, .tel span{font-size:16px; font-family:arial; color:#333333; 
+	margin-left:20px; display:block; padding-top:26px;}
+.message span{font-size:16px; font-family:arial; color:#333333; margin-left:20px;
+	display:block; padding-top:18px;}
+.line01{width:400px; border:none; height:2px; background:#008212; margin-top:0;
+margin-bottom:0;}
+.line02,.line03,.line04{width:400px; border:none; height:2px; background:#333; 
+margin-top:0; margin-bottom:0;}
+.submit{width:400px; height:44px; background:#008212; margin-top:20px; 
+	margin-left:auto; margin-right:auto; line-height:44px; text-align:center;}
+.submit span{font-size:20px; font-family:arial; color:white;}
+
+
+.footer{height:60px; background:#f2f2f2; margin-top:81px;}
+.footerCenter{width:1084px; margin:0 auto; line-height:60px;}
+.footerCenter span{float:right; font-size:12px; font-family:arial; color:#333;}
+.bigwork{display: none;width: 100%;height: 100%;position: fixed;left: 0;top: 0; background: rgba(0, 0, 0, 0.7); z-index: 999;overflow: scroll;}
+.bigwork.show{display: block;}
+.bigwork img{display: block;width: 60%;margin: 50px auto;};
