@@ -91,8 +91,8 @@ transition:all 0.2s ease;-webkit-transition:all 0.2s ease; -o-transition:all 0.2
 margin-bottom:0;}
 .line02,.line03,.line04{width:400px; border:none; height:2px; background:#333; 
 margin-top:0; margin-bottom:0;}
-.submit{display: block;width:400px; height:44px; background:#008212; cursor: pointer; margin: 20px auto 50px auto;
-  line-height:44px; text-align:center;font-size:20px; font-family:arial; color:white;}
+.submit{display: block;width:460px; height:44px; background:#008212; cursor: pointer; margin: 20px auto 50px auto;
+  line-height:44px; text-align:center;font-size:20px; font-family:arial; color:white;font-family: Arial}
 
 .footer{height:60px; background:#f2f2f2; margin-top:81px;}
 .footerCenter{width:1084px; margin:0 auto; line-height:60px;}
@@ -103,7 +103,7 @@ margin-top:0; margin-bottom:0;}
 
 .contactForm{width: 1084px;margin: 0 auto;display: block;}
 .formItem{width: 400px;margin: 0 auto;padding: 10px 30px;border-bottom: solid 2px #333333;}
-.formItem span {display: inline-block; width: 70px;}
+.formItem span {display: inline-block; width: 70px; font-family: Arial}
 .formItem input {display: inline-block; width: 270px;height: 30px;border: none;}
 .formItem textarea {display: inline-block; width: 270px;height: 90px;resize: none;border: none;}
 .formItem .vtop{vertical-align: top;}
