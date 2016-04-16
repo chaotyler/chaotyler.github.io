@@ -7,6 +7,9 @@
     bind: function() {
       $('#navBar').on('click', function(e) {
         var archor = '#' + $(e.target).attr('data-toarchor');
+        if ($(archor).length === 0) {
+          return;
+        }
         $(document.body).animate({
           scrollTop: $(archor).offset().top - 100
         }, 300);

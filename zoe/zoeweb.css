@@ -12,11 +12,11 @@ color:#666666;}
 .nav .nav04{margin-right:0;}
 .nav a:hover{color:#008212;border-bottom: solid 2px #008212;}
 .contact01,.contact02,.contact03,.contact04{width:30px; height:30px;
-float:right; margin-right:20px;border-radius: 50%;background-color: #999999;cursor: pointer;}
-.contact01:hover,.contact02:hover,.contact03:hover,.contact04:hover{background-color: #008212;}
+float:right; margin-right:20px;border-radius: 50%;background-color: #b2b2b2;cursor: pointer;}
+.contact01:hover,.contact02:hover,.contact03:hover,.contact04:hover{background-color: #777777;}
 .contact04{margin-right:0;}
 .contact01 img{margin-top:8px; margin-left:6px;}
-.contact02 img{margin-top:6px; margin-left:6px;}
+.contact02 img{margin-top:8px; margin-left:5px;}
 .contact03 img{margin-top:7px; margin-left:5px;}
 .contact04 img{margin-top:5px; margin-left:5px;}
 .line{height:1px; background-color:#cccccc;}
