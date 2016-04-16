@@ -1,14 +1,14 @@
 (function(){
   var Page = {
     init: function() {
-      emailjs.init("user_k02nWWXRv4BcJdENGhpiu");
+      emailjs.init('user_k02nWWXRv4BcJdENGhpiu');
       this.bind();
     },
     bind: function() {
       $('#navBar').on('click', function(e) {
         var archor = '#' + $(e.target).attr('data-toarchor');
         $(document.body).animate({
-          scrollTop: $(archor).offset().top
+          scrollTop: $(archor).offset().top - 100
         }, 300);
       });
       $('.little').on('click', function(e) {
